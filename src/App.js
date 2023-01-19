@@ -3,11 +3,16 @@ import './App.css';
 function App() {
   return (
       <header class="header_sign">
-        <div>
+        <div class="logo_headerApp">
           <p>Index page</p>
         </div>
         <div>
-          <p>class head body</p>
+        <ul class="header_bannerCh0264">
+        <li>Home</li>
+        <li>Hotels</li>
+        <li>Contact</li>
+        <li>Help</li>
+        </ul>
         </div>
       </header>
   );
