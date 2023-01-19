@@ -6,8 +6,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.header_sign{
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display:flex; 
+  flex-direction: row;
+  height: 3rem;
 }
