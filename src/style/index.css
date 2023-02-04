@@ -65,19 +65,14 @@ body {
  display:flex; 
  list-style: none;
 }
-.Option_parse{
-  margin: 0rem; 
-  margin-left: 2.35859rem; 
-  padding: 0.5rem;
-}
-.Option_parse a{
-  font-size: 20.15868px; 
-  font-family: var(--HTDglobalefont);
+.justice_navigation_Opt a{
+  font-size: 19.65598px; 
+  font-family: var(--HTDglobalefont); 
   color: var(--white-bg-color); 
   text-decoration: none;
-}
-.Option_parse a:hover{
-  color: var(--light-bg-hover-effect); 
+  margin: 0rem; 
+  padding: 0rem; 
+  margin-left: 3rem; 
 }
 .registration_baseMain_selectionBtns{
   box-sizing: border-box;
@@ -111,16 +106,23 @@ body {
 
 
 /******** Footer part  ********/
-#footer{
+.Footer_cotainer_MainSection{
   -webkit-box-direction: normal;
   -webkit-box-sizing: border-box;
   -webkit-box-orient: horizontal;
   box-sizing: border-box; 
-  display: flex; 
+  display: flex;
+  align-items:center;
+  justify-content: center; 
   background-color:var(--Footer-Background-colorBg);
   width: 100%; 
   height: 6.5rem; 
   overflow: none;
   position: absolute; 
   bottom: 0; 
+  margin-top: 3rem; 
+}
+.Copyrights_ftt{
+  font-size: 21px; 
+  font-family: var(--HTDglobalefont) !important;
 }

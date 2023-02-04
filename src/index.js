@@ -1,16 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
-// import {NavigationBar} from "./app"
-import NavigationBar from "./NavBar"; 
-import Main from "./main";
-import Footer from "./footer";
-import './style/index.css'
+import ReactDOM from "react-dom/client";
+import App from './App';
+import './style/index.css'; 
+import { BrowserRouter } from "react-router-dom";
 
-
-
-//Render NavigationBar component class exported
-ReactDOM.render(<NavigationBar/>, document.getElementById("root"));
-//Render Main content component class exported
-ReactDOM.render(<Main/>, document.getElementById("main")); 
-//Render footer component class exported
-ReactDOM.render(<Footer/>, document.getElementById("footer")); 
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+     <App/>
+    </BrowserRouter>
+  </React.StrictMode>
+)

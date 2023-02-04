@@ -1,0 +1,57 @@
+
+body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    background-color: rgb(220, 242, 244); 
+    margin: 0; 
+    padding: 0; 
+}
+.Registration_Format{
+    -webkit-box-sizing: border-box; 
+    -webkit-box-flex: 0; 
+    -webkit-box-animation: none; 
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+    margin: 0rem; 
+    padding: 0rem;
+    margin-top: 2rem; 
+}
+.label_subForm{
+    margin: 0rem; 
+    font-size:17px; 
+    margin-top: 7px;
+}
+.registration_input{ 
+    box-sizing: border-box; 
+    width: 35%; 
+    height: 2.1656598rem; 
+    margin: 0rem; 
+    margin-top: 0.2rem; 
+    padding: 0rem; 
+    padding-left:0.2655rem; 
+}
+.submition_Btn{
+    width: 5.5rem; 
+    height: 2.5rem; 
+    background-color: rgb(127, 172, 255);
+    border: 1px solid #000; 
+    border-radius: 5px; 
+    margin: 0rem; 
+    margin-top: 0.5rem; 
+    font-size: 16.4px; 
+    letter-spacing: 0.2px;
+    cursor: pointer;
+}
+.submition_Btn:hover{
+    background-color: rgb(140, 179, 250);
+}
+.heading_subtitle{
+    font-size: 38px; 
+    text-align: center;
+    color:rgb(101, 152, 192); 
+}
