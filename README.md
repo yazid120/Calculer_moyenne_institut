@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+#Clone this Repository cli commande
+
+git clone https://github.com/yazid120/Calculer_moyenne_institut
+
 ## Available Scripts
 
 In the project directory, you can run:
