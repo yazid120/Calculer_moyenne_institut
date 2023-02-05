@@ -120,7 +120,8 @@ body {
   overflow: none;
   position: absolute; 
   bottom: 0; 
-  margin-top: 3rem; 
+  margin-top: 3rem;
+  z-index: 1000;  
 }
 .Copyrights_ftt{
   font-size: 21px; 
