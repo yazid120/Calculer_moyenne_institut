@@ -14,6 +14,7 @@
   --HOMEglobalefont_min_line: neo sans, Arial, Helvetica, sans-serif; 
   --PROFILEglobafont_min_line_fira: fira sans, sans-serif; 
 --Footer-Background-colorBg: rgb(54, 203, 236); 
+--Main_HomeBoxBar_banner-bg_color: rgb(140, 223, 177); 
  
 }
 body {
@@ -101,9 +102,51 @@ body {
 }
 
 /******* Main part *******/
-
-
-
+.sub_HeadCalc_top{
+  -webkit-box-sizing: border-box;
+  -webkit-box-direction: normal;
+  -webkit-box-align: center;
+  box-sizing: border-box;
+  display:flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Main_HomeBoxBar_banner-bg_color);
+  margin: 0rem; 
+  padding: 0rem; 
+  margin-top: 1.5rem; 
+  height: 25rem; 
+  overflow: hidden;
+}
+.sub_HeadCalc_top
+.Head_titleBan{
+  font-size: 35px;
+  color: rgb(39, 39, 39); 
+  margin: 0.5rem; 
+  padding: 0rem; 
+}
+.sub_HeadCalc_top
+.head_subtitleBen{
+  text-align: center;
+  font-size: 22px; 
+  color: rgb(52, 52, 52); 
+  margin: 0.5rem; 
+  padding: 0rem; 
+}
+.inscription_side_subRedirection{
+  width: 7.8rem; 
+  height: 3.2rem; 
+  cursor: pointer;
+  font-size: 17px;
+  background-color:rgba(171, 195, 187, 0.986); 
+  border: 1px solid var(--dark-bg-color) !important;
+  border-radius: 5px;
+  font-weight: 600; 
+  text-decoration: none;
+}
+.inscription_side_subRedirection:hover{
+  background-color:rgba(151, 195, 180, 0.986);
+}
 
 /******** Footer part  ********/
 .Footer_cotainer_MainSection{

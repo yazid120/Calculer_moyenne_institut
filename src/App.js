@@ -14,7 +14,7 @@ import Register from "./views/Register";
 function App(){
    return(
    <>
-   <NavigationBar/>,
+   <NavigationBar/>
    <div className="container">
     <Routes>
         {/* Home page routing */}
@@ -22,7 +22,7 @@ function App(){
         {/* About page routing */}
       <Route exact path="/About" element={<About/>}/>
         {/* contact page rounting */}
-      <Route exact path="/Contect_us" element={<Contact/>}/>
+      <Route exact path="/Contact_us" element={<Contact/>}/>
 
         {/* login page routing */}
       <Route exact path="/Login" element={<Login/>}/>
