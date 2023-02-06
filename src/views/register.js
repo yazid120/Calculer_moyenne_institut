@@ -44,22 +44,29 @@ onChangeConfirmPassword(e){
 }
 onsubmitRegister(e){
    e.preventDefault(); 
-   if(this.state.password == this.state.CofirmPassword){
+   if(this.state.password == this.state.ConfirmPassword){
    let user_Object ={
       name:this.state.name,
       email:this.state.email, 
       password:this.state.password, 
       ConfirmPassword:this.state.ConfirmPassword,
-   };
+   }
+   //axios connection with the backend (POST request)
  axios.post('http://localhost/Calculer_moyenne_institut/Action/register.php',
- user_Object)
- .then(respond => console.log(respond.data))
- .catch(error =>{
-  console.log(error.response)
- }); 
+ user_Object).then(response =>{
+   let C= response.data ==1; 
+   // document.write(c); 
+  if(C == true){
+   alert('registration successful'); 
+  }else if(response.data == 'empty inputs fields'){
+   alert('empty inputs fields');
+  }
 
-}else{
-   console.log('Your Submition does not match !!');
+  else{
+   alert('registration failed'); 
+  }
+  console.log(response.data); 
+ }); 
 }
 }
 
@@ -104,6 +111,10 @@ render(){
             Register
          </button>
         </form> 
+        {/*  
+        <p>{this.state.name}</p>
+        <p>{this.state.email}</p>
+        <p>{this.state.password}</p>*/}
         </>
     )
 }

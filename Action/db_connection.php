@@ -15,6 +15,6 @@ if($connection == false){
     die("Error: error found !!" . mysqli_connect_error() . "</BR>" ); 
 }else{
     // OPEN Connection
-    // echo 'Connection open successfuly';
+    //  echo 'Connection open successfuly';
 }
 ?>
