@@ -10,6 +10,9 @@ import Contact from "./views/component/Contact_us";
 // login links 
 import Login from "./views/Login"; 
 import Register from "./views/Register"; 
+//Profile link
+import Profile from "./views/profile/profile";
+
 
 function App(){
    return(
@@ -29,6 +32,13 @@ function App(){
         {/* Register page routing */}
       <Route exact path="/Register" element={<Register/>}/>
 
+        {/* Profile page routing */}
+      <Route exact path="/Profile" 
+      element={
+      
+      <Profile/>
+  
+      }/>
     </Routes>
     </div>
     <Footer/>

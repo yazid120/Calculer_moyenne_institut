@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import '../style/register.css'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 class Register extends Component{
    // Consturctor function support
@@ -57,18 +58,21 @@ onsubmitRegister(e){
    let C= response.data ==1; 
    // document.write(c); 
   if(C == true){
-   alert('registration successful'); 
-  }else if(response.data == 'empty inputs fields'){
+   alert('registration successful');
+   window.location.href ='http://localhost:3000/login'; 
+  }
+  else if(response.data == 'empty inputs fields'){
    alert('empty inputs fields');
   }
 
   else{
    alert('registration failed'); 
   }
-  console.log(response.data); 
  }); 
+ }
 }
-}
+
+
 
  
 render(){

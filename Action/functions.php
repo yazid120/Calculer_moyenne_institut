@@ -34,4 +34,14 @@ function invalidEmailAdd($userEmail){
     return $return_result; 
 }
 
+function empty_loginInputs($user_email,$userPassword){
+    $return_result = false; 
+    if(empty($user_email) || empty($userPassword)){
+        $return_result = true; 
+    }else{
+        $return_result = false; 
+    }
+    return $return_result; 
+}
+
 ?>

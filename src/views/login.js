@@ -8,8 +8,8 @@ class login extends Component{
    super(props); 
    this.onChangeEmail = this.onChangeEmail.bind(this); 
    this.onChangePassword = this.onChangePassword.bind(this); 
-   this.onSubmitionLogin = this.onSubmitionLogin.bind(this); 
-
+   this.onSubmitionLogin = this.onSubmitionLogin.bind(this);   
+  
    this.state ={
     email:'', 
     Password:'',
@@ -26,16 +26,29 @@ class login extends Component{
       Password:e.target.value
     });
   }
+  
   onSubmitionLogin(e){
    e.preventDefault(); 
-  //  axios.post('',).then()
+   let login_Object ={
+     email:this.state.email,
+     password:this.state.Password,
+   }
+  axios.post('http://localhost/Calculer_moyenne_institut/Action/login_Auth.php',login_Object)
+  .then(
+      response=>{
+        console.log(response.data); 
+    }); 
+  }
+  Registration_Access(){
+    // e.preventDefault();
   }
 
+  
     render(){
       return(
       <>
       <h1 className='heading_subtitle'>login page</h1>
-      <form action='' method='post' className='Registration_Format'>
+      <form  method='post' className='Registration_Format'>
        <label htmlFor='' className='label_subForm'>
        Email address:
        </label><br />
@@ -52,6 +65,8 @@ class login extends Component{
         login
        </button>
       </form>
+        <p>{this.state.email}</p>
+        <p>{this.state.Password}</p>
       </>
       );
     }
