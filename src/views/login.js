@@ -41,15 +41,36 @@ class login extends Component{
      password:this.state.Password,
    } 
    let error_element = document.getElementById('empty_input_error'); 
+   let invalid_usr_info = document.getElementById('invalid_user_infos'); 
+   let wrong_pwd_r = document.getElementById('wrong_password_rr'); 
   axios.post('http://localhost/Calculer_moyenne_institut/Action/login_Auth.php',login_Object)
   .then(
       response=>{
+        console.log(response.data); 
+        // Empty inputs infos
         if(response.data == 'empty inputs'){
         // document.getElementById('error_login_handle').appendChild(element_error); 
           error_element.classList.replace('hide','show'); 
         }else{
           error_element.classList.replace('show','hide'); 
         }
+        // invalid user information
+        if(response.data == 'invalid user infos'){
+          invalid_usr_info.classList.replace('hide','show'); 
+        }else{
+          invalid_usr_info.classList.replace('show','hide');
+        }
+        // Wrong password 
+        if(response.data == 'incorrect password'){
+          // console.log('Wrong password'); 
+          wrong_pwd_r.classList.replace('hide','show');
+        }else{
+          wrong_pwd_r.classList.replace('show','hide');
+        }
+        if(response.data == 'Correct user Login'){
+          window.location.href ='http://localhost:3000/profile'; 
+        }
+
     }); 
   }
 
@@ -60,6 +81,8 @@ class login extends Component{
       {/* error handling */}
       <div className='error_handling' id='error_login_handle'>
        <p id="empty_input_error" className='error_alix hide'>input fields are empty</p>
+       <p id="invalid_user_infos" className='error_alix hide'>invalid user infos</p>
+       <p id="wrong_password_rr" className='error_alix hide'>Wrong password</p>
       </div>
       <form  method='post' className='Registration_Format'>
        <label htmlFor='' className='label_subForm'>

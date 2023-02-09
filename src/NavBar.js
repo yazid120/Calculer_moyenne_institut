@@ -51,6 +51,7 @@ export default function NavBar(){
             </nav>
             );
 }
+
 function Custom_redirectLink({to,child, ...propos}){
     const resolvePath = useResolvedPath(to); 
     const isActive = useMatch({ path: resolvePath.pathname, end: true})
