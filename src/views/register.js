@@ -53,21 +53,20 @@ onsubmitRegister(e){
       ConfirmPassword:this.state.ConfirmPassword,
    }
    //axios connection with the backend (POST request)
- axios.post('http://localhost/Calculer_moyenne_institut/Action/register.php',
+ axios.post('http://localhost/Calculer_moyenne_institut/Action/register_Auth.php',
  user_Object).then(response =>{
    let C= response.data ==1; 
-   // document.write(c); 
+   // document.write(c);
+   console.log(response.data);  
+   if(response.data == 'empty inputs fields'){
+   alert('empty inputs fields');
+  }
   if(C == true){
    alert('registration successful');
    window.location.href ='http://localhost:3000/login'; 
   }
-  else if(response.data == 'empty inputs fields'){
-   alert('empty inputs fields');
-  }
-
-  else{
-   alert('registration failed'); 
-  }
+  
+ 
  }); 
  }
 }

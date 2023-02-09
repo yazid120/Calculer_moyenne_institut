@@ -19,7 +19,7 @@ body{
     overflow: hidden; 
     margin: 0rem; 
     padding: 0rem;
-    margin-top: 2rem; 
+    margin-top: 1rem; 
 }
 .label_subForm{
     margin: 0rem; 
@@ -54,4 +54,31 @@ body{
     font-size: 38px; 
     text-align: center;
     color:rgb(101, 152, 192); 
+}
+.hide{
+    display: none; 
+}
+.show{
+    display: flex; 
+}
+.error_handling{
+    box-sizing: border-box;
+    display:flex; 
+    align-items: center; justify-content: center;
+    margin : 0rem; 
+    padding: 0rem; 
+}
+.error_alix{ 
+    -webkit-box-sizing: border-box;
+    -webkit-box-flex: 0;
+    box-sizing: border-box; 
+    font-size: 20px; 
+    color: rgb(255, 255, 255);
+    background-color:rgba(239, 44, 44, 0.47); 
+    align-items: center;
+    justify-content: center;
+    width: 50%; 
+    height: 3rem; 
+    border: 1px solid #000 !important; 
+    border-radius: 5px;
 }

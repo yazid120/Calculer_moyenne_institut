@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'; 
+import React from 'react';
 import { Component } from 'react';
 import axios from 'axios';
+
 
 class login extends Component{
   //constroctor support login
@@ -13,6 +15,7 @@ class login extends Component{
    this.state ={
     email:'', 
     Password:'',
+    Name:'',
    }
   }
 
@@ -29,25 +32,35 @@ class login extends Component{
   
   onSubmitionLogin(e){
    e.preventDefault(); 
+   let error_Handle=[
+    {empty_input:'input fields are empty'}
+   ]
+
    let login_Object ={
      email:this.state.email,
      password:this.state.Password,
-   }
+   } 
+   let error_element = document.getElementById('empty_input_error'); 
   axios.post('http://localhost/Calculer_moyenne_institut/Action/login_Auth.php',login_Object)
   .then(
       response=>{
-        console.log(response.data); 
+        if(response.data == 'empty inputs'){
+        // document.getElementById('error_login_handle').appendChild(element_error); 
+          error_element.classList.replace('hide','show'); 
+        }else{
+          error_element.classList.replace('show','hide'); 
+        }
     }); 
   }
-  Registration_Access(){
-    // e.preventDefault();
-  }
 
-  
     render(){
       return(
       <>
       <h1 className='heading_subtitle'>login page</h1>
+      {/* error handling */}
+      <div className='error_handling' id='error_login_handle'>
+       <p id="empty_input_error" className='error_alix hide'>input fields are empty</p>
+      </div>
       <form  method='post' className='Registration_Format'>
        <label htmlFor='' className='label_subForm'>
        Email address:

@@ -17,7 +17,7 @@ if(isset($request)){
   //Hashing the Password 
   $hashed_pwd = md5($User_password);
   
-   if(emptyInputSignUp($User_Name,$User_email,$User_password,$User_repassword) !== false){
+   if(emptyInputSignUp($User_Name,$User_email,$User_password,$User_repassword)){
     echo 'empty inputs fields'; 
    }
 
