@@ -1,0 +1,25 @@
+
+.dx_box-format{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0rem; 
+    padding: 0rem;
+    margin-top: 1.5rem; 
+    overflow: hidden;
+}
+.Profile_mainContainer01355{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:60%;
+    height: 16rem; 
+    background-color: var(--Section_Main_Profile_boxBg_color); 
+    border: 1px solid var(--dark-bg-color); 
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 5px 8px 5px;
+}

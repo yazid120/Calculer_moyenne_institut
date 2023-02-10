@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'; 
-import React from 'react';
+import React, { useContext } from 'react';
 import { Component } from 'react';
 import axios from 'axios';
+import UserContext from '../App';
 
 
 class login extends Component{
@@ -18,6 +19,8 @@ class login extends Component{
     Name:'',
    }
   }
+  
+  static main_context = useContext;
 
   onChangeEmail(e){
     this.setState({
@@ -68,6 +71,7 @@ class login extends Component{
           wrong_pwd_r.classList.replace('show','hide');
         }
         if(response.data == 'Correct user Login'){
+          // dispatch({type:'USER', payload:true})
           window.location.href ='http://localhost:3000/profile'; 
         }
 
@@ -75,6 +79,7 @@ class login extends Component{
   }
 
     render(){
+      const {state, dispatch} = this.context; 
       return(
       <>
       <h1 className='heading_subtitle'>login page</h1>

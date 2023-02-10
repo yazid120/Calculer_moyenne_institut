@@ -8,7 +8,8 @@ import  { Link, useMatch,
 export default function NavBar(){
     let component_Object=[
     {name:'login',id:'login_part',class_name:'base_registerOption_sign'},
-    {name:'register',id:'register_part',class_name:'base_registerOption_sign'}
+    {name:'register',id:'register_part',class_name:'base_registerOption_sign'},
+    {name:'logout',id:'logout_part',class_name:'base_registerOption_sign'}
         ];
     
      let navigation = useNavigate();
@@ -32,7 +33,7 @@ export default function NavBar(){
             <Link to="/About">about</Link>
              </ul>
             </div>
-            <div className="registration_baseMain_selectionBtns">
+            <div className="registration_baseMain_selectionBtns" id="identities_component">
                 <div className="">
                   {/* login btn */}
                 <button className="base_registerOption _sign"
@@ -45,6 +46,13 @@ export default function NavBar(){
                 <button className="base_registerOption _sign" 
                 id="register_part" 
                 onClick={Navigate_register}>{component_Object[1].name}
+                </button>
+                </div>
+                <div className="">
+                    {/* Logout btn */}
+                <button className="base_registerOption _logout" 
+                id="logout_part" 
+                >{component_Object[2].name}
                 </button>
                 </div>
             </div>

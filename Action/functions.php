@@ -33,6 +33,21 @@ function invalidEmailAdd($userEmail){
     return $return_result; 
 }
 
+function creat_user($connection,$User_Name,$User_email,$userPassword){
+    $hashed_pwd = password_hash($userPassword, PASSWORD_DEFAULT); 
+    $sql = "INSERT INTO `users` (usersName,usersemail,userspassword) 
+    VALUES('$User_Name','$User_email','$hashed_pwd')";
+    $response = $connection->query($sql); 
+    if($response){
+        $respose = "successful";
+        echo $response;
+       }else{
+        $error = "failed"; 
+        echo $error;
+      }
+
+}
+
 function empty_loginInputs($user_Email,$userPassword){
     $return_result = false; 
     if(empty($user_Email) || empty($userPassword)){
