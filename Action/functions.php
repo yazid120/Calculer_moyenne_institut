@@ -15,7 +15,7 @@ function emptyInputSignUp($userName,$userEmail,$userPassword,$userRepassword){
 }
 
 function invalidUserName($userName){
-    $reutrn_result = false; 
+    $return_result = false; 
     if(!preg_match("/^[a-zA-Z0-9]*$/",$userName)){
         $return_result = true; 
     }else{
@@ -33,7 +33,17 @@ function invalidEmailAdd($userEmail){
     return $return_result; 
 }
 
-function creat_user($connection,$User_Name,$User_email,$userPassword){
+function unmatched_Password($userPassword,$userRepassword){
+    $return_result = false; 
+    if($userPassword !== $userRepassword){
+        $return_result = true; 
+    }else{
+        $return_result = false; 
+    }
+    return $return_result; 
+}
+
+function Creat_user($connection,$User_Name,$User_email,$userPassword){
     $hashed_pwd = password_hash($userPassword, PASSWORD_DEFAULT); 
     $sql = "INSERT INTO `users` (usersName,usersemail,userspassword) 
     VALUES('$User_Name','$User_email','$hashed_pwd')";
@@ -70,7 +80,7 @@ function inputInfos_exist($connection,$userEmail){
         return $row; 
     }else{
         $return_result = false; 
-        return $return_result; 
+        // return $return_result; 
     }
     mysqli_stmt_close($connection); 
 }

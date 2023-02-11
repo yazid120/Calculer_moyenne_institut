@@ -45,13 +45,15 @@ onChangeConfirmPassword(e){
 }
 onsubmitRegister(e){
    e.preventDefault(); 
-   if(this.state.password == this.state.ConfirmPassword){
    let user_Object ={
       name:this.state.name,
       email:this.state.email, 
       password:this.state.password, 
       ConfirmPassword:this.state.ConfirmPassword,
    }
+   let Empty_error = document.getElementById('empty_input_error');
+   let Invalid_u_error = document.getElementById('Invalid_User_Name_error'); 
+   let Unmatched_pwd_error = document.getElementById('unmatched_password'); 
    //axios connection with the backend (POST request)
  axios.post('http://localhost/Calculer_moyenne_institut/Action/register_Auth.php',
  user_Object).then(response =>{
@@ -59,16 +61,28 @@ onsubmitRegister(e){
    // document.write(c);
    console.log(response.data);  
    if(response.data == 'empty inputs fields'){
-   alert('empty inputs fields');
+    Empty_error.classList.replace('hide','show'); 
+  }else{
+    Empty_error.classList.replace('show','hide');  
   }
+   if(response.data == 'Invalid User Name'){
+     Invalid_u_error.classList.replace('hide','show');
+   }else{
+      Invalid_u_error.classList.replace('show','hide'); 
+   }
+   if(response.data == 'password does not match'){
+     Unmatched_pwd_error.classList.replace('hide','show');
+   }else{
+      Unmatched_pwd_error.classList.replace('show','hide'); 
+   }
+   
   if(C == true){
    alert('registration successful');
    window.location.href ='http://localhost:3000/login'; 
   }
-  
  
  }); 
- }
+ 
 }
 
 
@@ -78,6 +92,12 @@ render(){
     return(
         <>
         <h1 className='heading_subtitle'>Register Page</h1>
+        <div className='error_handling'>
+        <p id="empty_input_error" className='error_alix hide'>input fields are empty</p>
+        <p id="Invalid_User_Name_error" className='error_alix hide'>invalid User Name</p>
+        <p id="unmatched_password" className='error_alix hide'>Your repassword does not match 
+        your password</p>
+        </div>
         <form action='' method='post'
         className='Registration_Format'>
       {/* User Name input */}
@@ -114,10 +134,10 @@ render(){
             Register
          </button>
         </form> 
-        {/*  
-        <p>{this.state.name}</p>
+         
+        {/* <p>{this.state.name}</p>
         <p>{this.state.email}</p>
-        <p>{this.state.password}</p>*/}
+        <p>{this.state.password}</p> */}
         </>
     )
 }

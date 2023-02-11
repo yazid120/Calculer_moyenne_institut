@@ -6,6 +6,12 @@ import  { Link, useMatch,
 } from 'react-router-dom'; 
 
 export default function NavBar(){
+    let user = JSON.parse(localStorage.getItem('user-info')); 
+    // console.log(user);
+    function logout(){
+
+    }
+
     let component_Object=[
     {name:'login',id:'login_part',class_name:'base_registerOption_sign'},
     {name:'register',id:'register_part',class_name:'base_registerOption_sign'},
@@ -48,13 +54,16 @@ export default function NavBar(){
                 onClick={Navigate_register}>{component_Object[1].name}
                 </button>
                 </div>
-                <div className="">
+
+                
+                      <div className="">
                     {/* Logout btn */}
-                <button className="base_registerOption _logout" 
-                id="logout_part" 
-                >{component_Object[2].name}
-                </button>
-                </div>
+                    <button className="base_registerOption _logout" 
+                    id="logout_part" 
+                     >{component_Object[2].name}
+                   </button>
+                   </div>
+                
             </div>
             </nav>
             );

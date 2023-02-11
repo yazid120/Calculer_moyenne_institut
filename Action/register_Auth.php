@@ -19,7 +19,16 @@ if(isset($postData)){
   
    if(emptyInputSignUp($User_Name,$User_email,$User_password,$User_repassword)){
     echo 'empty inputs fields'; 
+    exit(); 
    } 
+   if(invalidUserName($User_Name)!==false){
+      echo 'Invalid User Name'; 
+      exit();
+   }
+   if(unmatched_Password($User_password,$User_repassword) !== false){
+      echo 'password does not match';
+      exit(); 
+   }
 
 $sql = "INSERT INTO `users` (usersName,usersemail,userspassword) 
    VALUES('$User_Name','$User_email','$hashed_pwd')";
