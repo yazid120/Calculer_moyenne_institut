@@ -1,7 +1,11 @@
 import React from "react";
 import { Component } from "react";
+import { json } from "react-router-dom";
 
 function Main_Profile(){
+  let user = JSON.parse(localStorage.getItem('user-infos')); 
+  // console.warn(user); 
+  
     return(
         <>
         <div className="dx_box-format">
@@ -10,7 +14,7 @@ function Main_Profile(){
            <h2>Your profile information</h2>
          </div>
          <div className="Profile_userInfos01355">
-            <p>Nom:<span></span></p>
+            <p>Nom:<span>{}</span></p>
             <p>Email:<span></span></p>
             <p>Date d'inscription:<span></span></p>
          </div>

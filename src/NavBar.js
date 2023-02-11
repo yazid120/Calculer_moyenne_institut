@@ -2,14 +2,17 @@ import React, { Component } from "react";
 // importing end points react-router-dom
 import  { Link, useMatch,
      useResolvedPath,
-     useNavigate 
+     useNavigate, useHistory
 } from 'react-router-dom'; 
 
 export default function NavBar(){
-    let user = JSON.parse(localStorage.getItem('user-info')); 
-    // console.log(user);
-    function logout(){
+    const Navigate  = useNavigate(); 
+    let user = JSON.parse(localStorage.getItem('user-infos')); 
+    //  console.warn(user.name);
 
+    let Logout = () =>{
+        localStorage.clear(); 
+        Navigate('/'); 
     }
 
     let component_Object=[
@@ -29,6 +32,7 @@ export default function NavBar(){
         }
         return(
             <nav className="Navigation_Bar_automate02654">
+                
             <div className="logo_base">
               <a href="/">logo</a>
             </div>
@@ -40,13 +44,27 @@ export default function NavBar(){
              </ul>
             </div>
             <div className="registration_baseMain_selectionBtns" id="identities_component">
+                {/* Identifier the Navigation bar with localStorage */}
+                {
+                    localStorage.getItem('user-info') ?
+                <>
+                <div className="">
+                    {/* Logout btn */}
+                    <button className="base_registerOption _logout" 
+                    id="logout_part" onClick={Logout}
+                     >{component_Object[2].name}
+                   </button>
+                </div>
+                </>
+                :
+                <>
                 <div className="">
                   {/* login btn */}
-                <button className="base_registerOption _sign"
-                id="login_part" 
-                onClick={Navigate_login}>{component_Object[0].name}
-                </button>
+                 <button className="base_registerOption _sign"
+                  id="login_part" onClick={Navigate_login}>{component_Object[0].name}
+                 </button>
                 </div>
+        
                 <div className="">
                     {/* register btn */}
                 <button className="base_registerOption _sign" 
@@ -54,16 +72,10 @@ export default function NavBar(){
                 onClick={Navigate_register}>{component_Object[1].name}
                 </button>
                 </div>
+                </>
 
-                
-                      <div className="">
-                    {/* Logout btn */}
-                    <button className="base_registerOption _logout" 
-                    id="logout_part" 
-                     >{component_Object[2].name}
-                   </button>
-                   </div>
-                
+                }
+
             </div>
             </nav>
             );

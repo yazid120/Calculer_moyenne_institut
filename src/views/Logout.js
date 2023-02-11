@@ -4,9 +4,9 @@ import React, { Component } from "react";
 
 const Logout = () =>{
      return(
-       <div>
-        <h1> Logout system </h1>
-       </div>
+      <div>
+        <h2>logout</h2>
+      </div>
   );
 }
 export default Logout; 

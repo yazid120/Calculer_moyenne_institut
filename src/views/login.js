@@ -72,6 +72,7 @@ class login extends Component{
         }
         if(response.data == 'Correct user Login'){
           // dispatch({type:'USER', payload:true})
+          localStorage.setItem('user-info',this.state.email); 
           window.location.href ='http://localhost:3000/profile'; 
         }
 
