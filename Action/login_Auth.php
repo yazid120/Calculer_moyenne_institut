@@ -20,13 +20,10 @@ if(isset($postData)){
     if(Login_user($connection,$User_email,$User_Password) === false){
         echo 'incorrect password'; 
         exit(); 
-    }else{
+    }else if(Login_user($connection,$User_email,$User_Password) === true){
         echo 'Correct user Login'; 
         exit();
     }
-    /*if(inputInfos_exist($connection,$User_email)){
-       echo 'ivalid infos'; 
-    }*/
 }else{
     //respose error
 }

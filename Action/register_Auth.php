@@ -16,7 +16,7 @@ if(isset($postData)){
    $date = time(); 
   //Hashing the Password 
   $hashed_pwd = password_hash($User_password, PASSWORD_DEFAULT);
-  
+
    if(emptyInputSignUp($User_Name,$User_email,$User_password,$User_repassword)){
     echo 'empty inputs fields'; 
     exit(); 
@@ -29,6 +29,8 @@ if(isset($postData)){
       echo 'password does not match';
       exit(); 
    }
+
+   
 
 $sql = "INSERT INTO `users` (usersName,usersemail,userspassword) 
    VALUES('$User_Name','$User_email','$hashed_pwd')";

@@ -43,7 +43,7 @@ function unmatched_Password($userPassword,$userRepassword){
     return $return_result; 
 }
 
-function Creat_user($connection,$User_Name,$User_email,$userPassword){
+function Create_user($connection,$User_Name,$User_email,$userPassword){
     $hashed_pwd = password_hash($userPassword, PASSWORD_DEFAULT); 
     $sql = "INSERT INTO `users` (usersName,usersemail,userspassword) 
     VALUES('$User_Name','$User_email','$hashed_pwd')";
@@ -68,10 +68,11 @@ function empty_loginInputs($user_Email,$userPassword){
     return $return_result; 
 }
 function inputInfos_exist($connection,$userEmail){
-    $sql ="SELECT * FROM `users` WHERE usersName = ? OR usersEmail = ?"; 
+    $sql ="SELECT * FROM `users` WHERE usersName = ? OR usersEmail = ?;"; 
     $stmt = mysqli_stmt_init($connection); 
     if(!mysqli_stmt_prepare($stmt,$sql)){
         return 'Technical error !!';  
+        exit(); 
     }
     mysqli_stmt_bind_param($stmt,'ss',$userEmail,$userEmail);
     mysqli_stmt_execute($stmt); 
@@ -80,27 +81,33 @@ function inputInfos_exist($connection,$userEmail){
         return $row; 
     }else{
         $return_result = false; 
-        // return $return_result; 
+        return $return_result; 
     }
     mysqli_stmt_close($connection); 
 }
 
-function Login_user($connection,$user_Email,$userPassword){
+function Login_user($connection,$user_Email,$userPassword){  
     $return_result = false; 
     $input_infos_existsResult = inputInfos_exist($connection,$user_Email,$user_Email); 
+
     if($input_infos_existsResult === false){
-        return 'error: user infos missing wrong user';  
+        return 'error: user infos missing wrong user';   
     }
     $hashed_pwd = $input_infos_existsResult['userspassword']; 
-    $currnt_pwd_hashed = password_hash($userPassword, PASSWORD_DEFAULT);
-    $check_usr_pwd = password_verify($currnt_pwd_hashed,$hashed_pwd); 
+    
+    $check_usr_pwd = password_verify($userPassword,$hashed_pwd); 
     if($check_usr_pwd === false){
         // return 'incorrect password !!'; 
-        $return_result =false; 
-        return $hashed_pwd;
-    }else{
+        $return_result = false; 
+    }
+    else if($check_usr_pwd === true){
         // return 'User login successfuly'; 
         $return_result = true; 
+        // session_start(); 
+        $_SESSION['User_email'] = $input_infos_existsResult['usersemail'];
+        $_SESSION['User_Name'] = $input_infos_existsResult['usersName']; 
+        $_SESSION['User_Password'] = $input_infos_existsResult['userspassword']; 
+        
     }
     return $return_result; 
 }
