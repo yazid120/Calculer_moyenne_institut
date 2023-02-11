@@ -12,6 +12,7 @@ export default function NavBar(){
 
     let Logout = () =>{
         localStorage.clear(); 
+        sessionStorage.clear(); 
         Navigate('/'); 
     }
 

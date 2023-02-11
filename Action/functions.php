@@ -101,15 +101,17 @@ function Login_user($connection,$user_Email,$userPassword){
         $return_result = false; 
     }
     else if($check_usr_pwd === true){
-        // return 'User login successfuly'; 
-        $return_result = true; 
+        // return 'User login successfuly';
         // session_start(); 
         $_SESSION['User_email'] = $input_infos_existsResult['usersemail'];
         $_SESSION['User_Name'] = $input_infos_existsResult['usersName']; 
         $_SESSION['User_Password'] = $input_infos_existsResult['userspassword']; 
-        
+        $return_result = true; 
     }
     return $return_result; 
 }
-
+//return profile infos
+function Profile_infos($User_Name,$user_Email){
+    return $User_Name.''.$user_Email; 
+}
 ?>

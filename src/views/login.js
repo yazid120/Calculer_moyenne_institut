@@ -42,6 +42,7 @@ class login extends Component{
    let login_Object ={
      email:this.state.email,
      password:this.state.Password,
+     Name:this.state.Name,
    } 
    let error_element = document.getElementById('empty_input_error'); 
    let invalid_usr_info = document.getElementById('invalid_user_infos'); 
@@ -72,8 +73,10 @@ class login extends Component{
         }
         if(response.data == 'Correct user Login'){
           // dispatch({type:'USER', payload:true})
-          localStorage.setItem('user-info',this.state.email); 
+          localStorage.setItem('user-info',JSON.stringify(login_Object)); 
+          console.warn(login_Object); 
           window.location.href ='http://localhost:3000/profile'; 
+          
         }
 
     }); 

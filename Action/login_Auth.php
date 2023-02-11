@@ -21,6 +21,7 @@ if(isset($postData)){
         echo 'incorrect password'; 
         exit(); 
     }else if(Login_user($connection,$User_email,$User_Password) === true){
+        session_start();
         echo 'Correct user Login'; 
         exit();
     }
