@@ -24,7 +24,8 @@
     padding: 5px 8px 5px;
 }
 
-/***  Status profile Styling  ***/
+
+/*********  Status profile Styling ********/
 .Status_sub_title{
     font-size: 22px; 
     color: var(--Section_Main_Profile_fontBg_color);
@@ -121,3 +122,28 @@ cursor: pointer;
 .radio_hide{
    visibility: hidden;
 } 
+
+/*********  Status/etudiant_status Styling ********/
+.wrapp_form_setStat_user{
+ -webkit-box-sizing: border-box;
+ -webkit-box-direction: normal;
+ -webkit-box-orient: horizontal;
+ box-sizing: border-box;
+ display:flex; 
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ overflow: hidden; 
+ margin: 0rem; 
+ padding: 5px 5px 5px 5px;
+ margin-top: 0.52989rem; 
+}
+.wrapp_form_setStat_user
+.foreign_side_cl{
+    font-size: 18px; 
+    color: var(--Stat_access_font_dark_Grey_bg_color); 
+    font-family: var(--HTDglobalefont);
+    font-weight: 600; 
+    text-decoration: none;
+    margin: 0.2rem;
+}

@@ -22,6 +22,7 @@
 /* Status styling */
 --Status_section_box_bg_Color: rgb(202, 223, 234);
 --Status_Button_choise_bg_Color: rgb(79, 171, 238); 
+--Stat_access_font_dark_Grey_bg_color: rgb(75, 75, 75);
  
 }
 body {
