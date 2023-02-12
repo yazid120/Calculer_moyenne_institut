@@ -3,7 +3,7 @@ import { Component } from "react";
 import { json } from "react-router-dom";
 
 function Main_Profile(){
-  let user = JSON.parse(localStorage.getItem('user-infos')); 
+  let user = JSON.parse(localStorage.getItem('user-info')); 
   // console.warn(user); 
   
     return(

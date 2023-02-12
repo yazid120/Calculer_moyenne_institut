@@ -18,6 +18,10 @@
 /* profile Styling */
 --Section_Main_Profile_boxBg_color: rgb(157, 203, 237); 
 --Section_Main_Profile_fontBg_color: rgb(40, 40, 40); 
+--Authentcation_error_Bg_Color: #f8d7da; 
+/* Status styling */
+--Status_section_box_bg_Color: rgb(202, 223, 234);
+--Status_Button_choise_bg_Color: rgb(79, 171, 238); 
  
 }
 body {
@@ -170,6 +174,8 @@ body {
   overflow: none;
   margin: 0rem auto -50px; 
   z-index: 1000;  
+  position: relative;
+  top: 16px;
 }
 .Copyrights_ftt{
   font-size: 20.258px; 

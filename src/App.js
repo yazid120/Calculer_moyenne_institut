@@ -13,6 +13,7 @@ import Register from "./views/Register";
 import Logout from "./views/Logout";
 //Profile link
 import Profile from "./views/profile/profile";
+import Status from "./views/Status/Status";
 
 import { initialState, reducer } from "./reducer/UseReducer";
 
@@ -36,6 +37,8 @@ const Routing = () =>{
         {/* Logout path routing */}
       <Route exact path='/Logout' element={<Logout/>} />
 
+        {/* Status path routing */}
+      <Route exact path='/Status' element={<Status />} />
         {/* Profile page routing */}
       <Route exact path="/Profile" 
       element={

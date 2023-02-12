@@ -23,3 +23,61 @@
     border-radius: 3px;
     padding: 5px 8px 5px;
 }
+
+/***  Status profile Styling  ***/
+.Status_sub_title{
+    font-size: 22px; 
+    color: var(--Section_Main_Profile_fontBg_color);
+    text-align: center;
+}
+.Container_option_userStatus{
+    -webkit-box-flex: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; 
+    height: auto; 
+    padding: 5px 5px; 
+    margin: 0rem; 
+    margin-top: 0.5rem; 
+    overflow: hidden;
+}
+.x_formOption_all{
+  box-sizing: border-box;
+  background-color: var(--Status_section_box_bg_Color);
+  width: 65%;
+  height: 30rem; 
+  border: 1px solid var(--dark-bg-color) !important; 
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.usr_option{
+    -webkit-box-sizing: border-box;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    box-sizing: border-box; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto; 
+    margin: 0rem; 
+    padding: 0rem; 
+    margin-bottom: 1.5rem;
+}
+.x_formOption_all
+.Sub_Status_btn{
+    width: 5.5rem; 
+    height: 2.8rem; 
+    background-color: var(--Status_Button_choise_bg_Color);  
+    border: 1px solid var(--dark-bg-color); 
+    border-radius: 4px;
+    font-weight: 500;
+    font-size:16px;
+    letter-spacing: 1px;
+    cursor:pointer; 
+}
