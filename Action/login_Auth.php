@@ -8,6 +8,7 @@
 if(isset($postData)){
     $User_email = $request->email; 
     $User_Password = $request->password;
+    $User_Name = $request->Name; 
 
     if(empty_loginInputs($User_email,$User_Password)){
        echo 'empty inputs'; 
@@ -16,6 +17,10 @@ if(isset($postData)){
     if(inputInfos_exist($connection,$User_email) === false){
         echo 'invalid user infos';
         exit();  
+    }
+    if(invalid_userName($connection,$User_email,$User_Name) !== false){
+       echo 'User Name dont match'; 
+       exit(); 
     }
     if(Login_user($connection,$User_email,$User_Password) === false){
         echo 'incorrect password'; 

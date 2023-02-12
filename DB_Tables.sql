@@ -29,4 +29,29 @@ CREATE TABLE users(
   `usersemail` varchar(128) NOT NULL,
   `userspassword` varchar(128) NOT NULL,
   `Date_user` timestamp
-)
+);
+
+--
+-- CREATE `etudiant` TABLE inside `Calc_moy_insfp` database
+--
+DROP TABLE IF EXISTS `etudiant`; 
+CREATE TABLE etudiant(
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `user_id` int(11),
+   FOREIGN KEY (user_id) REFERENCES users(id),
+  `Nom` varchar(128) NOT NULL,
+  `Prenom` varchar(128) NOT NULL,
+  `Num_inscr` int(11) NOT NULL
+);
+
+--
+-- CREATE `Professeur` TABLE inside `Calc_moy_insfp` database
+--
+DROP TABLE IF EXISTS `Professeur`; 
+CREATE TABLE Professeur(
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+  `Prof_id` int(11),
+  FOREIGN KEY (Prof_id) REFERENCES users(id),
+  `Nom` varchar(128) NOT NULL, 
+  `Prenom` varchar(128) NOT NULL
+); 

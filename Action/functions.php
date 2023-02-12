@@ -86,6 +86,22 @@ function inputInfos_exist($connection,$userEmail){
     mysqli_stmt_close($connection); 
 }
 
+function invalid_userName($connection,$user_Email,$User_Name){
+    $return_result = false; 
+    // $sql ="SELECT * FROM users WHERE users.usersemail == $user_Email";
+    $input_infos_existsResult = inputInfos_exist($connection,$User_Name,$User_Name);
+    if($input_infos_existsResult === false){
+        return 'Connection infos problem';
+    }
+    $Db_user = $input_infos_existsResult['usersName']; 
+    if($User_Name !== $Db_user){
+        $return_result = true;  
+    }else{
+       $return_result = false; 
+    }
+    return $return_result; 
+}
+
 function Login_user($connection,$user_Email,$userPassword){  
     $return_result = false; 
     $input_infos_existsResult = inputInfos_exist($connection,$user_Email,$user_Email); 
