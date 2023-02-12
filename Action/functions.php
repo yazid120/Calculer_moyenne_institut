@@ -130,4 +130,20 @@ function Login_user($connection,$user_Email,$userPassword){
 function Profile_infos($User_Name,$user_Email){
     return $User_Name.''.$user_Email; 
 }
+
+
+// Status profile functions
+function No_Status_choised($user_stat){
+    $return_result = false; 
+    if($user_stat == null){
+        $return_result = true; 
+    }else{
+        $return_result = false; 
+    }
+    return $return_result; 
+}
+
+function Affect_Status($connection,$user_stat){
+    
+}
 ?>
