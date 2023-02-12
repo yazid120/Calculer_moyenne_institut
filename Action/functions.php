@@ -143,7 +143,15 @@ function No_Status_choised($user_stat){
     return $return_result; 
 }
 
-function Affect_Status($connection,$user_stat){
-    
+function Affect_Status($user_stat){
+    $A_Choice_status = ''; 
+    if($user_stat == 'Etudiant'){
+        $A_Choice_status = 'Affecter au stagier';
+    }else if($user_stat == 'Professeur'){
+        $A_Choice_status ='Affecter au prof'; 
+    }else{
+        $A_Choice_status = null; 
+    }
+    return $A_Choice_status; 
 }
 ?>

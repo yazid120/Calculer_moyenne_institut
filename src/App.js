@@ -14,6 +14,8 @@ import Logout from "./views/Logout";
 //Profile link
 import Profile from "./views/profile/profile";
 import Status from "./views/Status/Status";
+import Prof_Status from "./views/Status/Redirect_stat/prof_stat";
+import Etudiant_stat from "./views/Status/Redirect_stat/etudiant_stat";
 
 import { initialState, reducer } from "./reducer/UseReducer";
 
@@ -39,6 +41,11 @@ const Routing = () =>{
 
         {/* Status path routing */}
       <Route exact path='/Status' element={<Status />} />
+        {/* Student path routing */}
+      <Route exact path='/Status/Etudiant_stat' element={<Etudiant_stat />} />
+        {/* Teacher path routing */}
+      <Route exact path='/Status/Prof_stat' element={<Prof_Status />} />
+
         {/* Profile page routing */}
       <Route exact path="/Profile" 
       element={

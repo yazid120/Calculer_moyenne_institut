@@ -15,6 +15,14 @@ if(isset($Post_Data)){
     if(No_Status_choised($user_status) !== false){
         echo 'No Status was choised'; 
     }
+    
+    if(Affect_Status($user_status) === 'Affecter au stagier'){
+        echo 'Status: Etudient'; 
+    }else if(Affect_Status($user_status) === 'Affecter au prof'){
+        echo 'Status: Prof'; 
+    }else{
+        echo null; 
+    }
     // echo $user_status; 
 
 }else{

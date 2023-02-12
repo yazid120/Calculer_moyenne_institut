@@ -89,7 +89,7 @@ class login extends Component{
           // dispatch({type:'USER', payload:true})
           localStorage.setItem('user-info',JSON.stringify(login_Object)); 
           // console.warn(login_Object); 
-          window.location.href ='http://localhost:3000/profile'; 
+          window.location.replace('/profile'); 
         }
 
     }); 
