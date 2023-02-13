@@ -147,3 +147,54 @@ cursor: pointer;
     text-decoration: none;
     margin: 0.2rem;
 }
+
+.Status_input_Vle{
+    box-sizing: border-box;
+    width: 35%;
+    height: 2.1656598rem;
+    margin: 0rem;
+    margin-top: 0.2rem;
+    padding: 0rem;
+    padding-left: 0.2655rem;
+    margin-bottom: 1.06265rem;
+}
+
+.sub_stat_user_Button{
+width: 9rem;
+height: 2.3rem;
+font-family: var(--HTDglobalefont);
+margin: 0;
+margin-top: 1rem;
+font-weight: 600;
+font-size: 16px;
+letter-spacing: 1px;
+cursor: pointer;
+padding: 3px 3px 3px 3px; 
+text-decoration: none;
+
+}
+
+/* Spinner Styling */
+@keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 10px solid #f3f3f3; /* Light grey */
+    border-top: 10px solid #383636; /* Black */
+    border-radius: 50%;
+    animation: spinner 1.6s linear infinite;
+  }
+  .spinner-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 185px;
+    width: auto; 
+  }

@@ -154,4 +154,24 @@ function Affect_Status($user_stat){
     }
     return $A_Choice_status; 
 }
+
+// State bout type functions
+function _empty_stat_input($nom,$prenom,$num_stagier){
+    $return_result = false; 
+    if(empty($nom) || empty($prenom) || empty($num_stagier)){
+        $return_result = true; 
+    }else{
+        $return_result = false; 
+    }
+    return $return_result; 
+}
+function incorrect_stagier_num($num_stagier){
+    $return_result = false; 
+    if(preg_match('/[A-Za-z]/',$num_stagier) == true){
+        $return_result = true; 
+    }else{
+        $return_result = false; 
+    }
+    return $return_result; 
+}
 ?>

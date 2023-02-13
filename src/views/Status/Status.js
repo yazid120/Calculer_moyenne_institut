@@ -36,15 +36,18 @@ Status_submit(e){
        }else{
         no_choise_stat.classList.replace('show','hide'); 
        }
-
+       let response_ = '';
        if(response.data == 'Status: Etudient'){
-          window.location.assign('/Status/Etudiant_stat');
+        response_ = 'Etudiant'; 
+          window.location.assign('/Status/Etudiant_stat?status='+response_);
        }else if(response.data == 'Status: Prof'){
-         window.location.assign('/Status/Prof_stat');
+        response_ = 'Professeur'; 
+         window.location.assign('/Status/Prof_stat?status='+response_);
        }else{
         console.error('error'); 
        }
       console.log(response.data); 
+      // export default response_; 
     })
     // console.log(this.state.status); 
 }

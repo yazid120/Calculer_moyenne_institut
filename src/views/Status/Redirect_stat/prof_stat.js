@@ -1,10 +1,53 @@
 import React from "react";
 import { Component } from "react";
+import { useState } from "react";
+import axios from 'axios'; 
+
 
 class Prof_Status extends Component{
+    constructor(props){
+        super(props); 
+      this.isloading = this.isloading.bind(this); 
+      this.setToloading = this.setToloading.bind(this); 
+      this.Submit_stat = this.Submit_stat.bind(this); 
 
+      this.state ={
+        nom:'',
+        prenom:'',
+        num_stagier:'',
+        user_state:'',
+      };
+    }
+
+    OnChangeNom(e){
+      this.setState({
+        nom:e.target.value
+      });
+    }
+    OnChangePrenom(e){
+      this.setState({
+        prenom:e.target.value
+      });
+    }
+
+    isloading(event){
+        event = this.state.state_load = false; 
+           return event;
+        }
+        setToloading(event){
+         event = this.state.state_load = true; 
+           return event; 
+        }
+    
+        Submit_stat(e){
+            e.preventDefault(); 
+            axios.post('http://localhost/Calculer_moyenne_institut/Action/Stat_type/Stat_prof_Auth.php'
+            ,)
+            console.log(this.setToloading(e)); 
+        }
 
     render(){
+        // const [isloading, setToloading] = useState(false); 
         let Sets_Object=[
             {F_name:'First Name'},
             {L_name:'Last Name'},
@@ -27,9 +70,15 @@ class Prof_Status extends Component{
                 </label>
                 <input type="text" className="Status_input_Vle"/>
 
-                <button type="submit" className="">
+                <button type="submit" className="sub_stat_user_Button">
                   {Sets_Object[2].Sub_sets_btn}
                 </button>
+
+                {/* Spinner main */}
+    <div className="spinner-container" id="spinner_wrapp">
+      <div className="loading-spinner">
+      </div>
+    </div>
             </form>
             </>
         )
