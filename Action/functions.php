@@ -174,4 +174,12 @@ function incorrect_stagier_num($num_stagier){
     }
     return $return_result; 
 }
+function StrNum_Contain_char($num_stagier){
+    $return_result = false; 
+    if(is_numeric($num_stagier) == false){
+        $return_result = true; 
+    }else $return_result =false; 
+    return $return_result; 
+}
+
 ?>

@@ -7,6 +7,15 @@ $request = json_decode($Post_data);
 
 // echo $Post_data;
 if(isset($Post_data)){
+
+    function Validate_data($data){
+        $data_return = trim($data); 
+        $data_return = stripslashes($data); 
+        $data_return = htmlspecialchars($data); 
+     return $data_return; 
+    }
+    
+
     $Nom = $request->nom; 
     $Prenom = $request->prenom; 
     $Num_Stagier = $request->num_stagier; 
@@ -17,6 +26,10 @@ if(isset($Post_data)){
     }
     if(incorrect_stagier_num($Num_Stagier) !== false){
         echo 'Incorrect stagier numbre';
+        exit(); 
+    }
+    if(StrNum_Contain_char($Num_Stagier) !== false){
+        echo 'Section numbre must cotain only numbers'; 
         exit(); 
     }
     

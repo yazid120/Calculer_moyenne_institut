@@ -57,6 +57,7 @@ class Prof_Status extends Component{
             <>
             <div>
                 <h1>prof page infos remplir:</h1>
+                <p className="">Poursuivre en tant que professeur</p>
             </div>
 
             <form method="post" className="wrapp_form_setStat_user">

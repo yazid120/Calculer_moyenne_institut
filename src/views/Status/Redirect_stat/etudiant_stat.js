@@ -83,6 +83,7 @@ class Etudiant_stat extends Component{
             <>
             <div>
                 <h1>Stagier page infos remplir:</h1>
+                <p className="">Poursuivre en tant qu'étudiant</p>
             </div>
 
             <form method="post" className="wrapp_form_setStat_user">
