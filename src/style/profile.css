@@ -113,6 +113,10 @@ cursor: pointer;
     overflow: hidden;
     cursor: pointer;
 }
+.switch{
+    background-color: #fff;
+    font-weight: 600;
+}
 .label_all_wrapp p{
     font-size: 25px; 
     color: var(--Section_Main_Profile_fontBg_color);

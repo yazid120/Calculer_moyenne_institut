@@ -167,7 +167,7 @@ function _empty_stat_input($nom,$prenom,$num_stagier){
 }
 function incorrect_stagier_num($num_stagier){
     $return_result = false; 
-    if(preg_match('/[A-Za-z]/',$num_stagier) == true){
+    if(preg_match('/[A-Za-z]/',$num_stagier) == true ){
         $return_result = true; 
     }else{
         $return_result = false; 
