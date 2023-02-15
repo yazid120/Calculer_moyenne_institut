@@ -39,9 +39,20 @@ export default function NavBar(){
             </div>
             <div className="Object_mainLinkes_NavBar_container">
              <ul className="justice_navigation_Opt">
-            <Link to="/">Home</Link>
-            <Link to="/Contact_us">Contact</Link>
-            <Link to="/About">about</Link>
+                {
+                    localStorage.getItem('User_email') ?
+                    <>
+                    <Link to="/Profile/Dashboard">Dashboard</Link>
+                    <Link to="/Profile/infos">infos</Link>
+                    <Link to="/Contact_us">Contact</Link>
+                    </> 
+                    : 
+                    <>
+                    <Link to="/">Home</Link>
+                    <Link to="/Contact_us">Contact</Link>
+                    <Link to="/About">about</Link>
+                    </>
+                }
              </ul>
             </div>
             <div className="registration_baseMain_selectionBtns" id="identities_component">

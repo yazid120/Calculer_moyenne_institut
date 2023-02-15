@@ -10,18 +10,18 @@ import axios, { Axios } from "axios";
 
 
 function Profile(){
-    const [User_Auth, SetAuth] = useState(''); 
+    let [User_Auth, SetAuth] = useState(''); 
     const Navigate = useNavigate(); 
-    let login_Object = JSON.parse(window.localStorage.getItem('user-info'));
-    // console.log(login_Object['email'],login_Object['Name']); 
+    // console.log(localStorage.getItem('User_email')); 
 
-    useEffect (() =>{
-      let User_Auth = localStorage.getItem('User_email'); 
+    useEffect ( () =>{
+      User_Auth = window.localStorage.getItem('User_email'); 
       SetAuth(User_Auth); 
     },
     []); 
     
-    axios.get('https://localhost/Calculer_moyenne_institut/Action/profile.php')
+    
+    fetch('https://localhost/Calculer_moyenne_institut/Action/profile.php')
         .then(response =>{
             // console.log(response.data);
    }); 

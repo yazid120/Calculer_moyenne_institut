@@ -13,6 +13,9 @@ import Register from "./views/Register";
 import Logout from "./views/Logout";
 //Profile link
 import Profile from "./views/profile/profile";
+import Dashboard from "./views/profile/component_profile/Dashboard";
+import Infos from "./views/profile/component_profile/infos";
+
 import Status from "./views/Status/Status";
 import Prof_Status from "./views/Status/Redirect_stat/prof_stat";
 import Etudiant_stat from "./views/Status/Redirect_stat/etudiant_stat";
@@ -49,9 +52,17 @@ const Routing = () =>{
         {/* Profile page routing */}
       <Route exact path="/Profile" 
       element={
-      
       <Profile/>}/>
+
+      {/* Profile/Dashboard page routing */}
+      <Route exact path="/Profile/Dashboard" element={<Dashboard/>} />
+      {/* Profile/infos page routing */}
+      <Route exact path='/Profile/infos' element={<Infos/>} />
+
     </Routes> 
+      
+
+
   );
 }
 

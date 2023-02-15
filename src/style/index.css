@@ -96,18 +96,20 @@ body {
   height: 100%;
   margin: 0rem; 
   margin-right: 1rem;
-  padding: 0rem; 
+  padding: 1rem; 
 }
 .base_registerOption{
   box-sizing: border-box;
-  width: 4.8rem; 
-  height: 2.5rem; 
+  width: 5.8rem; 
+  height: 2.6rem; 
   cursor:pointer; 
   margin: 0.22rem; 
   font-size: 14px; 
   font-family: var(--HTDglobalefont);
   border: none; 
   border-radius: 0.2rem;
+  font-size: 15.5px;
+  font-weight: 600;
 }
 .base_registerOption ._log{
   background-color: var(--login_style_bgColor);

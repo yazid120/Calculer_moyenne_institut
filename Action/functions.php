@@ -144,9 +144,9 @@ function Store_user_Session($connection,$user_Email,$userPassword,$session_infos
 
         if(!isset($_SESSION)) {
         session_start();
-        $_SESSION['User_email'] = $input_infos_existsResult['usersemail'];
-        $_SESSION['User_Name'] = $input_infos_existsResult['usersName']; 
-        $_SESSION['User_Password'] = $input_infos_existsResult['userspassword']; 
+        $_SESSION['usersemail'] = $input_infos_existsResult['usersemail'];
+        $_SESSION['usersName'] = $input_infos_existsResult['usersName']; 
+        $_SESSION['userspassword'] = $input_infos_existsResult['userspassword']; 
        } 
 
         $session_infos[] = $_SESSION; 
