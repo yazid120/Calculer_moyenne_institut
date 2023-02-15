@@ -87,8 +87,11 @@ class login extends Component{
         }
         if(response.data == 'Correct user Login'){
           // dispatch({type:'USER', payload:true})
-          localStorage.setItem('user-info',JSON.stringify(login_Object)); 
-          // console.warn(login_Object); 
+          let user_email = response.data.email; 
+          let user_name = response.data.Name; 
+          window.localStorage.setItem('User_email',login_Object['email']);
+          window.localStorage.setItem('User_Name', login_Object['Name']); 
+           
           window.location.replace('/profile'); 
         }
 

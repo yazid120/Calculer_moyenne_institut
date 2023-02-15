@@ -8,7 +8,9 @@
 if(isset($postData)){
     $User_email = $request->email; 
     $User_Password = $request->password;
-    $User_Name = $request->Name; 
+    $User_Name = $request->Name;
+    
+    $session_infos = []; 
 
     if(empty_loginInputs($User_email,$User_Password)){
        echo 'empty inputs'; 
@@ -26,10 +28,12 @@ if(isset($postData)){
         echo 'incorrect password'; 
         exit(); 
     }else if(Login_user($connection,$User_email,$User_Password) === true){
-        session_start();
+        // Store_user_Session($connection,$User_email,$User_Password,$session_infos); 
+        $session_data = json_encode($_SESSION); 
         echo 'Correct user Login'; 
         exit();
     }
+    echo $session_data; 
 }else{
     //respose error
 }

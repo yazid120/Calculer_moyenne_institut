@@ -78,7 +78,7 @@ onsubmitRegister(e){
    
   if(C == true){
    alert('registration successful');
-   window.location.href ='http://localhost:3000/Status'; 
+   window.location.href ='http://localhost:3000/profile'; 
   }
  
  }); 

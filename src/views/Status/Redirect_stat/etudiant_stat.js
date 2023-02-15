@@ -64,9 +64,26 @@ class Etudiant_stat extends Component{
             prenom:this.state.prenom, 
             num_stagier:this.state.num_stagier,
         }
+        let empty_input_error = document.getElementById('empty_input_error'); 
+        let Incorrect_stg_num = document.getElementById('Incorrect_stg_num'); 
+        let section_nb_char = document.getElementById('section_nb_char'); 
         axios.post('http://localhost/Calculer_moyenne_institut/Action/Stat_type/Stat_etud_Auth.php'
         ,stat_etud).then(response =>{
           console.log(response.data);
+          if(response.data == 'Empty input Status'){
+             empty_input_error.classList.replace('hide','show'); 
+          }else{
+            empty_input_error.classList.replace('show','hide'); 
+          }
+          if(response.data == 'Incorrect stagier numbre'){
+            Incorrect_stg_num.classList.replace('hide','show'); 
+          }else{
+            Incorrect_stg_num.classList.replace('show','hide'); 
+          }
+          if(response.data == 'Section numbre must cotain only numbers'){
+            section_nb_char.classList.replace('show','hide');
+          }else{section_nb_char.classList.replace('show','hide');}
+
         });
         // console.log(this.setToloading(e)); 
     }
@@ -77,7 +94,12 @@ class Etudiant_stat extends Component{
             {L_name:'Last Name'},
             {Num_inscr:'registration number'},
             {Sub_sets_btn:'Finish'}
-         ]
+         ]; 
+         let Error_infos =[
+          {empty_input:'Empty input fields'}, 
+          {Incorrect_stg_num:'Incorrect intern numbre'}, 
+          {section_nb_char:'Section numbre must cotain only numbers'},
+        ];
         //  console.log(this.state.state_load);
         return( 
             <>
@@ -85,6 +107,18 @@ class Etudiant_stat extends Component{
                 <h1>Stagier page infos remplir:</h1>
                 <p className="">Poursuivre en tant qu'étudiant</p>
             </div>
+            {/* Error handling */}
+        <div className='error_handling' id='error_login_handle'>
+       <p id="empty_input_error" className='error_alix hide'>
+        {Error_infos[0].empty_input}
+        </p>
+       <p id="Incorrect_stg_num" className='error_alix hide'>
+        {Error_infos[1].invalid_usr_inf}
+        </p>
+       <p id="section_nb_char" className="error_alix hide">
+         {Error_infos[2].user_name_error}
+       </p>
+      </div>
 
             <form method="post" className="wrapp_form_setStat_user">
                 {/* Nom */}

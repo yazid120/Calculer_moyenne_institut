@@ -7,7 +7,7 @@ import  { Link, useMatch,
 
 export default function NavBar(){
     const Navigate  = useNavigate(); 
-    let user = JSON.parse(localStorage.getItem('user-infos')); 
+    let user = JSON.parse(localStorage.getItem('user-info')); 
     //  console.warn(user.name);
 
     let Logout = () =>{
@@ -47,7 +47,7 @@ export default function NavBar(){
             <div className="registration_baseMain_selectionBtns" id="identities_component">
                 {/* Identifier the Navigation bar with localStorage */}
                 {
-                    localStorage.getItem('user-info') ?
+                    localStorage.getItem('User_email') ?
                 <>
                 <div className="">
                     {/* Logout btn */}

@@ -14,7 +14,6 @@ class Prof_Status extends Component{
       this.state ={
         nom:'',
         prenom:'',
-        num_stagier:'',
         user_state:'',
       };
     }
@@ -41,8 +40,19 @@ class Prof_Status extends Component{
     
         Submit_stat(e){
             e.preventDefault(); 
+
+            let  stat_prof ={
+            nom:this.state.nom, 
+            prenom:this.state.prenom,
+            }
+            let empty_input_error = document.getElementById('empty_input_error'); 
             axios.post('http://localhost/Calculer_moyenne_institut/Action/Stat_type/Stat_prof_Auth.php'
-            ,)
+            ,stat_prof).then(response =>{
+              console.log(response.data); 
+              if(response.data == 'empty status inputs'){
+                empty_input_error.classList.replace('hide','show'); 
+              }else{empty_input_error.classList.replace('show','hide'); }
+            })
             console.log(this.setToloading(e)); 
         }
 
@@ -52,13 +62,22 @@ class Prof_Status extends Component{
             {F_name:'First Name'},
             {L_name:'Last Name'},
             {Sub_sets_btn:'Finish'}
-         ]
+         ];
+         let Error_infos =[
+          {empty_input:'Empty input fields'}, 
+         ]; 
         return( 
             <>
             <div>
                 <h1>prof page infos remplir:</h1>
                 <p className="">Poursuivre en tant que professeur</p>
             </div>
+            {/* Error handling */}
+        <div className='error_handling' id='error_login_handle'>
+       <p id="empty_input_error" className='error_alix hide'>
+        {Error_infos[0].empty_input}
+        </p>
+        </div>
 
             <form method="post" className="wrapp_form_setStat_user">
                 <label htmlFor="" className="foreign_side_cl">
@@ -71,8 +90,9 @@ class Prof_Status extends Component{
                 </label>
                 <input type="text" className="Status_input_Vle"/>
 
-                <button type="submit" className="sub_stat_user_Button">
-                  {Sets_Object[2].Sub_sets_btn}
+                <button type="submit" className="sub_stat_user_Button"
+                onClick={this.Submit_stat}>
+                  {Sets_Object[2].Sub_sets_btn }
                 </button>
 
                 {/* Spinner main */}

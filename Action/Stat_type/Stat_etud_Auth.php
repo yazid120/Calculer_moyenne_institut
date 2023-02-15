@@ -1,4 +1,7 @@
 <?php
+if(session_status() == 1){
+    session_start(); 
+}
 require_once '../functions.php';
 require_once '../db_connection.php'; 
 
@@ -21,7 +24,7 @@ if(isset($Post_data)){
     $Num_Stagier = $request->num_stagier; 
 
     if(_empty_stat_input($Nom,$Prenom,$Num_Stagier) !== false){
-        echo 'Empty input Status';
+        echo 'Empty input Status'.session_status();
         exit(); 
     }
     if(incorrect_stagier_num($Num_Stagier) !== false){

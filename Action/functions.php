@@ -118,13 +118,41 @@ function Login_user($connection,$user_Email,$userPassword){
     }
     else if($check_usr_pwd === true){
         // return 'User login successfuly';
-        // session_start(); 
+        if(!isset($_SESSION)) 
+    { 
+        session_start();
         $_SESSION['User_email'] = $input_infos_existsResult['usersemail'];
         $_SESSION['User_Name'] = $input_infos_existsResult['usersName']; 
         $_SESSION['User_Password'] = $input_infos_existsResult['userspassword']; 
+    }  
+         
         $return_result = true; 
     }
     return $return_result; 
+}
+
+function Store_user_Session($connection,$user_Email,$userPassword,$session_infos){
+    $return_result = false;
+    $session_infos = [];  
+    $input_infos_existsResult = inputInfos_exist($connection,$user_Email,$user_Email); 
+
+    if($input_infos_existsResult === false){
+        return 'technical error'; 
+    }
+
+    if(Login_user($connection,$user_Email,$userPassword) !== false){
+
+        if(!isset($_SESSION)) {
+        session_start();
+        $_SESSION['User_email'] = $input_infos_existsResult['usersemail'];
+        $_SESSION['User_Name'] = $input_infos_existsResult['usersName']; 
+        $_SESSION['User_Password'] = $input_infos_existsResult['userspassword']; 
+       } 
+
+        $session_infos[] = $_SESSION; 
+    }
+    return $session_infos; 
+
 }
 //return profile infos
 function Profile_infos($User_Name,$user_Email){

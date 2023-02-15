@@ -3,7 +3,8 @@ import { Component } from "react";
 import { json } from "react-router-dom";
 
 function Main_Profile(){
-  let user = JSON.parse(localStorage.getItem('user-info')); 
+  let user_email = window.localStorage.getItem('User_email'); 
+  let user_Name = window.localStorage.getItem('User_Name'); 
   // console.warn(user); 
   
     return(
@@ -14,8 +15,8 @@ function Main_Profile(){
            <h2>Your profile information</h2>
          </div>
          <div className="Profile_userInfos01355">
-            <p>Nom:<span>{}</span></p>
-            <p>Email:<span></span></p>
+            <p>Nom: <span>{user_Name}</span></p>
+            <p>Email: <span>{user_email}</span></p>
             <p>Date d'inscription:<span></span></p>
          </div>
         </section>

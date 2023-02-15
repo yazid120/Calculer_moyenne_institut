@@ -1,9 +1,23 @@
 <?php 
+if(session_status() == 1){
+    session_start(); 
+}
 require_once '../functions.php';
 require_once '../db_connection.php'; 
 
-echo'prof status';
+// echo'prof status';
 
+if(isset($_GET['status'])){
+    if($_GET['status'] == 'Professeur'){
+      $role = 'Professeur'; 
+    }else{
+        $role = 'none'; 
+    }
+    echo $role; 
+}else{ //echo 'null reponse';
+}
+echo phpinfo(); 
+ 
 $Post_data = file_get_contents('php://input'); 
 $request = json_decode($Post_data); 
 
@@ -25,10 +39,8 @@ if(isset($Post_data)){
         echo 'empty status inputs'; 
         exit(); 
     }
-    if(StrNum_Contain_char($Num_Stagier) !== false){
-        echo 'Section numbre must cotain only numbers'; 
-        exit(); 
-    }
+
+    
 }
 
 
