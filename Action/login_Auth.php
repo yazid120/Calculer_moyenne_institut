@@ -10,6 +10,10 @@ if(isset($postData)){
     $User_Password = $request->password;
     $User_Name = $request->Name;
     
+    $_POST['UserName'] = $User_Name; 
+    $_POST['UserEmail'] = $User_email; 
+    $_POST['UserPassword'] = $User_Password; 
+    
     $session_infos = []; 
 
     if(empty_loginInputs($User_email,$User_Password)){
@@ -32,7 +36,7 @@ if(isset($postData)){
          echo 'Correct user Login';
         exit();
     }
-    echo $session_data; 
+     
 }else{
     //respose error
 }

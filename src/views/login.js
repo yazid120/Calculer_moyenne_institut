@@ -91,7 +91,6 @@ class Login extends Component{
           let user_name = response.data.Name; 
           window.localStorage.setItem('User_email',login_Object['email']);
           window.localStorage.setItem('User_Name', login_Object['Name']); 
-          window.localStorage.setItem();
            
           window.location.replace('/profile'); 
         }

@@ -4,23 +4,25 @@ import { useState,useEffect } from "react";
 
 
 let Admin = function(){
+ 
+  const [users, SetUsers] = useState([]); 
 
-  const [users, SetUsers] = useState({}); 
+  
+  function getUsers(){
+    axios.get('https://localhost/Calculer_moyenne_institut/Action/profile.php')
+    .then(function(response){
+      let arr = []; 
+      console.log(response.data); 
+      SetUsers(response.data);
+    }); 
+  }
 
   useEffect( ()=>{
      getUsers(); 
   }, []); 
 
-  function getUsers(){
-    axios.get('https://localhost/Calculer_moyenne_institut/Action/profile.php')
-    .then(function(response){
-      let arr = []; 
-      arr = response.data
-      console.warn(arr); 
-      SetUsers(response.data);
-    }); 
-  }
     const arr = ['bobby', 'hadz', 'com'];
+
     return(
       <>
       <div>
@@ -43,7 +45,7 @@ let Admin = function(){
 
       <div className="">
         <p>List of All users</p>
-        <table>
+        <table border={1}>
           <thead>
             <tr>
               <th>User id</th>
@@ -54,19 +56,15 @@ let Admin = function(){
           </thead>
           <tbody>
               { 
-                users.id
-                /*users.map((user,key) => {
-                  return(
-                    <tr>
+                users.map((user,key) => 
+                    <tr key={key}>
                       <td>{user.id}</td>
                       <td>{user.usersName}</td>
                       <td>{user.usersemail}</td>
                       <td>{user.userspassword}</td>
                     </tr>
-                    ); 
-                })*/
-              }
-            
+                )
+              }    
           </tbody>
         </table>
 
