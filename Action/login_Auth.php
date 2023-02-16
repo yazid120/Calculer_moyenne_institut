@@ -29,8 +29,7 @@ if(isset($postData)){
         exit(); 
     }else if(Login_user($connection,$User_email,$User_Password) === true){
         // Store_user_Session($connection,$User_email,$User_Password,$session_infos); 
-        $session_data = json_encode($_SESSION); 
-        echo 'Correct user Login'; 
+         echo 'Correct user Login';
         exit();
     }
     echo $session_data; 

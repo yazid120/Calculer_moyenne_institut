@@ -16,16 +16,12 @@ function Profile(){
 
     useEffect ( () =>{
       User_Auth = window.localStorage.getItem('User_email'); 
+      console.log(JSON.stringify(User_Auth)); 
+
       SetAuth(User_Auth); 
     },
     []); 
     
-    
-    fetch('https://localhost/Calculer_moyenne_institut/Action/profile.php')
-        .then(response =>{
-            // console.log(response.data);
-   }); 
-
     let login_Auth =()=>{
     let nav_comp = document.getElementById('identities_component');
     if(nav_comp.style.display == 'flex'){

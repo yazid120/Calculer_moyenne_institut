@@ -55,3 +55,14 @@ CREATE TABLE Professeur(
   `Nom` varchar(128) NOT NULL, 
   `Prenom` varchar(128) NOT NULL
 ); 
+
+--
+-- CREATE `Admin` TABLE inside `Calc_moy_insfp` database
+--
+DROP TABLE IF EXISTS `Admin`;
+CREATE TABLE Admin(
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `admin_id` int(11),
+  FOREIGN KEY (admin_id) REFERENCES users(id), 
+  `user_name` varchar(128) NOT NULL
+); 

@@ -5,7 +5,7 @@ import { Component } from "react";
 let Infos = function(){
     return(
         <div>
-            <h1>Dashboard page</h1>
+            <h1>infos page</h1>
         </div>
     ); 
 }

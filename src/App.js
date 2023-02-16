@@ -13,6 +13,7 @@ import Register from "./views/Register";
 import Logout from "./views/Logout";
 //Profile link
 import Profile from "./views/profile/profile";
+import Admin from "./views/profile/Admin";
 import Dashboard from "./views/profile/component_profile/Dashboard";
 import Infos from "./views/profile/component_profile/infos";
 
@@ -53,6 +54,8 @@ const Routing = () =>{
       <Route exact path="/Profile" 
       element={
       <Profile/>}/>
+      {/* Profile/Admin page routing */}
+      <Route exact path="/Profile/admin" element={<Admin />} />
 
       {/* Profile/Dashboard page routing */}
       <Route exact path="/Profile/Dashboard" element={<Dashboard/>} />

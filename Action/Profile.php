@@ -1,20 +1,33 @@
 <?php 
-session_start();
+$session_stat = session_status(); 
+if($session_stat == 1)
+session_start(); 
+
 require_once './functions.php';
 require_once './db_connection.php'; 
-// require_once './login_Auth.php'; 
-$session_status = session_status(); 
+
+$method = $_SERVER['REQUEST_METHOD']; 
+
+switch($method){
+  case'GET':
+    $sql = 'SELECT * FROM users'; 
+    $result = mysqli_query($connection,$sql); 
+    while($rows = mysqli_fetch_assoc($result)){
+        $users = json_encode($rows); 
+        echo json_encode($rows); 
+        // echo $users; 
+    }
+    /*$stmt = $connection->prepare($sql); 
+    $stmt-> execute(); 
+    $users = $stmt-> fetch(); 
+    json_encode($users); */
+   
+    break; 
+}
  
 
-echo $_SESSION['User_email']; 
+// echo $_SESSION['Date_user']; 
 
-/* function GET_user_subDate($connection,$user_email){
-    $sql = "SELECT * FROM users WHERE users.usersemail = $user_email"; 
-    $user_date = mysqli_query($connection,$sql); 
- return $user_date; }
-*/
-// echo GET_user_subDate($connection,$user_email); 
-// echo json_decode($_SESSION['User_email']);
 
 
 

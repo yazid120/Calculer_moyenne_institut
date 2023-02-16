@@ -5,7 +5,7 @@ import axios from 'axios';
 import UserContext from '../App';
 
 
-class login extends Component{
+class Login extends Component{
   //constroctor support login
   constructor(props){
    super(props);
@@ -91,6 +91,7 @@ class login extends Component{
           let user_name = response.data.Name; 
           window.localStorage.setItem('User_email',login_Object['email']);
           window.localStorage.setItem('User_Name', login_Object['Name']); 
+          window.localStorage.setItem();
            
           window.location.replace('/profile'); 
         }
@@ -162,4 +163,4 @@ class login extends Component{
       );
     }
 }
-export default login; 
+export default Login; 
