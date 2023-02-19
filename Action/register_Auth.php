@@ -29,6 +29,11 @@ if(isset($postData)){
       echo 'password does not match';
       exit(); 
    }
+   if(inputInfos_exist($connection,$User_email,$User_Name) !== false){
+      echo 'User already exist !!'; 
+      exit();
+   }
+   
 
    
 
@@ -37,7 +42,7 @@ $sql = "INSERT INTO `users` (usersName,usersemail,userspassword)
    $response = $connection->query($sql); 
    if($response){
     $respose = "successful";
-    echo $response;
+    echo $response.'c';
    }else{
     $error = "failed"; 
     echo $error;

@@ -15,12 +15,34 @@ class Status extends Component{
     status : '',
   }
 }
+GetInitial_Stat(){
+  return {active : null}
+}
+
+Toggle_postion(postion){
+  if(this.state.active == postion){
+    this.setState({
+      active:null
+    })
+  }else{
+    this.setState({
+      active:postion
+    })
+  }
+}
+Change_Color(position){
+  if(this.state.active == position){
+    return 'lightskyblue'; 
+  }
+  return '';
+}
 
 OnChange_status(e){
     this.setState({
      status: e.target.value
     }); 
 }
+
 Status_submit(e){
     e.preventDefault(); 
     let User_Status = {
@@ -47,7 +69,6 @@ Status_submit(e){
         console.error('error'); 
        }
       console.log(response.data); 
-      // export default response_; 
     })
     // console.log(this.state.status); 
 }
@@ -67,7 +88,7 @@ Status_submit(e){
         <h1>Status page</h1>
       </div>
 
-      <div className="">
+      <div className="" >
         <p>Choisir votre Status</p>
         <div className='error_handling'>
          <p id="error_noChoise_Access" className='error_alix hide'>
@@ -77,37 +98,40 @@ Status_submit(e){
         <div className="Container_option_userStatus">
            <form className="x_formOption_all">
               {/* User Status option */}
-             <div className="usr_option">
+             <ul className="usr_option">
                 {/* Student Option */}
-                <div className="Check_fild_opt">
-                <label htmlFor="Opt_take" className="label_all_wrapp">
-                <p>{Status_Object[0].Status_user}</p>
+                <li className="Check_fild_opt" value={Status_Object[0].Status_user}
+                style={{background: this.Change_Color(0)}}
+                onClick={() => {this.Toggle_postion(0)}}>
+
+                <p className="Stat_set_option_text">{Status_Object[0].Status_user}</p>
                 <img src={image_etudiant} alt="react-etudiant-part" 
                 style={{width:188,height:200}}/>
 
                 <input type="radio" className="check_option radio_hide"
                  name="Option_check_stat" id="Opt_take"
-                value={Status_Object[0].Status_user} onChange={this.OnChange_status}
+                 onChange={this.OnChange_status}
                 checked={this.state.status == Status_Object[0].Status_user}/>
-                </label>
-                </div>
+          
+                </li>
                  
                  {/* Teacher Option */}
-                <div className="Check_fild_opt" >
-                <label htmlFor="Opt_take_P" className="label_all_wrapp">
-                <p>{Status_Object[1].Status_user}</p>
+                <li className="Check_fild_opt" value={Status_Object[1].Status_user}
+                style={{background: this.Change_Color(1)}}
+                onClick={() => {this.Toggle_postion(1)}}>
+                <p className="Stat_set_option_text">{Status_Object[1].Status_user}</p>
                 <img src={image_prof} alt="react-prof-part"
                 style={{height:205,width:205}}/>
 
                  <input type="radio" className="check_option radio_hide"
                 name="Option_check_stat" id="Opt_take_P"
                 value={Status_Object[1].Status_user} onChange={this.OnChange_status}
-                checked={this.state.status == Status_Object[1].Status_user}/>
-                </label>
-                </div>
+                checked={this.state.status == Status_Object[1].Status_user}
+                 />
                 
-             </div>
-
+                </li>
+                
+             </ul>
              {/* Status submition button */}
              <button name="sbmit_stat"type="submit" className="Sub_Status_btn"
              id="Submit_status_btn"

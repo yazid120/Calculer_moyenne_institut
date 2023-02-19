@@ -53,13 +53,15 @@ onsubmitRegister(e){
    }
    let Empty_error = document.getElementById('empty_input_error');
    let Invalid_u_error = document.getElementById('Invalid_User_Name_error'); 
-   let Unmatched_pwd_error = document.getElementById('unmatched_password'); 
+   let Unmatched_pwd_error = document.getElementById('unmatched_password');
+   let user_already_exist_error = document.getElementById('user_already_exists'); 
    //axios connection with the backend (POST request)
  axios.post('http://localhost/Calculer_moyenne_institut/Action/register_Auth.php',
  user_Object).then(response =>{
    let C= response.data ==1; 
    // document.write(c);
    console.log(response.data);  
+   //Error Management
    if(response.data == 'empty inputs fields'){
     Empty_error.classList.replace('hide','show'); 
   }else{
@@ -70,6 +72,12 @@ onsubmitRegister(e){
    }else{
       Invalid_u_error.classList.replace('show','hide'); 
    }
+   if(response.data == 'User already exist !!'){
+      user_already_exist_error.classList.replace('hide','show'); 
+   }else{ 
+      user_already_exist_error.classList.replace('show','hide'); 
+   }
+
    if(response.data == 'password does not match'){
      Unmatched_pwd_error.classList.replace('hide','show');
    }else{
@@ -77,8 +85,8 @@ onsubmitRegister(e){
    }
    
   if(C == true){
-   alert('registration successful');
-   window.location.href ='http://localhost:3000/profile'; 
+   // alert('registration successful');
+   window.location.href ='http://localhost:3000/Status'; 
   }
  
  }); 
@@ -89,15 +97,30 @@ onsubmitRegister(e){
 
  
 render(){
+   let registration_Object =[
+      {head:'Register Page'},
+      {empty_fields:'input fields are empty'},
+      {Invalid_name:'invalid User Name'},
+      {pass_repassNmarch :'Your repassword does not match your password'},
+      {user_alredy_exist :'User already exist !!'}
+   ];
     return(
         <>
-        <h1 className='heading_subtitle'>Register Page</h1>
+        <h1 className='heading_subtitle'>{registration_Object[0].head}</h1>
         <div className='error_handling'>
-        <p id="empty_input_error" className='error_alix hide'>input fields are empty</p>
-        <p id="Invalid_User_Name_error" className='error_alix hide'>invalid User Name</p>
-        <p id="unmatched_password" className='error_alix hide'>Your repassword does not match 
-        your password</p>
+        <p id="empty_input_error" className='error_alix hide'>
+         {registration_Object[1].empty_fields}</p>
+
+        <p id="Invalid_User_Name_error" className='error_alix hide'>
+         {registration_Object[2].Invalid_name}</p>
+
+        <p id="unmatched_password" className='error_alix hide'>
+         {registration_Object[3].pass_repassNmarch}</p>
+
+        <p id="user_already_exists" className='error_alix hide'>
+         {registration_Object[4].user_alredy_exist}</p>
         </div>
+
         <form action='' method='post'
         className='Registration_Format'>
       {/* User Name input */}

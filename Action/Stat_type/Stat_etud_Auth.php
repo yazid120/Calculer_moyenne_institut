@@ -2,6 +2,8 @@
 if(session_status() == 1){
     session_start(); 
 }
+$Ref_id = $_SESSION['id']; 
+
 require_once '../functions.php';
 require_once '../db_connection.php'; 
 
@@ -19,9 +21,13 @@ if(isset($Post_data)){
     }
     
 
-    $Nom = $request->nom; 
-    $Prenom = $request->prenom; 
-    $Num_Stagier = $request->num_stagier; 
+    $Nom_ref = $request->nom; 
+    $Prenom_ref = $request->prenom; 
+    $Num_Stagier_ref = $request->num_stagier; 
+
+    $Nom = Validate_data($Nom_ref); 
+    $Prenom = Validate_data($Prenom_ref); 
+    
 
     if(_empty_stat_input($Nom,$Prenom,$Num_Stagier) !== false){
         echo 'Empty input Status'.session_status();
@@ -33,6 +39,13 @@ if(isset($Post_data)){
     }
     if(StrNum_Contain_char($Num_Stagier) !== false){
         echo 'Section numbre must cotain only numbers'; 
+        exit(); 
+    }
+    if(Creat_Student_User($Nom,$Prenom,$Num_Stagier_ref,$Ref_id,$connection) === false){
+        echo 'Submition Failed'; 
+        exit(); 
+    }else{
+        echo 'successful student submitio'; 
         exit(); 
     }
     

@@ -67,14 +67,14 @@ function empty_loginInputs($user_Email,$userPassword){
     }
     return $return_result; 
 }
-function inputInfos_exist($connection,$userEmail){
+function inputInfos_exist($connection,$userEmail,$userName){
     $sql ="SELECT * FROM `users` WHERE usersName = ? OR usersEmail = ?;"; 
     $stmt = mysqli_stmt_init($connection); 
     if(!mysqli_stmt_prepare($stmt,$sql)){
         return 'Technical error !!';  
         exit(); 
     }
-    mysqli_stmt_bind_param($stmt,'ss',$userEmail,$userEmail);
+    mysqli_stmt_bind_param($stmt,'ss',$userName,$userEmail);
     mysqli_stmt_execute($stmt); 
     $data_result = mysqli_stmt_get_result($stmt); 
     if($row = mysqli_fetch_assoc($data_result)){
@@ -85,6 +85,7 @@ function inputInfos_exist($connection,$userEmail){
     }
     mysqli_stmt_close($connection); 
 }
+
 
 function invalid_userName($connection,$user_Email,$User_Name){
     $return_result = false; 
@@ -125,6 +126,7 @@ function Login_user($connection,$user_Email,$userPassword){
         $_SESSION['User_Name'] = $input_infos_existsResult['usersName']; 
         $_SESSION['User_Password'] = $input_infos_existsResult['userspassword']; 
         $_SESSION['Date_user'] = $input_infos_existsResult['Date_user']; 
+        $_SESSION['id'] = $input_infos_existsResult['id']; 
     }  
          
         $return_result = true; 
@@ -209,6 +211,21 @@ function StrNum_Contain_char($num_stagier){
     if(is_numeric($num_stagier) == false){
         $return_result = true; 
     }else $return_result =false; 
+    return $return_result; 
+}
+
+function Creat_Student_User($Nom,$Prenom,$Num_inscrp,$r_id,$connection){
+    $return_result = false; 
+    $sql = "INSERT INTO etudiant (user_id,Nom,Prenom,Num_inscr) 
+    VALUES('$r_id','$Nom','$Prenom','$Num_inscrp')";
+    $response = mysqli_query($connection,$sql); 
+    if($response){
+        $return_result = true; 
+        // echo 'successful student submition'; 
+    }else{
+        $return_result = false; 
+        // echo 'Submition Failed';
+    }
     return $return_result; 
 }
 

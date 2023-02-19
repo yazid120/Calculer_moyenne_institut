@@ -38,7 +38,6 @@ class Etudiant_stat extends Component{
         });
     }
 
-
     isloading(event){
     event = this.state.state_load = false; 
        return event;
@@ -67,7 +66,8 @@ class Etudiant_stat extends Component{
         let empty_input_error = document.getElementById('empty_input_error'); 
         let Incorrect_stg_num = document.getElementById('Incorrect_stg_num'); 
         let section_nb_char = document.getElementById('section_nb_char'); 
-        axios.post('http://localhost/Calculer_moyenne_institut/Action/Stat_type/Stat_etud_Auth.php'
+
+    axios.post('http://localhost/Calculer_moyenne_institut/Action/Stat_type/Stat_etud_Auth.php'
         ,stat_etud).then(response =>{
           console.log(response.data);
           if(response.data == 'Empty input Status'){
@@ -85,7 +85,7 @@ class Etudiant_stat extends Component{
           }else{section_nb_char.classList.replace('show','hide');}
 
         });
-        // console.log(this.setToloading(e)); 
+        
     }
 
     render(){

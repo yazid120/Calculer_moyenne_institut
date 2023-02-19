@@ -34,6 +34,7 @@ switch($method){
 
     echo json_encode($users);
     break;
+    
 }
 
 
