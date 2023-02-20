@@ -15,6 +15,7 @@ import Logout from "./views/Logout";
 import Profile from "./views/profile/profile";
 import Admin from "./views/profile/Admin";
 import Dashboard from "./views/profile/component_profile/Dashboard";
+import SideBar from "./views/profile/component_profile/SideBar";
 import Infos from "./views/profile/component_profile/infos";
 
 import Status from "./views/Status/Status";

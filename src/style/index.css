@@ -48,6 +48,8 @@ body {
 .container{
   min-height: 100%;
   margin-bottom: 3.5rem; 
+  width: 100%; 
+  
 }
 .Navigation_Bar_automate02654{
   -webkit-box-sizing: border-box;

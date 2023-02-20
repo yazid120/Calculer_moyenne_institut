@@ -9,6 +9,7 @@ if(isset($postData)){
     $User_email = $request->email; 
     $User_Password = $request->password;
     $User_Name = $request->Name;
+    $user_paset = 10; 
     
     $_POST['UserName'] = $User_Name; 
     $_POST['UserEmail'] = $User_email; 
