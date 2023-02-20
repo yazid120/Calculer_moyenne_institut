@@ -2,10 +2,14 @@
 if(session_status() == 1){
     session_start(); 
 }
+require_once '../functions.php';
+require_once '../db_Class_conn.php';
+
 $Ref_id = $_SESSION['id']; 
 
-require_once '../functions.php';
-require_once '../db_connection.php'; 
+$Obj_Db = new DbConnect; 
+$conn = $Obj_Db->connect(); 
+
 
 $Post_data = file_get_contents('php://input'); 
 $request = json_decode($Post_data); 
@@ -23,12 +27,12 @@ if(isset($Post_data)){
 
     $Nom_ref = $request->nom; 
     $Prenom_ref = $request->prenom; 
-    $Num_Stagier_ref = $request->num_stagier; 
+    $Num_Stagier = $request->num_stagier; 
 
     $Nom = Validate_data($Nom_ref); 
     $Prenom = Validate_data($Prenom_ref); 
     
-
+    
     if(_empty_stat_input($Nom,$Prenom,$Num_Stagier) !== false){
         echo 'Empty input Status'.session_status();
         exit(); 
@@ -41,7 +45,7 @@ if(isset($Post_data)){
         echo 'Section numbre must cotain only numbers'; 
         exit(); 
     }
-    if(Creat_Student_User($Nom,$Prenom,$Num_Stagier_ref,$Ref_id,$connection) === false){
+    if(Creat_Student_User($Nom,$Prenom,$Num_Stagier,$Ref_id,$conn) === false){
         echo 'Submition Failed'; 
         exit(); 
     }else{

@@ -35,14 +35,12 @@ if(isset($postData)){
    }
    
 
-   
-
 $sql = "INSERT INTO `users` (usersName,usersemail,userspassword) 
    VALUES('$User_Name','$User_email','$hashed_pwd')";
    $response = $connection->query($sql); 
    if($response){
     $respose = "successful";
-    echo $response.'c';
+    echo $response;
    }else{
     $error = "failed"; 
     echo $error;

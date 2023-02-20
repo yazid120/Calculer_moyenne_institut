@@ -100,6 +100,7 @@ Status_submit(e){
               {/* User Status option */}
              <ul className="usr_option">
                 {/* Student Option */}
+                
                 <li className="Check_fild_opt" value={Status_Object[0].Status_user}
                 style={{background: this.Change_Color(0)}}
                 onClick={() => {this.Toggle_postion(0)}}>
@@ -109,7 +110,7 @@ Status_submit(e){
                 style={{width:188,height:200}}/>
 
                 <input type="radio" className="check_option radio_hide"
-                 name="Option_check_stat" id="Opt_take"
+                 name="Option_check_stat" id="Opt_take" value={Status_Object[0].Status_user}
                  onChange={this.OnChange_status}
                 checked={this.state.status == Status_Object[0].Status_user}/>
           

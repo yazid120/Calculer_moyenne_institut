@@ -187,7 +187,7 @@ function Affect_Status($user_stat){
     return $A_Choice_status; 
 }
 
-// State bout type functions
+//********   tate Status/etudiant type Functions  *********/
 function _empty_stat_input($nom,$prenom,$num_stagier){
     $return_result = false; 
     if(empty($nom) || empty($prenom) || empty($num_stagier)){

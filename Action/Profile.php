@@ -9,12 +9,8 @@ $objDb = new DbConnect;
 $conn = $objDb->connect();
 $method = $_SERVER['REQUEST_METHOD'];
 
-/*if(!$connection){
-  die('connection failed to open'. mysqli_connect_error()); 
-}*/
-
 $array = array(); 
-$method = $_SERVER['REQUEST_METHOD']; 
+
 
 switch($method){
   case "GET":

@@ -20,10 +20,6 @@ if(isset($postData)){
        echo 'empty inputs'; 
        exit(); 
     }
-    if(inputInfos_exist($connection,$User_email) === false){
-        echo 'invalid user infos';
-        exit();  
-    }
     if(invalid_userName($connection,$User_email,$User_Name) !== false){
        echo 'User Name dont match'; 
        exit(); 

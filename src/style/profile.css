@@ -132,7 +132,7 @@ cursor: pointer;
     text-decoration: none;
 }
 .radio_hide{
-   visibility: hidden;
+   /* visibility: hidden; */
 } 
 
 /*********  Status/etudiant_status Styling ********/
