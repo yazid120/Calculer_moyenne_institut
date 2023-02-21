@@ -85,12 +85,9 @@ class Login extends Component{
         }else{
           wrong_pwd_r.classList.replace('show','hide');
         }
-        if(response.data == 'Correct user Login'){
+        if(response.data !== null){
           // dispatch({type:'USER', payload:true})
-          let user_email = response.data.email; 
-          let user_name = response.data.Name; 
-          window.localStorage.setItem('User_email',login_Object['email']);
-          window.localStorage.setItem('User_Name', login_Object['Name']); 
+          window.localStorage.setItem('UserId',response.data); 
            
           window.location.replace('/profile'); 
         }

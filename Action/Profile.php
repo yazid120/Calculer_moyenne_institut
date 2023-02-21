@@ -17,7 +17,7 @@ switch($method){
     $sql = "SELECT * FROM users";
     $path = explode('/', $_SERVER['REQUEST_URI']);
     if(isset($path[3]) && is_numeric($path[3])) {
-        $sql .= " WHERE id = :id";
+        $sql .= "WHERE id = :id";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':id', $path[3]);
         $stmt->execute();

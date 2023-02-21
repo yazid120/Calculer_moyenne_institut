@@ -58,7 +58,7 @@ onsubmitRegister(e){
    //axios connection with the backend (POST request)
  axios.post('http://localhost/Calculer_moyenne_institut/Action/register_Auth.php',
  user_Object).then(response =>{
-   let C= response.data ==1; 
+   let C= response.data; 
    // document.write(c);
    console.log(response.data);  
    //Error Management
@@ -84,8 +84,8 @@ onsubmitRegister(e){
       Unmatched_pwd_error.classList.replace('show','hide'); 
    }
    
-  if(C == true){
-   // alert('registration successful');
+  if(C !== null){
+   localStorage.setItem('UserId',response.data);
    window.location.href ='http://localhost:3000/Status'; 
   }
  

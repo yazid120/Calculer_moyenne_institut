@@ -43,30 +43,6 @@ function unmatched_Password($userPassword,$userRepassword){
     return $return_result; 
 }
 
-function Create_user($connection,$User_Name,$User_email,$userPassword){
-    $hashed_pwd = password_hash($userPassword, PASSWORD_DEFAULT); 
-    $sql = "INSERT INTO `users` (usersName,usersemail,userspassword) 
-    VALUES('$User_Name','$User_email','$hashed_pwd')";
-    $response = $connection->query($sql); 
-    if($response){
-        $respose = "successful";
-        echo $response;
-       }else{
-        $error = "failed"; 
-        echo $error;
-      }
-
-}
-
-function empty_loginInputs($user_Email,$userPassword){
-    $return_result = false; 
-    if(empty($user_Email) || empty($userPassword)){
-        $return_result = true; 
-    }else{
-        $return_result = false; 
-    }
-    return $return_result; 
-}
 function inputInfos_exist($connection,$userEmail,$userName){
     $sql ="SELECT * FROM `users` WHERE usersName = ? OR usersEmail = ?;"; 
     $stmt = mysqli_stmt_init($connection); 
@@ -84,6 +60,34 @@ function inputInfos_exist($connection,$userEmail,$userName){
         return $return_result; 
     }
     mysqli_stmt_close($connection); 
+}
+
+function Create_user($connection,$User_Name,$User_email,$userPassword){
+
+    $hashed_pwd = password_hash($userPassword, PASSWORD_DEFAULT); 
+
+    $sql = "INSERT INTO `users` (usersName,usersemail,userspassword) 
+    VALUES('$User_Name','$User_email','$hashed_pwd')";
+    $response = $connection->query($sql); 
+
+    if($response){
+        $last_id = $connection -> insert_id; 
+        echo $last_id;
+    }else{
+        $error = "failed"; 
+        echo $error;
+      }
+
+}
+
+function empty_loginInputs($user_Email,$userPassword){
+    $return_result = false; 
+    if(empty($user_Email) || empty($userPassword)){
+        $return_result = true; 
+    }else{
+        $return_result = false; 
+    }
+    return $return_result; 
 }
 
 
@@ -111,6 +115,7 @@ function Login_user($connection,$user_Email,$userPassword){
         return 'error: user infos missing wrong user';   
     }
     $hashed_pwd = $input_infos_existsResult['userspassword']; 
+    $ref_id = $input_infos_existsResult['id']; 
     
     $check_usr_pwd = password_verify($userPassword,$hashed_pwd); 
     if($check_usr_pwd === false){
@@ -119,19 +124,10 @@ function Login_user($connection,$user_Email,$userPassword){
     }
     else if($check_usr_pwd === true){
         // return 'User login successfuly';
-        if(!isset($_SESSION)) 
-    { 
-        session_start();
-        $_SESSION['User_email'] = $input_infos_existsResult['usersemail'];
-        $_SESSION['User_Name'] = $input_infos_existsResult['usersName']; 
-        $_SESSION['User_Password'] = $input_infos_existsResult['userspassword']; 
-        $_SESSION['Date_user'] = $input_infos_existsResult['Date_user']; 
-        $_SESSION['id'] = $input_infos_existsResult['id']; 
-    }  
-         
         $return_result = true; 
+        echo $ref_id; 
     }
-    return $return_result; 
+    
 }
 
 
@@ -216,17 +212,16 @@ function StrNum_Contain_char($num_stagier){
 
 function Creat_Student_User($Nom,$Prenom,$Num_inscrp,$r_id,$connection){
     $return_result = false; 
-    $sql = "INSERT INTO etudiant (user_id,Nom,Prenom,Num_inscr) 
-    VALUES('$r_id','$Nom','$Prenom','$Num_inscrp')";
-    $response = mysqli_query($connection,$sql); 
-    if($response){
-        $return_result = true; 
-        // echo 'successful student submition'; 
-    }else{
-        $return_result = false; 
-        // echo 'Submition Failed';
+    try{
+    $sql = "INSERT INTO etudiant (id,user_id,Nom,Prenom,Num_inscr) 
+    VALUES(null,'$r_id','$Nom','$Prenom','$Num_inscrp')";
+    $connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
+    $connection -> exec($sql); 
     }
-    return $return_result; 
+    catch(PDOException $e){
+      echo $e->getMessage(); 
+    }
+    $connection = null; 
 }
 
 ?>

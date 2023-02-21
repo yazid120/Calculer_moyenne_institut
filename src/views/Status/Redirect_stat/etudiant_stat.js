@@ -62,6 +62,7 @@ class Etudiant_stat extends Component{
             nom:this.state.nom, 
             prenom:this.state.prenom, 
             num_stagier:this.state.num_stagier,
+            id: localStorage.getItem('UserId')
         }
         let empty_input_error = document.getElementById('empty_input_error'); 
         let Incorrect_stg_num = document.getElementById('Incorrect_stg_num'); 
@@ -83,7 +84,10 @@ class Etudiant_stat extends Component{
           if(response.data == 'Section numbre must cotain only numbers'){
             section_nb_char.classList.replace('show','hide');
           }else{section_nb_char.classList.replace('show','hide');}
-
+          if(response.data == 'successful student submition'){
+            alert('student created'); 
+            window.location.replace=('/profile');
+          }
         });
         
     }

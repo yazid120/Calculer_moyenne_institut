@@ -33,18 +33,9 @@ if(isset($postData)){
       echo 'User already exist !!'; 
       exit();
    }
-   
+   Create_user($connection,$User_Name,$User_email,$User_password);
 
-$sql = "INSERT INTO `users` (usersName,usersemail,userspassword) 
-   VALUES('$User_Name','$User_email','$hashed_pwd')";
-   $response = $connection->query($sql); 
-   if($response){
-    $respose = "successful";
-    echo $response;
-   }else{
-    $error = "failed"; 
-    echo $error;
-  }
+
 }else{ 
      // http_response_code(404);
 }

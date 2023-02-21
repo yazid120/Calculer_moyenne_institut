@@ -40,7 +40,7 @@ export default function NavBar(){
             <div className="Object_mainLinkes_NavBar_container">
              <ul className="justice_navigation_Opt">
                 {
-                    localStorage.getItem('User_email') ?
+                    localStorage.getItem('UserId') ?
                     <>
                     <Link to="/Profile/Dashboard">Dashboard</Link>
                     <Link to="/Profile/infos">infos</Link>
@@ -58,7 +58,7 @@ export default function NavBar(){
             <div className="registration_baseMain_selectionBtns" id="identities_component">
                 {/* Identifier the Navigation bar with localStorage */}
                 {
-                    localStorage.getItem('User_email') ?
+                    localStorage.getItem('UserId') ?
                 <>
                 <div className="">
                     {/* Logout btn */}

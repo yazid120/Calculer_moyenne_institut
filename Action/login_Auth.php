@@ -14,8 +14,7 @@ if(isset($postData)){
     $_POST['UserName'] = $User_Name; 
     $_POST['UserEmail'] = $User_email; 
     $_POST['UserPassword'] = $User_Password; 
-    
-    $session_infos = []; 
+     
 
     if(empty_loginInputs($User_email,$User_Password)){
        echo 'empty inputs'; 
@@ -25,14 +24,8 @@ if(isset($postData)){
        echo 'User Name dont match'; 
        exit(); 
     }
-    if(Login_user($connection,$User_email,$User_Password) === false){
-        echo 'incorrect password'; 
-        exit(); 
-    }else if(Login_user($connection,$User_email,$User_Password) === true){
-        // Store_user_Session($connection,$User_email,$User_Password,$session_infos); 
-         echo 'Correct user Login';
-        exit();
-    }
+    Login_user($connection,$User_email,$User_Password); 
+        
      
 }else{
     //respose error

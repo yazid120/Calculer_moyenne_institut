@@ -1,11 +1,21 @@
 import React from "react";
 import { Component } from "react";
-import { json } from "react-router-dom";
+import axios from "axios";
+
 
 function Main_Profile(){
-  let user_email = window.localStorage.getItem('User_email'); 
-  let user_Name = window.localStorage.getItem('User_Name'); 
-  // console.warn(user); 
+  let userId = localStorage.getItem('UserId'); 
+   let user_infos ={ 
+    id: userId
+   } 
+    console.log(userId);
+   axios.post('https://localhost/Calculer_moyenne_institut/Action/Session/Session.php'
+   ,user_infos).then(function (response){
+     console.log(response.data); 
+   });
+
+   
+  
   
     return(
         <>
@@ -15,9 +25,10 @@ function Main_Profile(){
            <h2>Your profile information</h2>
          </div>
          <div className="Profile_userInfos01355">
-            <p>Nom: <span>{user_Name}</span></p>
-            <p>Email: <span>{user_email}</span></p>
+            <p>Nom: <span></span></p>
+            <p>Email: <span></span></p>
             <p>Date d'inscription:<span></span></p>
+            <p>Status Utulisateur:</p>
          </div>
         </section>
         </div>

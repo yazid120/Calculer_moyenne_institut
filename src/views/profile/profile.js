@@ -12,11 +12,10 @@ import axios, { Axios } from "axios";
 function Profile(){
     let [User_Auth, SetAuth] = useState(''); 
     const Navigate = useNavigate(); 
-    // console.log(localStorage.getItem('User_email')); 
 
     useEffect ( () =>{
-      User_Auth = window.localStorage.getItem('User_email'); 
-      console.log(JSON.stringify(User_Auth)); 
+      User_Auth = window.localStorage.getItem('UserId'); 
+      // console.log(JSON.stringify(User_Auth)); 
 
       SetAuth(User_Auth); 
     },
