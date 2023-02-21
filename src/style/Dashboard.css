@@ -49,6 +49,7 @@
     background-color: rgb(59, 56, 56); 
     margin: 0rem; 
     margin-right: 1rem; 
+    transition: 0.5 all ease-in;
 }
 .Nav_menu_links{ 
     display: flex;
