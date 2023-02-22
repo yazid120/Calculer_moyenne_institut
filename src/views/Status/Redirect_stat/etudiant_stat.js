@@ -19,6 +19,7 @@ class Etudiant_stat extends Component{
         prenom:'',
         num_stagier:'',
         user_state:'',
+        SetLoading: false
       };
     }
     
@@ -62,8 +63,9 @@ class Etudiant_stat extends Component{
             nom:this.state.nom, 
             prenom:this.state.prenom, 
             num_stagier:this.state.num_stagier,
-            id: localStorage.getItem('UserId')
+            email: localStorage.getItem('UserId')
         }
+
         let empty_input_error = document.getElementById('empty_input_error'); 
         let Incorrect_stg_num = document.getElementById('Incorrect_stg_num'); 
         let section_nb_char = document.getElementById('section_nb_char'); 
@@ -86,7 +88,7 @@ class Etudiant_stat extends Component{
           }else{section_nb_char.classList.replace('show','hide');}
           if(response.data == 'successful student submition'){
             alert('student created'); 
-            window.location.replace=('/profile');
+            window.location.replace('/profile');
           }
         });
         
@@ -151,10 +153,13 @@ class Etudiant_stat extends Component{
                   {Sets_Object[3].Sub_sets_btn}
                 </button>
     {/* Spinner main */}
+     
     <div className="spinner-container" id="spinner_wrapp">
+      {/* {this.state.SetLoading} */}
       <div className="loading-spinner">
       </div>
     </div>
+    
             </form>
             </>
         )

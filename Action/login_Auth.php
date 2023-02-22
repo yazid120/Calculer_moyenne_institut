@@ -24,7 +24,8 @@ if(isset($postData)){
        echo 'User Name dont match'; 
        exit(); 
     }
-    Login_user($connection,$User_email,$User_Password); 
+    
+    echo Login_user($connection,$User_email,$User_Password); 
         
      
 }else{

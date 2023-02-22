@@ -83,3 +83,30 @@ body{
     border: 1px solid #000 !important; 
     border-radius: 5px;
 }
+
+/***********  Hide and make visible eye **********/
+.container_password_wrapp_func{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 88%; 
+    display:flex; 
+    align-items: baseline;
+    justify-content: center;
+    gap: 1px; 
+}
+.anable_disble_password{
+    -webkit-box-sizing: border-box;
+    -webkit-box-flex: 0; 
+    -webkit-transition: 0.3s all ease-in;
+    box-sizing: border-box; 
+    padding: 6px 10px; 
+    margin: 0rem; 
+    transition: 0.3s all ease-in;
+    border: 1px solid var(--dark-bg-color); 
+    border-radius: 3px;
+    background-color: #8b9c92; 
+    cursor: pointer; 
+}

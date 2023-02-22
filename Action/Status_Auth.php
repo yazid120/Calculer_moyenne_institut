@@ -23,7 +23,7 @@ if(isset($Post_Data)){
     }else{
         echo null; 
     }
-    // echo $user_status; 
+
 
 }else{
     //Error OF Access 

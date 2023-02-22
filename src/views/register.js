@@ -56,8 +56,8 @@ UpdateInputFormat(){
  UpadateUnsecureInputFormat(){
    this.setState({
      ...this.state, 
-      change_secure_InputFormat : !this.state.change_secure_InputFormat
-   });
+      change_secure_InputFormat : !this.state.change_secure_InputFormat,
+    });
  }
 
 
@@ -105,7 +105,7 @@ onsubmitRegister(e){
    
   if(C !== null){
    localStorage.setItem('UserId',response.data);
-   window.location.href ='http://localhost:3000/Status'; 
+   window.location.replace('/Status'); 
   }
  
  }); 
@@ -116,6 +116,7 @@ onsubmitRegister(e){
 
  
 render(){
+
    let registration_Object =[
       {head:'Register Page'},
       {empty_fields:'input fields are empty'},
@@ -147,7 +148,7 @@ render(){
             UserName:
          </label><br />
          <input type="text" name="User_name" id="" 
-         className='registration_input'
+         className='registration_input' 
          value={this.state.name} onChange={this.onChangeName}/><br />
       {/* User email input */}
          <label htmlFor='' className='label_subForm'>
@@ -161,32 +162,46 @@ render(){
          <label htmlFor='' className='label_subForm'>
             password:
          </label><br />
-         <input type="password" name="" id=""
+      <div className='container_password_wrapp_func'>
+         <input type={this.state.change_secure_InputFormat ? "text" : "password"} name="" id=""
          className='registration_input'
          value={this.state.password} onChange={this.onChangePassword}/>
-         {/* visible eye */}
-         <AiOutlineEye /><br />
-         {/* invisible eye */}
+         {/* visible and invisible eye */}
+         <div className='anable_disble_password' onClick={this.UpadateUnsecureInputFormat.bind(this)}>
+         {
+         this.state.change_secure_InputFormat ?
+         <>
+         <AiOutlineEye />
+         </>
+         :
+         <>
          <AiOutlineEyeInvisible/>
+         </>
+         } 
+         </div>
+      </div>
 
       {/* User repasseword input */}
          <label htmlFor='' className='label_subForm'>
             repeate password:
          </label><br />
-         <input type="password" name="repeact_password" id=""
+         <div className='container_password_wrapp_func'>
+         <input type={this.state.change_secure_InputFormat ? "text" : "password"} name="repeact_password" id=""
          className='registration_input'
       value={this.state.ConfirmPassword} onChange={this.onChangeConfirmPassword}/><br />
          {/* visible and invisible eye */}
+         <div className='anable_disble_password' onClick={this.UpadateUnsecureInputFormat.bind(this)}>
          {this.state.change_secure_InputFormat ?
             <>
              <AiOutlineEye />
             </>
              :
-             
             <>
             <AiOutlineEyeInvisible/>
             </>
             }
+         </div>
+      </div>
 
       {/* User registration Btn */}
          <button type="submit" name="register" className='submition_Btn'

@@ -71,8 +71,8 @@ function Create_user($connection,$User_Name,$User_email,$userPassword){
     $response = $connection->query($sql); 
 
     if($response){
-        $last_id = $connection -> insert_id; 
-        echo $last_id;
+        $last_id = $User_email; 
+        return $last_id;
     }else{
         $error = "failed"; 
         echo $error;
@@ -112,7 +112,7 @@ function Login_user($connection,$user_Email,$userPassword){
     $input_infos_existsResult = inputInfos_exist($connection,$user_Email,$user_Email); 
 
     if($input_infos_existsResult === false){
-        return 'error: user infos missing wrong user';   
+        return 'error: invalid email or password';   
     }
     $hashed_pwd = $input_infos_existsResult['userspassword']; 
     $ref_id = $input_infos_existsResult['id']; 
@@ -126,9 +126,7 @@ function Login_user($connection,$user_Email,$userPassword){
     else if($check_usr_pwd === true){
         // return 'User login successfuly';
         $return_result = true; 
-        echo json_encode([
-            ['id'=>$ref_id],
-            ['email' =>$ref_email]]); 
+        return json_encode([['email' =>$ref_email]]); 
     }
     
 }
@@ -212,6 +210,7 @@ function StrNum_Contain_char($num_stagier){
     }else $return_result =false; 
     return $return_result; 
 }
+
 
 function Creat_Student_User($Nom,$Prenom,$Num_inscrp,$r_id,$connection){
     $return_result = false; 

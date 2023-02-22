@@ -105,13 +105,17 @@ class Login extends Component{
         }else{
           wrong_pwd_r.classList.replace('show','hide');
         }
-        if(response.data !== null){
-          // dispatch({type:'USER', payload:true})
 
-          window.localStorage.setItem('UserId',response.data); 
-           
-          // window.location.replace('/profile'); 
+        if(response.data[0].email == this.state.email){
+          // dispatch({type:'USER', payload:true}
+          window.localStorage.setItem('UserId',response.data[0].email); 
+          alert('successful user'); 
+        window.location.replace('/profile'); 
+        }else{
+          console.log('error: invalid email or password'); 
         }
+        
+          
 
     }); 
   }
@@ -166,7 +170,8 @@ class Login extends Component{
        <label htmlFor='' className={Display_infos[0].label_subForm}>
        {Display_infos[2].label_password}
        </label><br />
-       <input type="password" name="" className='registration_input'
+       <div className='container_password_wrapp_func'>
+       <input type={this.state.change_secure_InputFormat ? "text" : "password"} name="" className='registration_input'
        value={this.state.Password} onChange={this.onChangePassword}/><br />
 
           <div className='anable_disble_password' onClick={this.UpadateUnsecureInputFormat.bind(this)}>
@@ -182,6 +187,7 @@ class Login extends Component{
             </>
             }
           </div>
+     </div>
 
        <button type="submit" name="" className="submition_Btn"
         onClick={this.onSubmitionLogin}>

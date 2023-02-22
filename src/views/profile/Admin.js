@@ -10,7 +10,7 @@ let Admin = function(){
   const Navigate = useNavigate(); 
   
   function getUsers(){
-    axios.get('https://localhost/Calculer_moyenne_institut/Action/profile.php')
+    axios.get('http://localhost/Calculer_moyenne_institut/Action/profile.php')
     .then(function(response){
       let arr = []; 
       // console.log(response.data); 

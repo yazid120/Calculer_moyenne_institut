@@ -61,10 +61,14 @@ Status_submit(e){
        let response_ = '';
        if(response.data == 'Status: Etudient'){
         response_ = 'Etudiant'; 
+        localStorage.setItem('User_status',response_);
           window.location.assign('/Status/Etudiant_stat?status='+response_);
+        
        }else if(response.data == 'Status: Prof'){
         response_ = 'Professeur'; 
+        localStorage.setItem('User_status',response_);
          window.location.assign('/Status/Prof_stat?status='+response_);
+
        }else{
         console.error('error'); 
        }

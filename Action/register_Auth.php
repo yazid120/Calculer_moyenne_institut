@@ -33,7 +33,7 @@ if(isset($postData)){
       echo 'User already exist !!'; 
       exit();
    }
-   Create_user($connection,$User_Name,$User_email,$User_password);
+   echo Create_user($connection,$User_Name,$User_email,$User_password);
 
 
 }else{ 

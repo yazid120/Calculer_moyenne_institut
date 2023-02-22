@@ -5,13 +5,18 @@ import axios from "axios";
 
 function Main_Profile(){
   let userId = localStorage.getItem('UserId'); 
-   let user_infos ={ 
-    id: userId
+  console.log(userId);
+    let user_infos ={ 
+    email : userId
    } 
-    console.log(userId);
-   axios.post('https://localhost/Calculer_moyenne_institut/Action/Session/Session.php'
-   ,user_infos).then(function (response){
-     console.log(response.data); 
+
+
+   axios.post('http://localhost/Calculer_moyenne_institut/Action/Session/Session.php',
+   user_infos).then(function (response){
+    let e = response.data;
+    
+     console.log(e); 
+     
    });
 
    
