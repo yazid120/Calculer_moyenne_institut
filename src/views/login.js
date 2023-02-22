@@ -3,6 +3,8 @@ import React, { useContext } from 'react';
 import { Component } from 'react';
 import axios from 'axios';
 import UserContext from '../App';
+import { AiOutlineEye , AiOutlineEyeInvisible} from 'react-icons/ai'; 
+import { updateExpression } from '@babel/types';
 
 
 class Login extends Component{
@@ -12,7 +14,10 @@ class Login extends Component{
    this.onChangeName = this.onChangeName.bind(this); 
    this.onChangeEmail = this.onChangeEmail.bind(this); 
    this.onChangePassword = this.onChangePassword.bind(this); 
-   this.onSubmitionLogin = this.onSubmitionLogin.bind(this);   
+   this.onSubmitionLogin = this.onSubmitionLogin.bind(this); 
+   this.checkInputFormat = false;  
+   this.secureText_input = true;
+   this.change_secure_InputFormat = true; 
   
    this.state ={
     email:'', 
@@ -38,6 +43,20 @@ class Login extends Component{
   onChangePassword(e){
     this.setState({
       Password:e.target.value
+    });
+  }
+
+  
+  UpdateInputFormat(){
+    this.setState({
+     ...this.state, 
+       secureText_input : !this.state.secureText_input
+    }); 
+  }
+  UpadateUnsecureInputFormat(){
+    this.setState({
+      ...this.state, 
+       change_secure_InputFormat : !this.state.change_secure_InputFormat
     });
   }
   
@@ -88,6 +107,7 @@ class Login extends Component{
         }
         if(response.data !== null){
           // dispatch({type:'USER', payload:true})
+
           window.localStorage.setItem('UserId',response.data); 
            
           // window.location.replace('/profile'); 
@@ -148,6 +168,20 @@ class Login extends Component{
        </label><br />
        <input type="password" name="" className='registration_input'
        value={this.state.Password} onChange={this.onChangePassword}/><br />
+
+          <div className='anable_disble_password' onClick={this.UpadateUnsecureInputFormat.bind(this)}>
+            {/* visible and invisible eye */}
+            {this.state.change_secure_InputFormat ?
+            <>
+             <AiOutlineEye />
+            </>
+             :
+             
+            <>
+            <AiOutlineEyeInvisible/>
+            </>
+            }
+          </div>
 
        <button type="submit" name="" className="submition_Btn"
         onClick={this.onSubmitionLogin}>

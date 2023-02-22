@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import '../style/register.css'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { AiOutlineEye , AiOutlineEyeInvisible} from 'react-icons/ai'; 
 
 class Register extends Component{
    // Consturctor function support
@@ -14,6 +14,9 @@ constructor(props){
    this.onChangePassword = this.onChangePassword.bind(this); 
    this.onChangeConfirmPassword = this.onChangeConfirmPassword.bind(this); 
    this.onsubmitRegister = this.onsubmitRegister.bind(this); 
+   this.checkInputFormat = false;  
+   this.secureText_input = true;
+   this.change_secure_InputFormat = true; 
 
    this.state ={
       name: '',
@@ -43,6 +46,22 @@ onChangeConfirmPassword(e){
       ConfirmPassword:e.target.value
    })
 }
+
+UpdateInputFormat(){
+   this.setState({
+    ...this.state, 
+      secureText_input : !this.state.secureText_input
+   }); 
+ }
+ UpadateUnsecureInputFormat(){
+   this.setState({
+     ...this.state, 
+      change_secure_InputFormat : !this.state.change_secure_InputFormat
+   });
+ }
+
+
+
 onsubmitRegister(e){
    e.preventDefault(); 
    let user_Object ={
@@ -137,13 +156,19 @@ render(){
          <input type="email" name="" id=""
          className='registration_input' 
          value={this.state.email} onChange={this.onChangeEmail}/><br />
+
       {/* User password input */}
          <label htmlFor='' className='label_subForm'>
             password:
          </label><br />
          <input type="password" name="" id=""
          className='registration_input'
-         value={this.state.password} onChange={this.onChangePassword}/><br />
+         value={this.state.password} onChange={this.onChangePassword}/>
+         {/* visible eye */}
+         <AiOutlineEye /><br />
+         {/* invisible eye */}
+         <AiOutlineEyeInvisible/>
+
       {/* User repasseword input */}
          <label htmlFor='' className='label_subForm'>
             repeate password:
@@ -151,6 +176,18 @@ render(){
          <input type="password" name="repeact_password" id=""
          className='registration_input'
       value={this.state.ConfirmPassword} onChange={this.onChangeConfirmPassword}/><br />
+         {/* visible and invisible eye */}
+         {this.state.change_secure_InputFormat ?
+            <>
+             <AiOutlineEye />
+            </>
+             :
+             
+            <>
+            <AiOutlineEyeInvisible/>
+            </>
+            }
+
       {/* User registration Btn */}
          <button type="submit" name="register" className='submition_Btn'
          onClick={this.onsubmitRegister}>
