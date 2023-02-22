@@ -18,6 +18,7 @@ class Login extends Component{
     email:'', 
     Password:'',
     Name:'',
+    redirectToProfile:false,
    }
   }
   
@@ -89,7 +90,7 @@ class Login extends Component{
           // dispatch({type:'USER', payload:true})
           window.localStorage.setItem('UserId',response.data); 
            
-          window.location.replace('/profile'); 
+          // window.location.replace('/profile'); 
         }
 
     }); 

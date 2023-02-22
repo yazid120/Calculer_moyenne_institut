@@ -116,6 +116,7 @@ function Login_user($connection,$user_Email,$userPassword){
     }
     $hashed_pwd = $input_infos_existsResult['userspassword']; 
     $ref_id = $input_infos_existsResult['id']; 
+    $ref_email = $input_infos_existsResult['usersemail'];
     
     $check_usr_pwd = password_verify($userPassword,$hashed_pwd); 
     if($check_usr_pwd === false){
@@ -125,7 +126,9 @@ function Login_user($connection,$user_Email,$userPassword){
     else if($check_usr_pwd === true){
         // return 'User login successfuly';
         $return_result = true; 
-        echo $ref_id; 
+        echo json_encode([
+            ['id'=>$ref_id],
+            ['email' =>$ref_email]]); 
     }
     
 }
