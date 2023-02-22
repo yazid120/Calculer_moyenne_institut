@@ -32,13 +32,11 @@ switch($method){
     }
 
     echo json_encode($users);
-    break;
+    
     
 }
 
 
-
-// echo $_SESSION['Date_user']; 
 
 
 

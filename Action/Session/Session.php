@@ -5,7 +5,7 @@ require_once '../db_connection.php';
 $id_data = file_get_contents('php://input'); 
 $request = json_decode($id_data); 
 
-if(isset($request)){
+if(isset($id_data)){
     $email = $request->email; 
     $sql = "SELECT `usersName`,`usersEmail`,`Date_user` FROM users WHERE usersemail='$email'"; 
     $result = mysqli_query($connection,$sql);  
