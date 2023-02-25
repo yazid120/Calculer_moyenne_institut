@@ -33,7 +33,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-  max-width: 100vw; 
 }
 /* logo app */
 .logo_base{
@@ -51,6 +50,8 @@ body {
   width: 100%; 
   
 }
+
+/* Navigation Bar Styling */
 .Navigation_Bar_automate02654{
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -115,6 +116,65 @@ body {
 }
 .base_registerOption ._log{
   background-color: var(--login_style_bgColor);
+}
+
+/* Nav Bar mini (resized) */
+.navigation_bar_iconSide{
+  margin: 1rem;
+padding: 6.5px 6px;
+font-size: 20px;
+cursor: pointer;
+transition: 0.2625s all ease-in;
+border: 1px solid var(--dark-bg-color);
+border-radius: 25%;
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 1000;
+}
+.navigation_bar_iconSide:hover{
+  background-color: rgb(187, 216, 206); 
+}
+.navigation_linksList{
+ -webkit-box-sizing: border-box;
+ -webkit-box-orient: normal;
+ -webkit-box-flex: 0;
+ -webkit-animation: none;
+ animation: none;
+ box-sizing: border-box;
+ width: 100%; 
+ height: auto;
+ position: fixed;
+ top: 5.2rem; 
+ background-color: beige;
+ z-index: 1000;
+ padding: 11px 13px;
+}
+.listInfos_navs{
+  box-sizing: border-box; 
+  display: flex;
+  flex-direction: column;
+  width: 100%; 
+  height: 100%; 
+  position: relative;
+  z-index: 1001;
+  border-bottom: 1px solid var(--dark-bg-color);
+}
+.listInfos_navs a{
+  font-family: var(--HTDglobalefont);
+  font-size: 16.4px; 
+  color: rgb(77, 76, 76); 
+  height: 25%; 
+  padding: 10px 15px;
+  list-style: none;
+  text-decoration: none;
+}
+.listInfos_navs a:hover{
+  background-color: #b5c8cad3;
+  border-radius: 2.5px;
+}
+.logout{
+  cursor: pointer; 
 }
 
 /******* Main part *******/
