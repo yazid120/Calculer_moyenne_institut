@@ -147,14 +147,14 @@ render(){
          <label htmlFor='' className='label_subForm'>
             UserName:
          </label><br />
-         <input type="text" name="User_name" id="" 
+         <input type="text" name="User_name"  
          className='registration_input' 
          value={this.state.name} onChange={this.onChangeName}/><br />
       {/* User email input */}
          <label htmlFor='' className='label_subForm'>
             Email address:
          </label><br />
-         <input type="email" name="" id=""
+         <input type="email" name="" 
          className='registration_input' 
          value={this.state.email} onChange={this.onChangeEmail}/><br />
 
@@ -163,7 +163,7 @@ render(){
             password:
          </label><br />
       <div className='container_password_wrapp_func'>
-         <input type={this.state.change_secure_InputFormat ? "text" : "password"} name="" id=""
+         <input type={this.state.change_secure_InputFormat ? "text" : "password"} name="" 
          className='registration_input'
          value={this.state.password} onChange={this.onChangePassword}/>
          {/* visible and invisible eye */}
@@ -186,7 +186,7 @@ render(){
             repeate password:
          </label><br />
          <div className='container_password_wrapp_func'>
-         <input type={this.state.change_secure_InputFormat ? "text" : "password"} name="repeact_password" id=""
+         <input type={this.state.change_secure_InputFormat ? "text" : "password"} name="repeact_password" 
          className='registration_input'
       value={this.state.ConfirmPassword} onChange={this.onChangeConfirmPassword}/><br />
          {/* visible and invisible eye */}

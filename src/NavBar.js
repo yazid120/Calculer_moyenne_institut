@@ -11,6 +11,12 @@ export default function NavBar(){
     const Navigate  = useNavigate(); 
     let user = JSON.parse(localStorage.getItem('user-info')); 
     //  console.warn(user.name);
+    {/**** Display navigation menu ****/}
+    const [navMenu_Displayed, SetNav_menu] = useState(); 
+
+    let toggle_navMenu = ()=>{
+        SetNav_menu(!navMenu_Displayed); 
+    }
 
     {/*** Change navigation bar with size ***/}
     const [size_window, setsize_window] = useState(
@@ -82,7 +88,7 @@ export default function NavBar(){
               <a href="/">logo</a>
             </div>
             <div className="Object_mainLinkes_NavBar_container"
-            style={{display : size_width ? 'block' : 'none'}}>
+            style={{display : size_width ? 'flex' : 'none'}}>
              <ul className="justice_navigation_Opt">
                 {
                     localStorage.getItem('UserId') ?
@@ -151,10 +157,11 @@ export default function NavBar(){
             </div>
              :
              <>
-             <div className="navigation_bar_iconSide">
+             <div className="navigation_bar_iconSide" onClick={toggle_navMenu}>
              <GiHamburgerMenu/>
              </div>
-             <div className="navigation_linksList">
+             <div className="navigation_linksList"
+             style={{ display : navMenu_Displayed ? 'block' : 'none' }}>
             { localStorage.getItem('UserId') ?
             <>
                 <div className="listInfos_navs">
