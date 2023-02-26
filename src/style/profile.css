@@ -131,9 +131,9 @@ cursor: pointer;
     font-family: var(--HTDglobalefont);
     text-decoration: none;
 }
-.radio_hide{
-   /* visibility: hidden; */
-} 
+/* .radio_hide{
+    visibility: hidden; 
+}  */
 
 /*********  Status/etudiant_status Styling ********/
 .wrapp_form_setStat_user{
@@ -219,14 +219,21 @@ text-decoration: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 95; 
+    width: 100%; 
     height: auto;
     overflow: none;
     margin: 0rem; 
     padding: 5px 5px; 
   }
+  .usd_side_alignCentred_C{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 95%; 
+  }
 table,th,td{
-    padding: 15px;
+    padding: 3px;
     border-collapse: collapse;
 }
 th{

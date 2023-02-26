@@ -45,11 +45,12 @@
 .Cotainer_sideBar_Wrapper{ 
     -webkit-box-sizing: border-box; 
     -webkit-box-orient: vertical;
+    -webkit-transition: all 0.5s ease;
     box-sizing: border-box;
     background-color: rgb(59, 56, 56); 
     margin: 0rem; 
     margin-right: 1rem; 
-    transition: 0.5 all ease-in;
+    transition: 0.4s all ease-in;
 }
 .Nav_menu_links{ 
     display: flex;

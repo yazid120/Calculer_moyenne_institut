@@ -62,7 +62,10 @@ CREATE TABLE Professeur(
 DROP TABLE IF EXISTS `Admin`;
 CREATE TABLE Admin(
   `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `admin_id` int(11),
-  FOREIGN KEY (admin_id) REFERENCES users(id), 
-  `user_name` varchar(128) NOT NULL
+  `Admin_mail` varchar(128) NOT NULL, 
+  `Admin_password` varchar(128) NOT NULL
 ); 
+
+-- Optional: Creation of Admin user by sql insertion 
+INSERT INTO `Admin` (id , Admin_mail, Admin_password) VALUES 
+  (null,'Admin@gmail.com',md5('admin123')); 

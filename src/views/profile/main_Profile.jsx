@@ -5,7 +5,7 @@ import axios from "axios";
 
 function Main_Profile(){
   let userId = localStorage.getItem('UserId'); 
-  console.log(userId);
+  
     let user_infos ={ 
     email : userId
    } 

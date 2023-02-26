@@ -10,7 +10,7 @@ let Admin = function(){
   const Navigate = useNavigate(); 
   
   function getUsers(){
-    axios.get('http://localhost/Calculer_moyenne_institut/Action/profile.php'
+    axios.get('https://localhost/Calculer_moyenne_institut/Action/profile.php'
     ).then(function(response){
       let arr = []; 
       // console.log(response.data); 
@@ -48,7 +48,8 @@ let Admin = function(){
         <h1>Admin user</h1>
       </div>
   
-      <div className="Users_list_container">
+  <div className="Users_list_container">
+    <div className="usd_side_alignCentred_C">
         <p>List of All users</p>
         <table border={1}>
           <thead>
@@ -88,7 +89,8 @@ let Admin = function(){
           </tbody>
         </table>
 
-      </div>
+    </div>
+  </div>
       </>
     ); 
 }

@@ -13,6 +13,8 @@ if(isset($id_data)){
      $rest = $row;
     }
     echo json_encode($rest);
+}else{
+    echo 'invalid access !!'; 
 }
 
 

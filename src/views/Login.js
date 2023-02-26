@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { Component } from 'react';
 import axios from 'axios';
 import UserContext from '../App';
+import '../style/register.css';
 import { AiOutlineEye , AiOutlineEyeInvisible} from 'react-icons/ai'; 
 import { updateExpression } from '@babel/types';
 
@@ -109,7 +110,7 @@ class Login extends Component{
         if(response.data[0].email == this.state.email){
           // dispatch({type:'USER', payload:true}
           window.localStorage.setItem('UserId',response.data[0].email); 
-          alert('successful user'); 
+          
         window.location.replace('/profile'); 
         }else{
           console.log('error: invalid email or password'); 

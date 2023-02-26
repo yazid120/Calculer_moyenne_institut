@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import React from 'react';
 import { Link } from 'react-router-dom'; 
-import '../style/register.css'
+import '../style/register.css';
 import axios from 'axios';
 import { AiOutlineEye , AiOutlineEyeInvisible} from 'react-icons/ai'; 
 
