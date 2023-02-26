@@ -7,7 +7,24 @@ import { Link } from 'react-router-dom';
 
 let Admin = function(){
   const [users, SetUsers] = useState([]); 
+ 
+
   const Navigate = useNavigate(); 
+
+
+    let admin_Auth = localStorage.getItem('UserId'); 
+    
+    let user_infos ={
+      email : admin_Auth
+    }
+  
+    axios.post('https://localhost/Calculer_moyenne_institut/Action/admin_Auth.php',
+    user_infos).then( response =>{
+      console.log(response.data); 
+    }); 
+  
+
+  
   
   function getUsers(){
     axios.get('https://localhost/Calculer_moyenne_institut/Action/profile.php'
