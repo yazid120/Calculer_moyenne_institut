@@ -1,15 +1,20 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, Suspense  } from "react";
+import { wait } from "@testing-library/user-event/dist/utils";
 // importing components from react-router-dom package
 import{ Routes, Route, }from 'react-router-dom'; 
 import NavigationBar from './NavBar'; 
 import Footer from "./footer";
-// Header links
-import Home from "./views/component/Home";
-import About from "./views/component/about";
-import Contact from "./views/component/Contact_us";
+
+// Header links With React 
+// import Home from "./views/component/Home";
+// import About from "./views/component/about";
+// import Contact from "./views/component/Contact_us";
+
 // login links 
-import Login from "./views/Login"; 
-import Register from "./views/Register"; 
+// import Login from "./views/Login"; 
+// import Register from "./views/Register"; 
+
+// Logout import
 import Logout from "./views/Logout";
 //Profile link
 import Profile from "./views/profile/profile";
@@ -24,11 +29,22 @@ import Etudiant_stat from "./views/Status/Redirect_stat/etudiant_stat";
 
 import { initialState, reducer } from "./reducer/UseReducer";
 
+// Header links With React lazy method
+const Home = React.lazy(()=>wait(100).then( ()=> import("./views/component/Home")));
+const About = React.lazy(()=> wait(100).then( ()=> import("./views/component/about")));
+const Contact = React.lazy(()=> wait(100).then( ()=> import("./views/component/Contact_us")));
+
+// login links With React lazy method
+const Login = React.lazy(()=>wait(100).then( ()=> import("./views/Login")));
+const Register = React.lazy(()=>wait(100).then( ()=>import("./views/Register"))); 
+
+
 //User Creat context Api
 export const UserContext =createContext();
 
 const Routing = () =>{
   return(
+  <Suspense>
     <Routes>
         {/* Home page routing */}
       <Route exact path="/" element={<Home/>}/>
@@ -64,6 +80,7 @@ const Routing = () =>{
       <Route exact path='/Profile/infos' element={<Infos/>} />
 
     </Routes> 
+  </Suspense>
       
 
 
