@@ -175,10 +175,8 @@ export default function NavBar(){
                     <Link to="/Contact_us">
                     {Navigation_listedLinks[0].Profile_navs.Contact_links}
                     </Link>
-                
-                
-
                 </div>
+
                 <div className="listInfos_navs logout">
                      {/* Logout btn */}
                      <a className="" 
@@ -208,7 +206,7 @@ export default function NavBar(){
                     id="logout_part" onClick={Navigate_login}
                      >{component_Object[0].name}
                    </a>
-                   {/* Login btn */}
+                   {/* Register btn */}
                      <a className="" 
                     id="logout_part" onClick={Navigate_register}
                      >{component_Object[1].name}

@@ -13,8 +13,8 @@
   --OferCookie-sett-font: "barlow"; 
   --HOMEglobalefont_min_line: neo sans, Arial, Helvetica, sans-serif; 
   --PROFILEglobafont_min_line_fira: fira sans, sans-serif; 
---Footer-Background-colorBg: rgb(54, 203, 236); 
---Main_HomeBoxBar_banner-bg_color: rgb(140, 223, 177); 
+--Footer-Background-colorBg: rgba(114, 199, 218, 0.9); 
+--Main_HomeBoxBar_banner-bg_color: rgb(173, 223, 195); 
 /* profile Styling */
 --Section_Main_Profile_boxBg_color: rgb(157, 203, 237); 
 --Section_Main_Profile_fontBg_color: rgb(40, 40, 40); 
@@ -73,13 +73,16 @@ body {
   margin: 0rem; 
   padding: 0rem; 
   width: 50%; 
-  height: auto; 
+  height: 100%; 
 }
 .Object_mainLinkes_NavBar_container
 .justice_navigation_Opt{
  box-sizing: border-box;
  display:flex; 
  list-style: none;
+ padding: 0rem; 
+ width: 90%; 
+ justify-content: space-around;
 }
 .justice_navigation_Opt a{
   font-size: 19.65598px; 
@@ -191,12 +194,12 @@ z-index: 1000;
   margin: 0rem; 
   padding: 0rem; 
   margin-top: 1.5rem; 
-  height: 25rem; 
+  height: 27rem; 
   overflow: hidden;
 }
 .sub_HeadCalc_top
 .Head_titleBan{
-  font-size: 35px;
+  font-size: 38px;
   color: rgb(39, 39, 39); 
   margin: 0.5rem; 
   padding: 0rem; 
@@ -209,8 +212,16 @@ z-index: 1000;
   margin: 0.5rem; 
   padding: 0rem; 
 }
+.instructe_main_pageLinkbtns{
+  box-sizing:  border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%; 
+  height: auto; 
+}
 .inscription_side_subRedirection{
-  width: 7.8rem; 
+  width: 50%; 
   height: 3.2rem; 
   cursor: pointer;
   font-size: 17px;
@@ -219,11 +230,103 @@ z-index: 1000;
   border-radius: 5px;
   font-weight: 600; 
   text-decoration: none;
+  margin: 0.2rem; 
+}
+.t_sign{
+  background-color:rgb(47, 119, 182); 
+  color: var(--white-bg-color);
 }
 .inscription_side_subRedirection:hover{
   background-color:rgba(151, 195, 180, 0.986);
 }
+.c{
+  position: relative;
+  top: 5px;
+}
 
+.propos_bannerWrapp_check{
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0rem; 
+  padding: 1rem; 
+  width: 100%; 
+  height: auto; 
+  margin-top: 1rem; 
+}
+.propos_bannerWrapp_check,
+.classe_baseListed_box{
+   font-family: var(--HTDglobalefont);
+   text-decoration: none;
+    
+}
+.sider_blinktext{
+  text-align: center;padding: 1rem;
+}
+.sider_blinktext h2{
+ font-size: 38px; 
+}
+.sider_blinktext p{
+  font-size: 25px;
+}
+.sider_blinktext b{
+  background: white;
+padding: 4px;
+text-align: center;
+font-size: 16px;
+border-radius: 3px;
+border: 1px solid;
+}
+.container_wrapp_dier0323556{
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4.5rem; 
+  margin: 0rem; 
+  padding: 0rem; 
+}
+.contentPart_selection_side{
+  -webkit-box-sizing: border-box;
+  -webkit-transition: 0.3s ease-in;
+  box-sizing: border-box;
+  transition: 0.3 all ease-in;
+  width: 25%; 
+  height: auto;
+  padding: 0.5rem;
+  padding-bottom: 2.3rem;  
+  background-color: #c2d4f3;
+  border-radius: 5px;
+  box-shadow: 3px 3px 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: normal;
+}
+.contentPart_selection_side h2{
+  text-align: center;
+  font-size: 25px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+.contentPart_selection_side p{
+  font-size: 23px;
+  text-align: center;
+}
+.icon_rect{
+  font-size: 38px;
+}
+.redige_siteframe{
+  width: 85%; 
+  height: 2.8rem; 
+  text-decoration: none;
+}
+.rcp_btn{
+  width: 100%; 
+  height: 100%; 
+  cursor: pointer;
+}
 /******** Footer part  ********/
 .Footer_cotainer_MainSection{
   -webkit-box-direction: normal;
