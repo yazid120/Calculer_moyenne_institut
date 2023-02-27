@@ -106,7 +106,7 @@ class Login extends Component{
         }else{
           wrong_pwd_r.classList.replace('show','hide');
         }
-
+        
         if(response.data[0].email == this.state.email){
           // dispatch({type:'USER', payload:true}
           window.localStorage.setItem('UserId',response.data[0].email); 
@@ -115,7 +115,7 @@ class Login extends Component{
         }else{
           console.log('error: invalid email or password'); 
         }
-        
+      
           
 
     }); 
