@@ -72,7 +72,7 @@ function Create_user($connection,$User_Name,$User_email,$userPassword){
 
     if($response){
         $last_id = $User_email; 
-        return $last_id;
+        return json_encode(['user_mail'=>$last_id]);
     }else{
         $error = "failed"; 
         echo $error;
@@ -212,18 +212,37 @@ function StrNum_Contain_char($num_stagier){
 }
 
 
-function Creat_Student_User($Nom,$Prenom,$Num_inscrp,$r_id,$connection){
-    $return_result = false; 
+function Creat_Student_User($Nom,$Prenom,$Num_inscrp,$r_id,$status,$connection){
+$return_result = false; 
+ if($status == 'Etudiant'){
     try{
-    $sql = "INSERT INTO etudiant (id,user_id,Nom,Prenom,Num_inscr) 
-    VALUES(null,'$r_id','$Nom','$Prenom','$Num_inscrp')";
+        // SQL request for 'Student'
+    $sql = "INSERT INTO etudiant (id,user_id,Nom,Prenom,Num_inscr,Status) 
+    VALUES(null,'$r_id','$Nom','$Prenom','$Num_inscrp','$status')";
     $connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
     $connection -> exec($sql); 
+    $connection -> close(); 
     }
     catch(PDOException $e){
       echo $e->getMessage(); 
     }
     $connection = null; 
+}
+ if($status == 'Professeur'){
+    try{
+        // SQL request for 'teacher'
+        $sql = "INSERT INTO professeur(id,Prof_id,Nom,Prenom,Status)
+      VALUES(null,'$r_id','$Nom','$Prenom','$status')";
+    $connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
+    $connection -> exec($sql); 
+    $connection -> close(); 
+
+    }catch(PDOException $e){
+        echo $e ->getMessage();
+    }
+
+}   
+    
 }
 
 ?>

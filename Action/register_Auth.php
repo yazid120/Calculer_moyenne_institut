@@ -17,22 +17,31 @@ if(isset($postData)){
   //Hashing the Password 
   $hashed_pwd = password_hash($User_password, PASSWORD_DEFAULT);
 
+  $error = array(); 
+
    if(emptyInputSignUp($User_Name,$User_email,$User_password,$User_repassword)){
-    echo 'empty inputs fields'; 
+     array_push($error,'empty inputs fields'); 
+     echo json_encode($error);
     exit(); 
    } 
    if(invalidUserName($User_Name)!==false){
-      echo 'Invalid User Name'; 
+       array_push($error,'Invalid User Name'); 
+       echo json_encode($error); 
       exit();
    }
    if(unmatched_Password($User_password,$User_repassword) !== false){
-      echo 'password does not match';
+      array_push($error,'password does not match');
+      echo json_encode($error);
+      
       exit(); 
    }
    if(inputInfos_exist($connection,$User_email,$User_Name) !== false){
-      echo 'User already exist !!'; 
+      array_push($error,'User already exist !!'); 
+      echo json_encode($error);
       exit();
    }
+   
+   if(count($error) == 0)
    echo Create_user($connection,$User_Name,$User_email,$User_password);
 
 

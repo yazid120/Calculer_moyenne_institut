@@ -14,6 +14,7 @@ if(isset($Post_Data)){
 
     if(No_Status_choised($user_status) !== false){
         echo 'No Status was choised'; 
+        exit(); 
     }
     
     if(Affect_Status($user_status) === 'Affecter au stagier'){

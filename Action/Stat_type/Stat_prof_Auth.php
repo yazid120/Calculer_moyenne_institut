@@ -35,12 +35,33 @@ if(isset($Post_data)){
     $Nom = Validate_data($Nom_bef); 
     $Prenom = Validate_data($prenom_bef); 
     
+    
+
     if(empty_loginInputs($Nom,$Prenom) !== false){
         echo 'empty status inputs'; 
         exit(); 
     }
 
+    $Status = $request->Status; 
+    $email_ref = $request-> email; 
+
+    // Creat a request to subtract the id of the user
+    $sql = "SELECT `id` FROM `users` WHERE users.usersemail = :email_ref";
     
+    $stmt = $conn->prepare($sql);
+    $s = $stmt->bindParam(':email_ref', $email_ref, PDO::PARAM_STR);
+    $stmt->execute(); 
+    $ref_id = $stmt->fetch(PDO::FETCH_ASSOC);
+    $ref_id = $ref_id['id']; 
+
+
+    if(Creat_Student_User($Nom,$Prenom,$Num_Stagier,$ref_id,$Status,$conn) === false){
+        echo 'Submition Failed'; 
+        exit(); 
+    }else{
+        echo 'successful student submition'; 
+        exit(); 
+    }
 }
 
 

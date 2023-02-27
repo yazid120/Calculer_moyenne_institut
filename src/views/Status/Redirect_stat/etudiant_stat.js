@@ -63,7 +63,8 @@ class Etudiant_stat extends Component{
             nom:this.state.nom, 
             prenom:this.state.prenom, 
             num_stagier:this.state.num_stagier,
-            email: localStorage.getItem('UserId')
+            email: localStorage.getItem('UserId'),
+            Status: localStorage.getItem('User_status')
         }
 
         let empty_input_error = document.getElementById('empty_input_error'); 
@@ -96,10 +97,10 @@ class Etudiant_stat extends Component{
 
     render(){
          let Sets_Object=[
-            {F_name:'First Name'},
-            {L_name:'Last Name'},
+            {F_name:'Nom'},
+            {L_name:'Prenom'},
             {Num_inscr:'registration number'},
-            {Sub_sets_btn:'Finish'}
+            {Sub_sets_btn:'Terminer'}
          ]; 
          let Error_infos =[
           {empty_input:'Empty input fields'}, 

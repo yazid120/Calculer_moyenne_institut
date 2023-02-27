@@ -41,7 +41,8 @@ CREATE TABLE etudiant(
    FOREIGN KEY (user_id) REFERENCES users(id),
   `Nom` varchar(128) NOT NULL,
   `Prenom` varchar(128) NOT NULL,
-  `Num_inscr` int(11) NOT NULL
+  `Num_inscr` int(11) NOT NULL,
+  `Status` varchar(35) NOT NULL
 );
 
 --
@@ -53,7 +54,8 @@ CREATE TABLE Professeur(
   `Prof_id` int(11),
   FOREIGN KEY (Prof_id) REFERENCES users(id),
   `Nom` varchar(128) NOT NULL, 
-  `Prenom` varchar(128) NOT NULL
+  `Prenom` varchar(128) NOT NULL,
+  `Status` varchar(35) NOT NULL
 ); 
 
 --
