@@ -250,3 +250,32 @@ td{
     padding: 2px; 
     cursor: pointer;
 }
+
+/* error handle profile  */
+.hide{
+    display: none; 
+}
+.show{
+    display: flex; 
+}
+.error_handling{
+    box-sizing: border-box;
+    display:flex; 
+    align-items: center; justify-content: center;
+    margin : 0rem; 
+    padding: 0rem; 
+}
+.error_alix{ 
+    -webkit-box-sizing: border-box;
+    -webkit-box-flex: 0;
+    box-sizing: border-box; 
+    font-size: 20px; 
+    color: rgb(148, 85, 85);
+    background-color: var(--Authentcation_error_Bg_Color); 
+    align-items: center;
+    justify-content: center;
+    width: 45%; 
+    height: 3rem; 
+    border: 1px solid #000 !important; 
+    border-radius: 5px;
+}

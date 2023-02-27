@@ -9,18 +9,19 @@ $Obj_Db = new DbConnect;
 $conn = $Obj_Db->connect(); 
 
 
-if(isset($_GET['status'])){
-    if($_GET['status'] == 'Professeur'){
-      $role = 'Professeur'; 
-    }else{
-        $role = 'none'; 
-    } 
-}else{ //echo 'null reponse';
-}
+// if(isset($_GET['status'])){
+//     if($_GET['status'] == 'Professeur'){
+//       $role = 'Professeur'; 
+//     }else{
+//         $role = 'none'; 
+//     } 
+// }else{ //echo 'null reponse';
+// }
 
  
 $Post_data = file_get_contents('php://input'); 
 $request = json_decode($Post_data); 
+
 
 if(isset($Post_data)){
     function Validate_data($data){
@@ -29,17 +30,18 @@ if(isset($Post_data)){
         $data_return = htmlspecialchars($data); 
      return $data_return; 
     }
+
     $Nom_bef = $request -> nom;
     $prenom_bef = $request -> prenom; 
     
     
     $Nom = Validate_data($Nom_bef); 
     $Prenom = Validate_data($prenom_bef); 
-    
-    $error = array(); 
+     
 
-    if(empty_loginInputs($Nom,$Prenom) !== false){
-      array_push($error,'empty status inputs');  
+    if(empty_loginInputs($Nom,$Prenom)){
+        echo 'empty status inputs';
+    //   array_push($error,'empty status inputs');  
       exit(); 
     }
 
@@ -59,7 +61,7 @@ if(isset($Post_data)){
         echo 'Submition Failed'; 
         exit(); 
     }else{
-        echo 'successful student submition'; 
+        echo 'successful Teacher submition'; 
         exit(); 
     }
     

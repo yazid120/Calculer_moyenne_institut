@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom';
 
 let Admin = function(){
   const [users, SetUsers] = useState([]); 
- 
-
   const Navigate = useNavigate(); 
 
 

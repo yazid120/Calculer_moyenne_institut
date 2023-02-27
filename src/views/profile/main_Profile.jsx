@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Component } from "react";
 import axios from "axios";
 
 
 function Main_Profile(){
+  const [user_profile, SetuserProfile] = useState([]); 
+
   let userId = localStorage.getItem('UserId'); 
+  let userStatus = localStorage.getItem('User_status'); 
   
-    let user_infos ={ 
-    email : userId
-   } 
+  let user_infos ={ 
+    email : userId,
+    user_stat : userStatus
+  } 
 
 
-   axios.post('http://localhost/Calculer_moyenne_institut/Action/Session/Session.php',
+   axios.post('http://localhost/Calculer_moyenne_institut/Action/Session/Session.php?path=2',
    user_infos).then(function (response){
     let e = response.data;
     
-     console.log(e); 
+    SetuserProfile(response.data); 
+    //  console.log(e); 
      
    });
 
@@ -30,10 +35,21 @@ function Main_Profile(){
            <h2>Your profile information</h2>
          </div>
          <div className="Profile_userInfos01355">
-            <p>Nom: <span></span></p>
-            <p>Email: <span></span></p>
-            <p>Date d'inscription:<span></span></p>
-            <p>Status Utulisateur:</p>
+        {  
+         Object.keys(user_profile).map((index,key)=>{
+          // console.log(Object.keys(user_profile));
+          //  console.log(index);
+          
+        
+          <div>
+            {/* <p>Nom:{key} <span>{}</span></p>
+            <p>Email: <span>{}</span></p>
+            <p>Date d'inscription:<span>{}</span></p> */}
+          </div>
+          })
+        }
+
+            <p>Status Utulisateur: <span><b>{userStatus}</b></span></p>
          </div>
         </section>
         </div>

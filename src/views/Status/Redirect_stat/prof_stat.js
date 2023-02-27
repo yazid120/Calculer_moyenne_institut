@@ -10,26 +10,27 @@ class Prof_Status extends Component{
       this.isloading = this.isloading.bind(this); 
       this.setToloading = this.setToloading.bind(this); 
       this.Submit_stat = this.Submit_stat.bind(this); 
+      this.OnChangeNom = this.OnChangeNom.bind(this); 
+      this.OnChangePrenom = this.OnChangePrenom.bind(this); 
+
 
       this.state ={
         nom:'',
         prenom:'',
-        user_state:'',
-        email: localStorage.getItem('UserId'),
-        Status: localStorage.getItem('UserStatus')
+        user_state:''
       };
     }
 
     OnChangeNom(e){
       this.setState({
-        nom:e.target.value
+         nom:e.target.value
       });
-    }
-    OnChangePrenom(e){
-      this.setState({
-        prenom:e.target.value
-      });
-    }
+     }
+     OnChangePrenom(e){
+       this.setState({
+         prenom:e.target.value
+       })
+     }
 
     isloading(event){
         event = this.state.state_load = false; 
@@ -43,25 +44,32 @@ class Prof_Status extends Component{
         Submit_stat(e){
             e.preventDefault(); 
 
-        let  stat_prof ={
+        let stat_prof ={
           nom:this.state.nom, 
           prenom:this.state.prenom,
           email: localStorage.getItem('UserId'),
           Status: localStorage.getItem('User_status')
         }
+         
 
         let empty_input_error = document.getElementById('empty_input_error'); 
-
        axios.post('http://localhost/Calculer_moyenne_institut/Action/Stat_type/Stat_prof_Auth.php'
             ,stat_prof).then(response =>{
-              console.log(response.data); 
+
+              if(response.data == 'empty status inputs'){
+                empty_input_error.classList.replace('hide','show');
+              }else{
+                empty_input_error.classList.replace('show','hide'); 
+              }
+              console.log(response.data);
+              localStorage.removeItem('local_status'); 
+              window.location.replace('/profile');
              
             })
             // console.log(this.setToloading(e)); 
         }
 
     render(){
-        // const [isloading, setToloading] = useState(false); 
         let Sets_Object=[
             {F_name:'Nom'},
             {L_name:'Prenom'},
@@ -87,12 +95,14 @@ class Prof_Status extends Component{
                 <label htmlFor="" className="foreign_side_cl">
                     {Sets_Object[0].F_name}
                 </label>
-                <input type="text" className="Status_input_Vle"/>
+                <input type="text" className="Status_input_Vle"
+                value={this.state.nom} onChange={this.OnChangeNom}/>
 
                 <label htmlFor="" className="foreign_side_cl">
                    {Sets_Object[1].L_name}
                 </label>
-                <input type="text" className="Status_input_Vle"/>
+                <input type="text" className="Status_input_Vle"
+                value={this.state.prenom} onChange={this.OnChangePrenom}/>
 
                 <button type="submit" className="sub_stat_user_Button"
                 onClick={this.Submit_stat}>

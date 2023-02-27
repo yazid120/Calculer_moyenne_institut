@@ -227,13 +227,13 @@ $return_result = false;
     }
     $connection = null; 
 }
+}
 
 function CreateUser_Prof($Nom,$Prenom,$r_id,$status,$connection){
 if($status == 'Professeur'){
-     
     try{
         // SQL request for 'teacher'
-        $sql = "INSERT INTO professeur(id,Prof_id,Nom,Prenom,Status)
+        $sql = "INSERT INTO professeur (id,Prof_id,Nom,Prenom,Status)
       VALUES(null,'$r_id','$Nom','$Prenom','$status')";
     $connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
     $connection -> exec($sql); 
@@ -242,10 +242,11 @@ if($status == 'Professeur'){
     }catch(PDOException $e){
         echo $e ->getMessage();
     }
+    $connection = null; 
+}
 
-}   
-}
+}  
     
-}
+
 
 ?>
