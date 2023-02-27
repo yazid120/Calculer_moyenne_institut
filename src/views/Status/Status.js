@@ -13,6 +13,7 @@ class Status extends Component{
     
   this.state ={
     status : '',
+    Valid_access : localStorage.getItem('local_status')
   }
 }
 GetInitial_Stat(){
@@ -45,12 +46,14 @@ OnChange_status(e){
 
 Status_submit(e){
     e.preventDefault(); 
+
     let User_Status = {
       status:this.state.status,
     }
-    // let Navigate = useNavigate(); 
+
     let submit_btn = document.getElementById('Submit_status_btn'); 
-    let no_choise_stat = document.getElementById('error_noChoise_Access'); 
+    let no_choise_stat = document.getElementById('error_noChoise_Access');
+     
     axios.post('http://localhost/Calculer_moyenne_institut/Action/Status_Auth.php',
     User_Status).then(response =>{
        if(response.data == 'No Status was choised'){
@@ -62,15 +65,13 @@ Status_submit(e){
        if(response.data == 'Status: Etudient'){
         response_ = 'Etudiant'; 
         localStorage.setItem('User_status',response_);
-          window.location.assign('/Status/Etudiant_stat?status='+response_);
+         window.location.assign('/Status/Etudiant_stat?status='+response_);
         
        }else if(response.data == 'Status: Prof'){
         response_ = 'Professeur'; 
         localStorage.setItem('User_status',response_);
          window.location.assign('/Status/Prof_stat?status='+response_);
 
-       }else{
-        console.error('error'); 
        }
       console.log(response.data); 
     })

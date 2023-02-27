@@ -103,10 +103,11 @@ onsubmitRegister(e){
       Unmatched_pwd_error.classList.replace('show','hide'); 
    }
    
-  if(C !== null){
-   localStorage.setItem('UserId',response.data);
+   if(response.data.user_mail == this.state.email){
+   localStorage.setItem('UserId',response.data.user_mail);
+   localStorage.setItem('local_status', true);
    window.location.replace('/Status'); 
-  }
+}
  
  }); 
  

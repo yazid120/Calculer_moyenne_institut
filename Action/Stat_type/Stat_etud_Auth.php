@@ -45,6 +45,7 @@ if(isset($Post_data)){
         exit(); 
     }
 
+    $Status = $request->Status; 
     $email_ref = $request-> email; 
     // Creat a request to subtract the id of the user
     $sql = "SELECT `id` FROM `users` WHERE users.usersemail = :email_ref";
@@ -55,7 +56,7 @@ if(isset($Post_data)){
     $ref_id = $stmt->fetch(PDO::FETCH_ASSOC);
     $ref_id = $ref_id['id']; 
 
-    if(Creat_Student_User($Nom,$Prenom,$Num_Stagier,$ref_id,$conn) === false){
+    if(CreateUser_Student($Nom,$Prenom,$Num_Stagier,$ref_id,$Status,$conn) === false){
         echo 'Submition Failed'; 
         exit(); 
     }else{

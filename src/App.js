@@ -18,7 +18,7 @@ import Footer from "./footer";
 import Logout from "./views/Logout";
 //Profile link
 import Profile from "./views/profile/profile";
-import Admin from "./views/profile/Admin";
+import Admin from "./views/profile/Admin/Admin";
 import Dashboard from "./views/profile/component_profile/Dashboard";
 import SideBar from "./views/profile/component_profile/SideBar";
 import Infos from "./views/profile/component_profile/infos";

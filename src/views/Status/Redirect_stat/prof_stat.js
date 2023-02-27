@@ -15,6 +15,8 @@ class Prof_Status extends Component{
         nom:'',
         prenom:'',
         user_state:'',
+        email: localStorage.getItem('UserId'),
+        Status: localStorage.getItem('UserStatus')
       };
     }
 
@@ -41,27 +43,29 @@ class Prof_Status extends Component{
         Submit_stat(e){
             e.preventDefault(); 
 
-            let  stat_prof ={
-            nom:this.state.nom, 
-            prenom:this.state.prenom,
-            }
-            let empty_input_error = document.getElementById('empty_input_error'); 
-            axios.post('http://localhost/Calculer_moyenne_institut/Action/Stat_type/Stat_prof_Auth.php'
+        let  stat_prof ={
+          nom:this.state.nom, 
+          prenom:this.state.prenom,
+          email: localStorage.getItem('UserId'),
+          Status: localStorage.getItem('User_status')
+        }
+
+        let empty_input_error = document.getElementById('empty_input_error'); 
+
+       axios.post('http://localhost/Calculer_moyenne_institut/Action/Stat_type/Stat_prof_Auth.php'
             ,stat_prof).then(response =>{
               console.log(response.data); 
-              if(response.data == 'empty status inputs'){
-                empty_input_error.classList.replace('hide','show'); 
-              }else{empty_input_error.classList.replace('show','hide'); }
+             
             })
-            console.log(this.setToloading(e)); 
+            // console.log(this.setToloading(e)); 
         }
 
     render(){
         // const [isloading, setToloading] = useState(false); 
         let Sets_Object=[
-            {F_name:'First Name'},
-            {L_name:'Last Name'},
-            {Sub_sets_btn:'Finish'}
+            {F_name:'Nom'},
+            {L_name:'Prenom'},
+            {Sub_sets_btn:'Terminer'}
          ];
          let Error_infos =[
           {empty_input:'Empty input fields'}, 
