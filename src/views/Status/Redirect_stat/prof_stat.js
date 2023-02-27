@@ -51,14 +51,13 @@ class Prof_Status extends Component{
         }
 
         let empty_input_error = document.getElementById('empty_input_error'); 
-          axios.post('http://localhost/Calculer_moyenne_institut/Action/Stat_type/Stat_prof_Auth.php'
+
+       axios.post('http://localhost/Calculer_moyenne_institut/Action/Stat_type/Stat_prof_Auth.php'
             ,stat_prof).then(response =>{
               console.log(response.data); 
-              if(response.data == 'empty status inputs'){
-                empty_input_error.classList.replace('hide','show'); 
-              }else{empty_input_error.classList.replace('show','hide'); }
+             
             })
-            console.log(this.setToloading(e)); 
+            // console.log(this.setToloading(e)); 
         }
 
     render(){

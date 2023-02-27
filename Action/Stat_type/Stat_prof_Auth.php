@@ -3,20 +3,21 @@ if(session_status() == 1){
     session_start(); 
 }
 require_once '../functions.php';
-require_once '../db_connection.php'; 
+require_once '../db_Class_conn.php';
 
-// echo'prof status';
+$Obj_Db = new DbConnect; 
+$conn = $Obj_Db->connect(); 
+
 
 if(isset($_GET['status'])){
     if($_GET['status'] == 'Professeur'){
       $role = 'Professeur'; 
     }else{
         $role = 'none'; 
-    }
-    echo $role; 
+    } 
 }else{ //echo 'null reponse';
 }
-echo phpinfo(); 
+
  
 $Post_data = file_get_contents('php://input'); 
 $request = json_decode($Post_data); 
@@ -35,11 +36,11 @@ if(isset($Post_data)){
     $Nom = Validate_data($Nom_bef); 
     $Prenom = Validate_data($prenom_bef); 
     
-    
+    $error = array(); 
 
     if(empty_loginInputs($Nom,$Prenom) !== false){
-        echo 'empty status inputs'; 
-        exit(); 
+      array_push($error,'empty status inputs');  
+      exit(); 
     }
 
     $Status = $request->Status; 
@@ -54,14 +55,14 @@ if(isset($Post_data)){
     $ref_id = $stmt->fetch(PDO::FETCH_ASSOC);
     $ref_id = $ref_id['id']; 
 
-
-    if(Creat_Student_User($Nom,$Prenom,$Num_Stagier,$ref_id,$Status,$conn) === false){
+    if(CreateUser_Prof($Nom,$Prenom,$ref_id,$Status,$conn) === false){
         echo 'Submition Failed'; 
         exit(); 
     }else{
         echo 'successful student submition'; 
         exit(); 
     }
+    
 }
 
 
