@@ -12,12 +12,12 @@ function Main_Profile(){
     id : userId,
   } 
   console.log(user_infos); 
-  
+
   useEffect(()=>{
    axios.post('http://localhost/Calculer_moyenne_institut/Action/Session/Session.php',
    user_infos).then(function(response){
     let c = response.data;
-    console.log(c); 
+    console.log(c.Status); 
     SetuserProfile(response.data); 
    });
   },[]); 
@@ -36,10 +36,8 @@ function Main_Profile(){
               {/* <p>Email: <span></span></p>
               <p>Date d'inscription:<span></span></p>  */}
           </div>
-          
           )
           }
-            <p>Status Utulisateur: <span><b>p</b></span></p>
          </div>
         </section>
         </div>
