@@ -63,7 +63,7 @@ class Etudiant_stat extends Component{
             nom:this.state.nom, 
             prenom:this.state.prenom, 
             num_stagier:this.state.num_stagier,
-            email: localStorage.getItem('UserId'),
+            id: localStorage.getItem('UserId'),
             Status: localStorage.getItem('User_status')
         }
 
@@ -88,7 +88,8 @@ class Etudiant_stat extends Component{
             section_nb_char.classList.replace('show','hide');
           }else{section_nb_char.classList.replace('show','hide');}
           if(response.data == 'successful student submition'){
-            alert('student created'); 
+            localStorage.removeItem('local_status'); 
+            localStorage.removeItem('User_status');
             window.location.replace('/profile');
           }
         });

@@ -1,32 +1,27 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import { Component } from "react";
 import axios from "axios";
 
 
 function Main_Profile(){
   const [user_profile, SetuserProfile] = useState([]); 
-
   let userId = localStorage.getItem('UserId'); 
-  let userStatus = localStorage.getItem('User_status'); 
+  
   
   let user_infos ={ 
-    email : userId,
-    user_stat : userStatus
+    id : userId,
   } 
-
-
-   axios.post('http://localhost/Calculer_moyenne_institut/Action/Session/Session.php?path=2',
-   user_infos).then(function (response){
-    let e = response.data;
-    
+  console.log(user_infos); 
+  
+  useEffect(()=>{
+   axios.post('http://localhost/Calculer_moyenne_institut/Action/Session/Session.php',
+   user_infos).then(function(response){
+    let c = response.data;
+    console.log(c); 
     SetuserProfile(response.data); 
-    //  console.log(e); 
-     
    });
+  },[]); 
 
-   
-  
-  
     return(
         <>
         <div className="dx_box-format">
@@ -35,21 +30,16 @@ function Main_Profile(){
            <h2>Your profile information</h2>
          </div>
          <div className="Profile_userInfos01355">
-        {  
-         Object.keys(user_profile).map((index,key)=>{
-          // console.log(Object.keys(user_profile));
-          //  console.log(index);
-          
-        
-          <div>
-            {/* <p>Nom:{key} <span>{}</span></p>
-            <p>Email: <span>{}</span></p>
-            <p>Date d'inscription:<span>{}</span></p> */}
+          {Object.keys(user_profile).map((index,key) =>
+          <div key={key}>
+              <p>{index} : <span><b>{user_profile[index]}</b></span></p>
+              {/* <p>Email: <span></span></p>
+              <p>Date d'inscription:<span></span></p>  */}
           </div>
-          })
-        }
-
-            <p>Status Utulisateur: <span><b>{userStatus}</b></span></p>
+          
+          )
+          }
+            <p>Status Utulisateur: <span><b>p</b></span></p>
          </div>
         </section>
         </div>

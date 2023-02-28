@@ -1,5 +1,6 @@
 <?PHP 
 include '../db_Class_conn.php'; 
+require_once '../Config/config.php'; 
 
 $objDb = new DbConnect;
 $conn = $objDb->connect();
@@ -7,30 +8,31 @@ $conn = $objDb->connect();
 
 $id_data = file_get_contents('php://input'); 
 $request = json_decode($id_data); 
+$method = REQUEST_METHOD;
 
-if(isset($id_data)){
-    $email = $request->email; 
-    $user_status = $request->user_stat;
+switch($method){
 
-    
-    // $result = mysqli_query($connection,$sql);  
-    $path = explode('/', $_SERVER['REQUEST_URI']);
-    print_r($path[4]); 
+  case'POST': 
+  $sql = "SELECT Nom,Prenom,Num_inscr,usersemail,Date_user,Status FROM 
+  `users`,`etudiant` WHERE etudiant.user_id=:id"; 
 
-    if(isset($path[4]) && is_numeric($path[4])) {
-        $sql = "SELECT `usersName`,`usersEmail`,`Date_user` FROM users WHERE usersemail='$email'"; 
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id', $path[3]);
-        $stmt->execute();
-        $users = $stmt->fetch(PDO::FETCH_ASSOC);
+    if(isset($id_data)){
+     $id = $request->id;
+     $stmt = $conn->prepare($sql);
+     $stmt->bindParam(':id', $id);
     }
-
+    if($stmt->execute()){
+        $data = ['Status' => 1,'record'=>'Successful execution'];
+        $users = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+    }else{
+        $data = ['Status' => 0,'record'=>'Failed execution']; 
+    }
+    $conn = null; 
     echo json_encode($users);
-
-}else{
-    echo 'invalid access !!'; 
+   
+    
 }
-
 
 
 ?>

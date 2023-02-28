@@ -71,8 +71,8 @@ function Create_user($connection,$User_Name,$User_email,$userPassword){
     $response = $connection->query($sql); 
 
     if($response){
-        $last_id = $User_email; 
-        return json_encode(['user_mail'=>$last_id]);
+        $last_id = mysqli_insert_id($connection); 
+        return json_encode([['id'=>$last_id]]);
     }else{
         $error = "failed"; 
         echo $error;
@@ -107,6 +107,23 @@ function invalid_userName($connection,$user_Email,$User_Name){
     return $return_result; 
 }
 
+function invalid_Email($connection,$userEmail,$User_Name){
+    $return_result = false;
+    $input_infos_existsResult = inputInfos_exist($connection,$userEmail,$userEmail);
+    if($input_infos_existsResult === false){
+        return 'Connection infos problem';
+    }
+    $local_Email = $input_infos_existsResult['usersemail']; 
+    if($userEmail !== $local_Email){
+        $return_result = true; 
+    }else{
+        $return_result = false;
+    }
+    return $return_result; 
+
+}
+
+
 function Login_user($connection,$user_Email,$userPassword){  
     $return_result = false; 
     $input_infos_existsResult = inputInfos_exist($connection,$user_Email,$user_Email); 
@@ -126,7 +143,7 @@ function Login_user($connection,$user_Email,$userPassword){
     else if($check_usr_pwd === true){
         // return 'User login successfuly';
         $return_result = true; 
-        return json_encode([['email' =>$ref_email]]); 
+        return json_encode([['id' =>$ref_id]]); 
     }
     
 }

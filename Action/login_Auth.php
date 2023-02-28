@@ -1,31 +1,46 @@
 <?php
  require_once './db_connection.php'; 
  require_once './functions.php'; 
-// echo 'login authentification'; 
+
+// 'login authentification'; 
  $postData = file_get_contents("php://input"); 
  $request = json_decode($postData); 
-//  var_dump($request) ; 
+
 if(isset($postData)){
     $User_email = $request->email; 
     $User_Password = $request->password;
     $User_Name = $request->Name;
-    $user_paset = 10; 
     
-    $_POST['UserName'] = $User_Name; 
-    $_POST['UserEmail'] = $User_email; 
-    $_POST['UserPassword'] = $User_Password; 
-     
+    $error = array();
+    $success = array();
 
     if(empty_loginInputs($User_email,$User_Password)){
-       echo 'empty inputs'; 
+      array_push($error,'empty inputs'); 
+      echo json_encode($error);
        exit(); 
     }
     if(invalid_userName($connection,$User_email,$User_Name) !== false){
-       echo 'User Name dont match'; 
+       array_push($error,'User Name dont match'); 
+       echo json_encode($error);
        exit(); 
     }
+    if(invalid_Email($connection,$User_email,$User_Name) !==false){
+        array_push($error,'unexistent email address'); 
+        echo json_encode($error); 
+        exit();
+    }
     
-    echo Login_user($connection,$User_email,$User_Password); 
+
+    
+    if(Login_user($connection,$User_email,$User_Password) == false){
+      array_push($error,'wrong pwd'); 
+       echo json_encode($error); 
+       exit(); 
+    }else{
+        echo Login_user($connection,$User_email,$User_Password); 
+        exit();
+    }
+
         
      
 }else{

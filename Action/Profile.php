@@ -28,6 +28,7 @@ switch($method){
         $stmt->execute();
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    $conn = null;
 
     echo json_encode($users);
     

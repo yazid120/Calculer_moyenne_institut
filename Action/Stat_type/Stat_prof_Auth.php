@@ -46,16 +46,16 @@ if(isset($Post_data)){
     }
 
     $Status = $request->Status; 
-    $email_ref = $request-> email; 
+    $ref_id = $request-> id; 
 
     // Creat a request to subtract the id of the user
-    $sql = "SELECT `id` FROM `users` WHERE users.usersemail = :email_ref";
+    // $sql = "SELECT `id` FROM `users` WHERE users.usersemail = :email_ref";
     
-    $stmt = $conn->prepare($sql);
-    $s = $stmt->bindParam(':email_ref', $email_ref, PDO::PARAM_STR);
-    $stmt->execute(); 
-    $ref_id = $stmt->fetch(PDO::FETCH_ASSOC);
-    $ref_id = $ref_id['id']; 
+    // $stmt = $conn->prepare($sql);
+    // $s = $stmt->bindParam(':email_ref', $email_ref, PDO::PARAM_STR);
+    // $stmt->execute(); 
+    // $ref_id = $stmt->fetch(PDO::FETCH_ASSOC);
+    // $ref_id = $ref_id['id']; 
 
     if(CreateUser_Prof($Nom,$Prenom,$ref_id,$Status,$conn) === false){
         echo 'Submition Failed'; 

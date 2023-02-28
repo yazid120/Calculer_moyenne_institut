@@ -63,9 +63,6 @@ class Login extends Component{
   
   onSubmitionLogin(e){
    e.preventDefault(); 
-   let error_Handle=[
-    {empty_input:'input fields are empty'}
-   ]
 
    let login_Object ={
      email:this.state.email,
@@ -75,14 +72,13 @@ class Login extends Component{
    let error_element = document.getElementById('empty_input_error'); 
    let invalid_usr_info = document.getElementById('invalid_user_infos'); 
    let Unmatched_user_name = document.getElementById('user_name_error'); 
-   let wrong_pwd_r = document.getElementById('wrong_password_rr'); 
+   let unexistent_email_address = document.getElementById('unxist_mail_add'); 
   axios.post('http://localhost/Calculer_moyenne_institut/Action/login_Auth.php',login_Object)
   .then(
       response=>{
         console.log(response.data); 
         // Empty inputs infos
         if(response.data == 'empty inputs'){
-        // document.getElementById('error_login_handle').appendChild(element_error); 
           error_element.classList.replace('hide','show'); 
         }else{
           error_element.classList.replace('show','hide'); 
@@ -99,26 +95,21 @@ class Login extends Component{
         }else{
           Unmatched_user_name.classList.replace('show','hide'); 
         }
-        // Wrong password 
-        if(response.data == 'incorrect password'){
-          // console.log('Wrong password'); 
-          wrong_pwd_r.classList.replace('hide','show');
+        // Unexistent user email address
+        if(response.data == 'unexistent email address'){
+          unexistent_email_address.classList.replace('hide','show');
         }else{
-          wrong_pwd_r.classList.replace('show','hide');
+          unexistent_email_address.classList.replace('show','hide'); 
         }
         
-        if(response.data[0].email == this.state.email){
-          // dispatch({type:'USER', payload:true}
-          window.localStorage.setItem('UserId',response.data[0].email); 
-          
-        window.location.replace('/profile'); 
+        if(response.data[0].id){
+          window.localStorage.setItem('UserId',response.data[0].id); 
+          window.location.replace('/profile');  
         }else{
-          console.log('error: invalid email or password'); 
+         
         }
-      
-          
 
-    }); 
+    }) 
   }
  
     render(){
@@ -134,7 +125,7 @@ class Login extends Component{
             {empty_input:'input fields are empty'}, 
             {invalid_usr_inf:'invalid user infos'},
             {user_name_error:'User name does not match'},
-            {wrng_pwd:'Wrong password'}
+            {wrng_pwd:'unexistent email address'}
           ];
       return(
       <>
@@ -150,7 +141,7 @@ class Login extends Component{
        <p id="user_name_error" className="error_alix hide">
          {Error_infos[2].user_name_error}
        </p>
-       <p id="wrong_password_rr" className='error_alix hide'>
+       <p id="unxist_mail_add" className='error_alix hide'>
         {Error_infos[3].wrng_pwd}
        </p>
       </div>

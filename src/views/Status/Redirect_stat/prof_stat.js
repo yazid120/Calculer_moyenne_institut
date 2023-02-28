@@ -47,7 +47,7 @@ class Prof_Status extends Component{
         let stat_prof ={
           nom:this.state.nom, 
           prenom:this.state.prenom,
-          email: localStorage.getItem('UserId'),
+          id: localStorage.getItem('UserId'),
           Status: localStorage.getItem('User_status')
         }
          
@@ -61,9 +61,11 @@ class Prof_Status extends Component{
               }else{
                 empty_input_error.classList.replace('show','hide'); 
               }
-              console.log(response.data);
+            if(response.data = 'successful Teacher submition'){
               localStorage.removeItem('local_status'); 
+              localStorage.removeItem('User_status');
               window.location.replace('/profile');
+            }
              
             })
             // console.log(this.setToloading(e)); 
