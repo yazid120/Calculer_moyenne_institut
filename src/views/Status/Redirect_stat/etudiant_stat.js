@@ -53,11 +53,6 @@ class Etudiant_stat extends Component{
 
          let status = []; 
          let url_header ='http://localhost:3000/Status/Etudiant_stat?status=Etudiant';
-         
-        /*fetch(url_header).then(response =>{
-            console.log(response.headers.get);
-        // });*/
-        
 
         let stat_etud ={
             nom:this.state.nom, 

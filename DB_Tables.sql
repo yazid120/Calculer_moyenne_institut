@@ -24,12 +24,20 @@ CREATE DATABASE `Calc_moy_insfp`;
 --
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE users(
- `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+ `id` bigint(20) NOT NULL,
  `usersName` varchar(128) NOT NULL,
   `usersemail` varchar(128) NOT NULL,
   `userspassword` varchar(128) NOT NULL,
-  `Date_user` timestamp
-);
+  `Date_user` timestamp,
+  `role_id` bigint(20) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `users`
+ADD PRIMARY KEY (`id`), 
+ADD KEY `role_id` (`role_id`);
+
+ALTER TABLE `users`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- CREATE `etudiant` TABLE inside `Calc_moy_insfp` database
@@ -42,7 +50,6 @@ CREATE TABLE etudiant(
   `Nom` varchar(128) NOT NULL,
   `Prenom` varchar(128) NOT NULL,
   `Num_inscr` int(11) NOT NULL,
-  `Status` varchar(35) NOT NULL
 );
 
 --
@@ -55,8 +62,8 @@ CREATE TABLE Professeur(
   FOREIGN KEY (Prof_id) REFERENCES users(id),
   `Nom` varchar(128) NOT NULL, 
   `Prenom` varchar(128) NOT NULL,
-  `Status` varchar(35) NOT NULL
 ); 
+
 
 --
 -- CREATE `Admin` TABLE inside `Calc_moy_insfp` database
@@ -71,3 +78,25 @@ CREATE TABLE Admin(
 -- Optional: Creation of Admin user by sql insertion 
 INSERT INTO `Admin` (id , Admin_mail, Admin_password) VALUES 
   (null,'Admin@gmail.com',md5('admin123')); 
+
+
+
+--
+--- CREATE `role` TABLE INSIDE `Calc_moy_insfp` Database
+--
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE role(
+ `role_id` bigint(20) NOT NULL, 
+ `role_name` varchar(128) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- 
+---- SET `role` tables primary key and unique key
+-- 
+ALTER TABLE `role`
+ADD PRIMARY KEY (`role_id`),
+ADD UNIQUE KEY (`role_name`);
+
+INSERT INTO `role` (`role_id`,`role_name`) VALUES
+(1,'Admin'), 
+(2,'Etudiant'), 
+(3,'Professeur');

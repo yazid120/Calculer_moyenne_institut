@@ -4,6 +4,26 @@ import { Link } from 'react-router-dom';
 import '../style/register.css';
 import axios from 'axios';
 import { AiOutlineEye , AiOutlineEyeInvisible} from 'react-icons/ai'; 
+import Select from 'react-select';
+
+const groupStyles = {
+   display: 'flex',
+   alignItems: 'center',
+   justifyContent: 'space-between',
+ };
+ const groupBadgeStyles = {
+   backgroundColor: '#EBECF0',
+   borderRadius: '2em',
+   color: '#172B4D',
+   display: 'inline-block',
+   fontSize: 12,
+   fontWeight: 'normal',
+   lineHeight: '1',
+   minWidth: 1,
+   padding: '0.16666666666667em 0.5em',
+   textAlign: 'center',
+ };
+
 
 class Register extends Component{
    // Consturctor function support
@@ -13,6 +33,7 @@ constructor(props){
    this.onChangeEmail = this.onChangeEmail.bind(this); 
    this.onChangePassword = this.onChangePassword.bind(this); 
    this.onChangeConfirmPassword = this.onChangeConfirmPassword.bind(this); 
+   this.onChangeuserRole = this.onChangeuserRole.bind(this); 
    this.onsubmitRegister = this.onsubmitRegister.bind(this); 
    this.checkInputFormat = false;  
    this.secureText_input = true;
@@ -23,6 +44,7 @@ constructor(props){
       email: '', 
       password: '', 
       ConfirmPassword: '', 
+      user_role:''
    }
 
 }
@@ -44,6 +66,11 @@ onChangePassword(e){
 onChangeConfirmPassword(e){
    this.setState({
       ConfirmPassword:e.target.value
+   })
+}
+onChangeuserRole(e){
+   this.setState({
+      user_role:e.target.value
    })
 }
 
@@ -69,6 +96,7 @@ onsubmitRegister(e){
       email:this.state.email, 
       password:this.state.password, 
       ConfirmPassword:this.state.ConfirmPassword,
+      user_role:this.state.user_role
    }
    let Empty_error = document.getElementById('empty_input_error');
    let Invalid_u_error = document.getElementById('Invalid_User_Name_error'); 
@@ -125,6 +153,11 @@ render(){
       {pass_repassNmarch :'Your repassword does not match your password'},
       {user_alredy_exist :'User already exist !!'}
    ];
+   let role_Object = [
+      {default_role:'Selectioner votre Status'},
+      {Stagier_role:'Stagier'},
+      {Professeur_role:'Professeur'}
+   ]
     return(
         <>
         <h1 className='heading_subtitle'>{registration_Object[0].head}</h1>
@@ -204,6 +237,19 @@ render(){
          </div>
       </div>
 
+      <select name="role_user" onChange={this.onChangeuserRole}
+      style={groupStyles} defaultValue={role_Object[0].default_role}>
+         <option>{role_Object[0].default_role}</option>
+         <option name="Stagier_role" value={role_Object[1].Stagier_role}
+         style={groupBadgeStyles}>
+            {role_Object[0].Stagier_role}
+         </option>
+         <option name="Professeur_role" value={role_Object[2].Stagier_role}
+         style={groupBadgeStyles}>
+           {role_Object[1].Professeur_role}
+         </option>
+      </select>
+
       {/* User registration Btn */}
          <button type="submit" name="register" className='submition_Btn'
          onClick={this.onsubmitRegister}>
@@ -214,6 +260,7 @@ render(){
         {/* <p>{this.state.name}</p>
         <p>{this.state.email}</p>
         <p>{this.state.password}</p> */}
+        <p>{this.state.user_role}</p>
         </>
     )
 }

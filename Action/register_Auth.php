@@ -13,6 +13,7 @@ if(isset($postData)){
    $User_email= $request->email;
    $User_password= $request->password; 
    $User_repassword= $request->ConfirmPassword;
+   $User_role = $request->user_role; 
    $date = time(); 
   //Hashing the Password 
   $hashed_pwd = password_hash($User_password, PASSWORD_DEFAULT);
@@ -32,7 +33,6 @@ if(isset($postData)){
    if(unmatched_Password($User_password,$User_repassword) !== false){
       array_push($error,'password does not match');
       echo json_encode($error);
-      
       exit(); 
    }
    if(inputInfos_exist($connection,$User_email,$User_Name) !== false){
