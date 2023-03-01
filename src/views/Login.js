@@ -5,7 +5,10 @@ import axios from 'axios';
 import UserContext from '../App';
 import '../style/register.css';
 import { AiOutlineEye , AiOutlineEyeInvisible} from 'react-icons/ai'; 
+import { FcLock } from 'react-icons/fc';
+import { MdAlternateEmail } from 'react-icons/md';
 import { updateExpression } from '@babel/types';
+
 
 
 class Login extends Component{
@@ -116,7 +119,7 @@ class Login extends Component{
       const {state, dispatch} = this.context;  
       let Display_infos = this.Display_infos;
           Display_infos=[
-             {label_Name:'Name:',label_class:'label_subForm'}, 
+             {label_Name:'User Name:',label_class:'label_subForm'}, 
              {label_Email:'Email address:'},
              {label_password:'Password:'}
            ]; 

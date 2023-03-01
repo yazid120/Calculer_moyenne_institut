@@ -196,7 +196,7 @@ render(){
         className='Registration_Format'>
       {/* User Name input */}
          <label htmlFor='' className='label_subForm'>
-            UserName:
+            User Name:
          </label><br />
          <input type="text" name="User_name"  
          className='registration_input' 
@@ -254,7 +254,7 @@ render(){
          </div>
       </div>
 
-      <select name="role_user" onChange={this.onChangeuserRole}
+      <select name="role_user" onChange={this.onChangeuserRole} className="Selection_specialties"
       style={groupStyles} defaultValue={role_Object[0].default_role}>
 
          <option value={""}>{role_Object[0].default_role}</option>
