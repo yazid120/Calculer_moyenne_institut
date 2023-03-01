@@ -14,7 +14,7 @@ if(isset($postData)){
    $User_password= $request->password; 
    $User_repassword= $request->ConfirmPassword;
    $User_role = $request->user_role; 
-   $date = time(); 
+   $date_inscr = null; 
   //Hashing the Password 
   $hashed_pwd = password_hash($User_password, PASSWORD_DEFAULT);
 
@@ -46,8 +46,8 @@ if(isset($postData)){
       exit(); 
    }
    
-   if(count($error) == 0)
-   echo Create_user($connection,$User_Name,$User_email,$User_password,$User_role);
+if(count($error) == 0)
+echo Create_user($connection,$User_Name,$User_email,$User_password,$date_inscr,$User_role);
 
 
 }else{ 

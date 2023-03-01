@@ -26,6 +26,7 @@ if(isset($Post_data)){
     $Nom_ref = $request->nom; 
     $Prenom_ref = $request->prenom; 
     $Num_Stagier = $request->num_stagier; 
+    $ref_id = $request-> id; 
 
 
     $Nom = Validate_data($Nom_ref); 
@@ -45,19 +46,8 @@ if(isset($Post_data)){
         exit(); 
     }
 
-    $Status = $request->Status; 
-    $ref_id = $request-> id; 
     
-    // Creat a request to subtract the id of the user
-    // $sql = "SELECT `id` FROM `users` WHERE users.usersemail = :email_ref";
-    
-    // $stmt = $conn->prepare($sql);
-    // $s = $stmt->bindParam(':email_ref', $email_ref, PDO::PARAM_STR);
-    // $stmt->execute(); 
-    // $ref_id = $stmt->fetch(PDO::FETCH_ASSOC);
-    // $ref_id = $ref_id['id']; 
-
-    if(CreateUser_Student($Nom,$Prenom,$Num_Stagier,$ref_id,$Status,$conn) === false){
+    if(CreateUser_Student($Nom,$Prenom,$Num_Stagier,$ref_id,$conn) === false){
         echo 'Submition Failed'; 
         exit(); 
     }else{

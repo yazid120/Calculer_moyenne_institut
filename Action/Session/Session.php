@@ -14,13 +14,13 @@ $method = REQUEST_METHOD;
 switch($method){
 
   case'POST': 
-  $sql = "SELECT * FROM `users`,`etudiant`,`professeur`
-   WHERE etudiant.user_id  OR professeur.Prof_id = :id"; 
+  $sql = "SELECT `usersName`,`usersemail`,`Date_user`,`role_name` FROM `users`,`role`
+  WHERE users.role_id = role.role_id AND users.id = :id"; 
 
     if(isset($id_data)){
      $id = $request->id;
      $stmt = $conn->prepare($sql);
-     $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':id', $id);
     }
     if($stmt->execute()){
         $data = ['Status' => 1,'record'=>'Successful execution'];
@@ -31,19 +31,8 @@ switch($method){
     }
     $conn = null; 
 
-    $etudiant = array();
-    $professeur = array();  
     echo json_encode($users);
-//   if($users['Status'] == 'Professeur'){
-//     array_push($professeur,$users['Nom'],$users['Prenom'],$users['usersemail'],
-//     $users['Date_user'],$users['Status']);
-//     echo json_encode($professeur); 
-//    }
-//    if($users['Status'] == 'Etudiant'){
-//     array_push($professeur,$users['Nom'],$users['Prenom'],$users['usersemail'],
-//     $users['Date_user'],$users['Num_inscr'],$users['Status']);
-//     echo json_encode($etudiant); 
-//    }
+
     
     
     

@@ -61,7 +61,7 @@ const Routing = () =>{
       <Route exact path='/Logout' element={<Logout/>} />
 
         {/* Status path routing */}
-      <Route exact path='/Status' element={<Status />} />
+      {/* <Route exact path='/Status' element={<Status />} /> */}
         {/* Student path routing */}
       <Route exact path='/Status/Etudiant_stat' element={<Etudiant_stat />} />
         {/* Teacher path routing */}

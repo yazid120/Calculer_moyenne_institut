@@ -62,19 +62,18 @@ function inputInfos_exist($connection,$userEmail,$userName){
     mysqli_stmt_close($connection); 
 }
 
-function Create_user($connection,$User_Name,$User_email,$userPassword,$User_role){
+function Create_user($connection,$User_Name,$User_email,$userPassword,$date_inscr,$User_role){
     
     if($User_role == 'Stagier'){
       $role_id = 2;
     }
     if($User_role == 'Professeur'){
-        $role_id = 1; 
+        $role_id = 3; 
     }
-
     $hashed_pwd = password_hash($userPassword, PASSWORD_DEFAULT); 
 
-    $sql = "INSERT INTO `users` (usersName,usersemail,userspassword,role_id) 
-    VALUES('$User_Name','$User_email','$hashed_pwd','$role_id')";
+$sql = "INSERT INTO `users` (usersName,usersemail,userspassword,Date_user,role_id) 
+    VALUES('$User_Name','$User_email','$hashed_pwd','$date_inscr','$role_id')";
     $response = $connection->query($sql); 
 
     if($response){
@@ -160,29 +159,22 @@ function Store_user_Session($connection,$user_Email,$userPassword,$session_infos
     $return_result = false;
     $session_infos = [];  
     $input_infos_existsResult = inputInfos_exist($connection,$user_Email,$user_Email); 
-
     if($input_infos_existsResult === false){
         return 'technical error'; 
     }
-
     if(Login_user($connection,$user_Email,$userPassword) !== false){
-
         if(!isset($_SESSION)) {
         session_start();
         $_SESSION['usersemail'] = $input_infos_existsResult['usersemail'];
         $_SESSION['usersName'] = $input_infos_existsResult['usersName']; 
         $_SESSION['userspassword'] = $input_infos_existsResult['userspassword']; 
        } 
-
         $session_infos[] = $_SESSION; 
     }
     return $session_infos; 
 
 }
-//return profile infos
-function Profile_infos($User_Name,$user_Email){
-    return $User_Name.''.$user_Email; 
-}
+
 
 
 // Status profile functions
@@ -237,13 +229,13 @@ function StrNum_Contain_char($num_stagier){
 }
 
 
-function CreateUser_Student($Nom,$Prenom,$Num_inscrp,$r_id,$status,$connection){
+function CreateUser_Student($Nom,$Prenom,$Num_inscrp,$r_id,$connection){
 $return_result = false; 
- if($status == 'Etudiant'){
+ 
     try{
         // SQL request for 'Student'
-    $sql = "INSERT INTO etudiant (id,user_id,Nom,Prenom,Num_inscr,Status) 
-    VALUES(null,'$r_id','$Nom','$Prenom','$Num_inscrp','$status')";
+    $sql = "INSERT INTO etudiant (id,user_id,Nom,Prenom,Num_inscr) 
+    VALUES(null,'$r_id','$Nom','$Prenom','$Num_inscrp')";
     $connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
     $connection -> exec($sql);  
     }
@@ -252,14 +244,14 @@ $return_result = false;
     }
     $connection = null; 
 }
-}
 
-function CreateUser_Prof($Nom,$Prenom,$r_id,$status,$connection){
-if($status == 'Professeur'){
+
+function CreateUser_Prof($Nom,$Prenom,$r_id,$connection){
+
     try{
         // SQL request for 'teacher'
-        $sql = "INSERT INTO professeur (id,Prof_id,Nom,Prenom,Status)
-      VALUES(null,'$r_id','$Nom','$Prenom','$status')";
+        $sql = "INSERT INTO professeur (id,Prof_id,Nom,Prenom)
+      VALUES(null,'$r_id','$Nom','$Prenom')";
     $connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
     $connection -> exec($sql); 
     // $connection -> close(); 
@@ -269,7 +261,7 @@ if($status == 'Professeur'){
     }
     $connection = null; 
 }
-}  
+
 
 // role getting/verification functions
 

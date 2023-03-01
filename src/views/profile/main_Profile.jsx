@@ -10,14 +10,13 @@ function Main_Profile(){
   
   let user_infos ={ 
     id : userId,
-  } 
-  console.log(user_infos); 
+  }  
 
   useEffect(()=>{
    axios.post('http://localhost/Calculer_moyenne_institut/Action/Session/Session.php',
    user_infos).then(function(response){
-    let c = response.data;
-    console.log(c.Status); 
+    // let c = response.data;
+    console.log(response.data); 
     SetuserProfile(response.data); 
    });
   },[]); 

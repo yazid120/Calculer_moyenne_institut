@@ -41,8 +41,8 @@ export default function NavBar(){
     }, [size_window]); 
 
     let Logout = () =>{
-        localStorage.clear(); 
-        sessionStorage.clear(); 
+        localStorage.clear('UserId'); 
+        sessionStorage.clear('UserId'); 
         Navigate('/'); 
     }
 

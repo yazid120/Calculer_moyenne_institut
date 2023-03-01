@@ -81,7 +81,8 @@ class Etudiant_stat extends Component{
           }
           if(response.data == 'Section numbre must cotain only numbers'){
             section_nb_char.classList.replace('show','hide');
-          }else{section_nb_char.classList.replace('show','hide');}
+          }else{section_nb_char.classList.replace('show','hide');
+        }
           if(response.data == 'successful student submition'){
             localStorage.removeItem('local_status'); 
             localStorage.removeItem('User_status');
@@ -100,7 +101,7 @@ class Etudiant_stat extends Component{
          ]; 
          let Error_infos =[
           {empty_input:'Empty input fields'}, 
-          {Incorrect_stg_num:'Incorrect intern numbre'}, 
+          {Incorrect_stg_num:'Incorrect stagier numbre'}, 
           {section_nb_char:'Section numbre must cotain only numbers'},
         ];
         //  console.log(this.state.state_load);
@@ -116,7 +117,7 @@ class Etudiant_stat extends Component{
         {Error_infos[0].empty_input}
         </p>
        <p id="Incorrect_stg_num" className='error_alix hide'>
-        {Error_infos[1].invalid_usr_inf}
+        {Error_infos[1].Incorrect_stg_num}
         </p>
        <p id="section_nb_char" className="error_alix hide">
          {Error_infos[2].user_name_error}
