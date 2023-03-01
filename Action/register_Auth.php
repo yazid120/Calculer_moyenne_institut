@@ -40,9 +40,14 @@ if(isset($postData)){
       echo json_encode($error);
       exit();
    }
+   if(empty($User_role)){
+      array_push($error,'Your forgot to add your status'); 
+      echo json_encode($error);
+      exit(); 
+   }
    
    if(count($error) == 0)
-   echo Create_user($connection,$User_Name,$User_email,$User_password);
+   echo Create_user($connection,$User_Name,$User_email,$User_password,$User_role);
 
 
 }else{ 

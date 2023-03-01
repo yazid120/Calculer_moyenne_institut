@@ -62,12 +62,19 @@ function inputInfos_exist($connection,$userEmail,$userName){
     mysqli_stmt_close($connection); 
 }
 
-function Create_user($connection,$User_Name,$User_email,$userPassword){
+function Create_user($connection,$User_Name,$User_email,$userPassword,$User_role){
+    
+    if($User_role == 'Stagier'){
+      $role_id = 2;
+    }
+    if($User_role == 'Professeur'){
+        $role_id = 1; 
+    }
 
     $hashed_pwd = password_hash($userPassword, PASSWORD_DEFAULT); 
 
-    $sql = "INSERT INTO `users` (usersName,usersemail,userspassword) 
-    VALUES('$User_Name','$User_email','$hashed_pwd')";
+    $sql = "INSERT INTO `users` (usersName,usersemail,userspassword,role_id) 
+    VALUES('$User_Name','$User_email','$hashed_pwd','$role_id')";
     $response = $connection->query($sql); 
 
     if($response){
@@ -211,6 +218,7 @@ function _empty_stat_input($nom,$prenom,$num_stagier){
     }
     return $return_result; 
 }
+
 function incorrect_stagier_num($num_stagier){
     $return_result = false; 
     if(preg_match('/[A-Za-z]/',$num_stagier) == true ){
@@ -261,8 +269,27 @@ if($status == 'Professeur'){
     }
     $connection = null; 
 }
-
 }  
+
+// role getting/verification functions
+
+function get_role_user($connection,$user_Email){
+$sql ="SELECT role_id from users WHERE users.usersemail = :email"; 
+    $stmt = $connection -> prepare($sql); 
+    $stmt -> bindParam(':email',$user_Email, PDO::PARAM_STR); 
+    $stmt ->exec();
+    $return = $stmt -> fetch(PDO::FETCH_ASSOC); 
+return $return; 
+}
+
+function check_role_user($connection,$user_Email){
+  $user_role_id = get_role_user($connection,$user_Email); 
+  if(!is_numeric($user_role_id) || $user_role_id == 0){
+    return 'Error: role note valid'; 
+  }else{
+    return $user_role_id; 
+  }
+}
     
 
 

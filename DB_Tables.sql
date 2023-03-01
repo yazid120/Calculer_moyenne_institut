@@ -44,26 +44,38 @@ MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 DROP TABLE IF EXISTS `etudiant`; 
 CREATE TABLE etudiant(
-  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `user_id` int(11),
-   FOREIGN KEY (user_id) REFERENCES users(id),
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `Nom` varchar(128) NOT NULL,
   `Prenom` varchar(128) NOT NULL,
-  `Num_inscr` int(11) NOT NULL,
-);
+  `Num_inscr` int(11) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `etudiant`
+ADD PRIMARY KEY (`id`),
+ADD KEY `user_id` (`user_id`);
+
+ALTER TABLE `etudiant`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 
 --
 -- CREATE `Professeur` TABLE inside `Calc_moy_insfp` database
 --
 DROP TABLE IF EXISTS `Professeur`; 
 CREATE TABLE Professeur(
-  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, 
-  `Prof_id` int(11),
-  FOREIGN KEY (Prof_id) REFERENCES users(id),
+  `id` int(11) NOT NULL, 
+  `Prof_id` int(11) NOT NULL,
   `Nom` varchar(128) NOT NULL, 
-  `Prenom` varchar(128) NOT NULL,
-); 
+  `Prenom` varchar(128) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+ALTER TABLE `Professeur`
+ADD PRIMARY KEY (`id`),
+ADD KEY `Prof_id` (`Prof_id`);
+
+ALTER TABLE `Professeur`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- CREATE `Admin` TABLE inside `Calc_moy_insfp` database

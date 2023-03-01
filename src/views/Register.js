@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import '../style/register.css';
 import axios from 'axios';
 import { AiOutlineEye , AiOutlineEyeInvisible} from 'react-icons/ai'; 
-import Select from 'react-select';
+// import Select from 'react-select';
 
 const groupStyles = {
    display: 'flex',
@@ -102,6 +102,7 @@ onsubmitRegister(e){
    let Invalid_u_error = document.getElementById('Invalid_User_Name_error'); 
    let Unmatched_pwd_error = document.getElementById('unmatched_password');
    let user_already_exist_error = document.getElementById('user_already_exists'); 
+   let forgot_add_status = document.getElementById('forgot_add_status');
    //axios connection with the backend (POST request)
  axios.post('http://localhost/Calculer_moyenne_institut/Action/register_Auth.php',
  user_Object).then(response =>{
@@ -130,11 +131,22 @@ onsubmitRegister(e){
    }else{
       Unmatched_pwd_error.classList.replace('show','hide'); 
    }
+   if(response.data == 'Your forgot to add your status'){
+      forgot_add_status.classList.replace('hide','show'); 
+   }else{
+      forgot_add_status.classList.replace('show','hide'); 
+   }
    
-   if(response.data[0].id){
+ if(response.data[0].id){
    localStorage.setItem('UserId',response.data[0].id);
    localStorage.setItem('local_status', true);
-   window.location.replace('/Status'); 
+
+   if(this.state.user_role == 'Stagier'){
+      window.location.replace('/Status/Etudiant_stat');
+   }
+   if(this.state.user_role == 'Professeur'){
+      window.location.replace('/Status/Prof_stat');
+   }
 }
  
  }); 
@@ -151,7 +163,8 @@ render(){
       {empty_fields:'input fields are empty'},
       {Invalid_name:'invalid User Name'},
       {pass_repassNmarch :'Your repassword does not match your password'},
-      {user_alredy_exist :'User already exist !!'}
+      {user_alredy_exist :'User already exist !!'}, 
+      {forgot_add_status : 'Your forgot to add your status'}
    ];
    let role_Object = [
       {default_role:'Selectioner votre Status'},
@@ -173,6 +186,10 @@ render(){
 
         <p id="user_already_exists" className='error_alix hide'>
          {registration_Object[4].user_alredy_exist}</p>
+
+
+        <p id="forgot_add_status" className='error_alix hide'>
+         {registration_Object[5].forgot_add_status}</p>
         </div>
 
         <form action='' method='post'
@@ -239,15 +256,18 @@ render(){
 
       <select name="role_user" onChange={this.onChangeuserRole}
       style={groupStyles} defaultValue={role_Object[0].default_role}>
-         <option>{role_Object[0].default_role}</option>
+
+         <option value={""}>{role_Object[0].default_role}</option>
          <option name="Stagier_role" value={role_Object[1].Stagier_role}
          style={groupBadgeStyles}>
-            {role_Object[0].Stagier_role}
+            {role_Object[1].Stagier_role}
          </option>
+         
          <option name="Professeur_role" value={role_Object[2].Stagier_role}
          style={groupBadgeStyles}>
-           {role_Object[1].Professeur_role}
+           {role_Object[2].Professeur_role}
          </option>
+
       </select>
 
       {/* User registration Btn */}
@@ -260,7 +280,7 @@ render(){
         {/* <p>{this.state.name}</p>
         <p>{this.state.email}</p>
         <p>{this.state.password}</p> */}
-        <p>{this.state.user_role}</p>
+
         </>
     )
 }

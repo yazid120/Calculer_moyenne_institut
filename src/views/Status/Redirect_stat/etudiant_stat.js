@@ -52,7 +52,7 @@ class Etudiant_stat extends Component{
         e.preventDefault(); 
 
          let status = []; 
-         let url_header ='http://localhost:3000/Status/Etudiant_stat?status=Etudiant';
+         let url_header ='http://localhost:3000/Status/Etudiant_stat';
 
         let stat_etud ={
             nom:this.state.nom, 
