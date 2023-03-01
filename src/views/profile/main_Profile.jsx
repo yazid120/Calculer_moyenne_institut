@@ -1,6 +1,8 @@
 import React, { useState ,useEffect } from "react";
 import { Component } from "react";
 import axios from "axios";
+import Prof_interface from "./component_profile/Prof_profile_component/interface_prof";
+import Etudiant_interface from "./component_profile/etud_profile_component/interface_ etud";
 
 
 function Main_Profile(){
@@ -15,8 +17,6 @@ function Main_Profile(){
   useEffect(()=>{
    axios.post('http://localhost/Calculer_moyenne_institut/Action/Session/Session.php',
    user_infos).then(function(response){
-    // let c = response.data;
-    console.log(response.data); 
     SetuserProfile(response.data); 
    });
   },[]); 
@@ -40,6 +40,8 @@ function Main_Profile(){
          </div>
         </section>
         </div>
+        <Prof_interface/>
+       <Etudiant_interface/>
         </>
     );
 }

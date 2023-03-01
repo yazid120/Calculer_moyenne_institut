@@ -112,3 +112,24 @@ INSERT INTO `role` (`role_id`,`role_name`) VALUES
 (1,'Admin'), 
 (2,'Etudiant'), 
 (3,'Professeur');
+
+
+--
+--- CREATE `Specialites` TABLE INSIDE `Calc_moy_insfp` Database
+-- 
+
+DROP TABLE IF EXISTS `Specialites`; 
+CREATE TABLE Specialites(
+spe_id int(11) NOT NULL, 
+nom_spe varchar(128) NOT NULL,
+); 
+
+ALTER TABLE `Specialites`
+ADD PRIMARY KEY (`spe_id`); 
+
+INSERT INTO `Specialites`(`spe_id`,`nom_spe`) VALUES(
+(1,'Développement WEB'),
+(2,'SON'),
+(3,'IMAGE'),
+(4,'REASEAU SISCO')
+);

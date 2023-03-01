@@ -9,8 +9,8 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 
 export default function NavBar(){
     const Navigate  = useNavigate(); 
-    let user = JSON.parse(localStorage.getItem('user-info')); 
-    //  console.warn(user.name);
+    let user_Auth = JSON.parse(localStorage.getItem('UserId')); 
+    // console.warn(user);
     {/**** Display navigation menu ****/}
     const [navMenu_Displayed, SetNav_menu] = useState(); 
 
@@ -85,7 +85,11 @@ export default function NavBar(){
             <nav className="Navigation_Bar_automate02654">
                 
             <div className="logo_base">
-              <a href="/">logo</a>
+            {!user_Auth ?
+              <Link to="/">logo</Link>
+              :
+              <Link to="/Profile">Profile</Link>
+            }
             </div>
             <div className="Object_mainLinkes_NavBar_container"
             style={{display : size_width ? 'flex' : 'none'}}>

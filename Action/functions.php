@@ -71,7 +71,6 @@ function Create_user($connection,$User_Name,$User_email,$userPassword,$date_insc
         $role_id = 3; 
     }
     $hashed_pwd = password_hash($userPassword, PASSWORD_DEFAULT); 
-
 $sql = "INSERT INTO `users` (usersName,usersemail,userspassword,Date_user,role_id) 
     VALUES('$User_Name','$User_email','$hashed_pwd','$date_inscr','$role_id')";
     $response = $connection->query($sql); 

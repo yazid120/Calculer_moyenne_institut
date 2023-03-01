@@ -23,6 +23,9 @@
     border-radius: 3px;
     padding: 15px 12px 15px;
 }
+a{
+    text-decoration: none;
+}
 
 .profile_conatainer_BxElement h2{
     font-size: 28px;
@@ -284,4 +287,61 @@ td{
     height: 3rem; 
     border: 1px solid #000 !important; 
     border-radius: 5px;
+}
+
+
+/********  Main Profile  ********* Configuration Section Style ***********/
+.Option_nd_FeaturesProfile_prof{
+    -webkit-box-sizing:border-box; 
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    box-sizing: border-box;
+    display:flex; 
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%; 
+    height: auto; 
+    gap: 1.8rem; 
+}
+.Selection_creation_baseAll_global_Section{
+    margin: 0rem; 
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #e8f1e6; 
+    width: 35%;
+    height: auto; 
+}
+.Config_Section_wrappList{
+    display: flex;
+    flex-direction:column;
+    gap: 1rem; 
+    list-style: none;
+    padding: 0.2rem; 
+}
+.Config_Section_wrappList a{
+    color: var(--dark-bg-color);
+}
+.Config_Section_wrappList li{
+    padding: 12px; 
+    font-size: 19.5px;
+    font-weight: 600; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    border: none; 
+    border-radius: 4px;
+}
+.Config_Section_wrappList li a{
+    text-decoration: none;
+    color: var(--dark-bg-color);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.Config_Section_wrappList li:hover{
+    background-color:rgb(227, 230, 233);
+    color:rgb(255, 255, 255);  
 }

@@ -29,6 +29,11 @@ import Etudiant_stat from "./views/Status/Redirect_stat/etudiant_stat";
 
 import { initialState, reducer } from "./reducer/UseReducer";
 
+//Private routes Mange Section (Prof role only)
+import Create_section from "./views/profile/component_profile/Prof_profile_component/Section_prof_com/Creat_section_prof";
+import Modify_section from "./views/profile/component_profile/Prof_profile_component/Section_prof_com/Modify_section_prof";
+import Delete_section from "./views/profile/component_profile/Prof_profile_component/Section_prof_com/Delete_section";
+
 // Header links With React lazy method
 const Home = React.lazy(()=>wait(100).then( ()=> import("./views/component/Home")));
 const About = React.lazy(()=> wait(100).then( ()=> import("./views/component/about")));
@@ -78,6 +83,16 @@ const Routing = () =>{
       <Route exact path="/Profile/Dashboard" element={<Dashboard/>} />
       {/* Profile/infos page routing */}
       <Route exact path='/Profile/infos' element={<Infos/>} />
+
+
+{/* Private routes Create/Modify/Delete Section (accessed only by prof role) */}
+  {/* Create Section */}
+  <Route exact path='/Profile/Section/Create_sec' element={<Create_section/>}/>
+  {/* Modify Section */}
+  <Route exact path='/Profile/Section/Modify_sec' element={<Modify_section/>}/>
+  {/* Delete Section */}
+  <Route exact path='/Profile/Section/Delete_sec' element={<Delete_section/>}/>
+
 
     </Routes> 
   </Suspense>
