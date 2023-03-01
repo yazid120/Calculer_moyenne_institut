@@ -32,7 +32,7 @@ let Prof_interface = function(){
                         
                         <Link to='/Profile/Section/Modify_sec'>
                             <li>
-                            {Cofiguration_Section_Object[2].name}
+                            <b></b>{Cofiguration_Section_Object[2].name}
                             <MdOutlineChangeCircle/>
                             </li>
                         </Link>

@@ -345,3 +345,59 @@ td{
     background-color:rgb(227, 230, 233);
     color:rgb(255, 255, 255);  
 }
+
+/**** partie section management forms  *****/
+.formule_management_sections_wrapp{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    width:100%; 
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.formule_management_sections_wrapp
+.form_manage_clipse
+{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width:45%; 
+    height: auto; 
+    padding: 1rem; 
+    margin: 0.2rem; 
+    gap: 0.7rem;
+}
+.formule_management_sections_wrapp
+.form_manage_clipse label{
+    font-weight: 600; 
+    font-size: 18px;
+    margin-top: 1.4rem;
+}
+.manage_section_cr{
+    width: 100%;
+    height: 1.8rem; 
+}
+.Selection_specialties{
+    height:2rem;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+}
+.Submition_container{
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.Submition_container
+.submition_new_section{
+    width: 80%; 
+    height: 2.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
