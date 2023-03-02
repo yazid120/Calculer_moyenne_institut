@@ -166,19 +166,19 @@ class Login extends Component{
       </div>
 
       <form  method='post' className='Registration_Format'>
-        <label htmlFor='' class_name={Display_infos[0].label_subForm}>
+        <label htmlFor='' className={Display_infos[0].label_class}>
           {Display_infos[0].label_Name}
         </label>
         <input type="text" name="" className='registration_input'
         value={this.state.Name} onChange={this.onChangeName}/>
 
-       <label htmlFor='' className={Display_infos[0].label_subForm}>
+       <label htmlFor='' className={Display_infos[0].label_class}>
          {Display_infos[1].label_Email}
        </label><br />
        <input type="email" name="" className='registration_input'
        value={this.state.email} onChange={this.onChangeEmail}/><br />
 
-       <label htmlFor='' className={Display_infos[0].label_subForm}>
+       <label htmlFor='' className={Display_infos[0].label_class}>
        {Display_infos[2].label_password}
        </label><br />
        <div className='container_password_wrapp_func'>

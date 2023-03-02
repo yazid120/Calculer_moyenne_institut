@@ -3,7 +3,7 @@ body{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    background-color: rgb(220, 242, 244); 
+    background-color: rgb(234, 244, 244); 
     margin: 0; 
     padding: 0; 
 }
@@ -24,8 +24,9 @@ body{
 }
 .label_subForm{
     margin: 0rem; 
-    font-size:17px; 
+    font-size: 20px; 
     margin-top: 7px;
+    font-weight: 600;
 }
 .registration_input{ 
     box-sizing: border-box; 
@@ -38,9 +39,9 @@ body{
     margin-bottom: 1.06265rem;
 }
 .submition_Btn{
-    width: 10.5rem; 
-    height: 2.5rem; 
-    background-color: rgb(127, 172, 255);
+    width: 12.5rem; 
+    height: 3rem; 
+    background-color: rgb(73, 135, 249);
     border: 1px solid #000; 
     border-radius: 5px; 
     margin: 0rem; 
@@ -52,7 +53,7 @@ body{
     background-color: rgb(140, 179, 250);
 }
 .heading_subtitle{
-    font-size: 38px; 
+    font-size: 50px; 
     text-align: center;
     color:rgb(101, 152, 192); 
 }
@@ -112,8 +113,8 @@ body{
     cursor: pointer; 
 }
 .Selection_specialties{
-    height:2rem;
-    margin-bottom: 1.5rem;
+    height: 3rem;
+    margin-bottom: 2.5rem;
     margin-top: 1.1rem;
     cursor: pointer;
     width: 30%;

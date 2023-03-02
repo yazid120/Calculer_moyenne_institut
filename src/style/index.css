@@ -41,16 +41,15 @@ body {
 }
 /* logo app */
 .logo_edit_wrpp{
-  background-color: #000;
+  /* background-color: #000; */
   border-radius: 50%;
   padding: 20px 5px;
-  box-shadow: 6px 0px 0px 0px aliceblue; 
 }
 .logo_self{
-  width: 3.3rem;
+  width: 6.5rem;
 }
 .logo_base{
-  width: 10%; 
+  width: 11%; 
   height: 100%; 
   margin: 0rem; 
   box-sizing: border-box;
@@ -75,7 +74,8 @@ body {
   flex-direction: row;
   height: 5.4rem;
   width: 100%; 
-  background-color: rgba(68, 129, 183, 0.86);
+  background-color: var(--white-bg-color);
+  box-shadow: 1px 1px 1px gray;
 }
 .Object_mainLinkes_NavBar_container{
   -webkit-box-sizing: border-box;
@@ -102,15 +102,16 @@ body {
 .justice_navigation_Opt a{
   font-size: 21.65598px; 
   font-family: var(--HTDglobalefont); 
-  color: var(--navs-links-bg-color); 
+  color: var(--dark-bg-color); 
   text-decoration: none;
   margin: 0rem; 
   padding: 0rem; 
   margin-left: 3rem; 
+  font-weight: 600;
 }
 
 .justice_navigation_Opt a:hover{
-   color: rgb(255, 255, 255);
+   color: rgb(106, 106, 106);
 }
 
 .registration_baseMain_selectionBtns{
@@ -201,6 +202,15 @@ z-index: 1000;
 }
 
 /******* Main part *******/
+.font_man_banner{
+  width: 20rem; 
+}
+.direct_side_fixation_part{
+  display:flex; 
+  align-items: center;
+  width:80%; 
+  margin-bottom: 2.5rem;
+}
 .sub_HeadCalc_top{
   -webkit-box-sizing: border-box;
   -webkit-box-direction: normal;
@@ -210,12 +220,12 @@ z-index: 1000;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--Main_HomeBoxBar_banner-bg_color);
+  background-color: var(--white-bg-color);
   margin: 0rem; 
-  padding: 0rem; 
   margin-top: 1.5rem; 
-  height: 27rem; 
+  height: auto; 
   overflow: hidden;
+  padding: 1rem; 
 }
 .sub_HeadCalc_top
 .Head_titleBan{
@@ -237,12 +247,13 @@ z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%; 
+  width: 60%; 
   height: auto; 
+  gap: 3rem;
 }
 .inscription_side_subRedirection{
   width: 50%; 
-  height: 3.2rem; 
+  height: 3.5rem; 
   cursor: pointer;
   font-size: 17px;
   background-color:rgba(171, 195, 187, 0.986); 
@@ -257,7 +268,7 @@ z-index: 1000;
   color: var(--white-bg-color);
 }
 .inscription_side_subRedirection:hover{
-  background-color:rgba(151, 195, 180, 0.986);
+  background-color:rgba(98, 180, 221, 0.98)
 }
 .c{
   position: relative;

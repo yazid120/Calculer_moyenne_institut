@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'; 
 import { FcApprove, FcManager , FcDocument ,  FcOk} from "react-icons/fc"; 
+import font_man from "./images/334672224_1328532957712131_3973481354417250309_n.png";
 
 
 let Main_Home = function(){
@@ -14,7 +15,11 @@ let Main_Home = function(){
 
         return(
             <>
-            <section className='sub_HeadCalc_top'>
+        <section className='sub_HeadCalc_top'>
+        <div className='direct_side_fixation_part'>
+                <img src={font_man} className="font_man_banner"/>
+
+            <div>
                 <h1 className='Head_titleBan'>Calculez les moyennes Insfp.</h1>
                 <h2 className='head_subtitleBen'>
                     <p>Cette application est reserver au etuediant 
@@ -24,7 +29,11 @@ let Main_Home = function(){
                         progress.
                     </p>
                 </h2>
-             <div className='instructe_main_pageLinkbtns'>
+            </div>
+                
+        </div>
+                
+        <div className='instructe_main_pageLinkbtns'>
                 <button className='inscription_side_subRedirection t_sign'
                 onClick={signup_redirect}>
                     Commence..
@@ -32,7 +41,8 @@ let Main_Home = function(){
                 <button className='inscription_side_subRedirection'>
                      Contacter nous           
                 </button>
-             </div>
+        </div>
+    
 
             </section>
         <section className='propos_bannerWrapp_check'>
