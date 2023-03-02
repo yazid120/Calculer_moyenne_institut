@@ -9,7 +9,7 @@ export default function Home(){
     const Navigate = useNavigate(); 
 
     useEffect( () =>{
-        User_Auth = localStorage.getItem('User_email'); 
+        User_Auth = localStorage.getItem('UserId'); 
           SetAuth(User_Auth); 
     },[]); 
 

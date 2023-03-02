@@ -96,19 +96,19 @@ body{
     display:flex; 
     align-items: baseline;
     justify-content: center;
-    gap: 1px; 
+    gap: 8px; 
 }
 .anable_disble_password{
     -webkit-box-sizing: border-box;
     -webkit-box-flex: 0; 
     -webkit-transition: 0.3s all ease-in;
     box-sizing: border-box; 
-    padding: 6px 10px; 
+    padding: 7px 9px; 
     margin: 0rem; 
     transition: 0.3s all ease-in;
     border: 1px solid var(--dark-bg-color); 
     border-radius: 3px;
-    background-color: #8b9c92; 
+    background-color: #9fe4ffd4; 
     cursor: pointer; 
 }
 .Selection_specialties{

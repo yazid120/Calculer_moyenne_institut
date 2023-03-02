@@ -6,6 +6,7 @@ import  { Link, useMatch,
 } from 'react-router-dom'; 
 import { useState, useEffect } from "react";
 import { GiHamburgerMenu } from 'react-icons/gi'; 
+import Logo from "./images/logo_infsp_final.png"; 
 
 export default function NavBar(){
     const Navigate  = useNavigate(); 
@@ -84,11 +85,18 @@ export default function NavBar(){
         return(
             <nav className="Navigation_Bar_automate02654">
                 
+                
             <div className="logo_base">
             {!user_Auth ?
-              <Link to="/">logo</Link>
+              
+              <Link to="/" className="logo_edit_wrpp" >
+                <img src={Logo} className="logo_self"/>
+                </Link>
               :
-              <Link to="/Profile">Profile</Link>
+              <Link to="/Profile" className="logo_edit_wrpp" >
+                <img src={Logo} className="logo_self"/>
+                Profile
+               </Link>
             }
             </div>
             <div className="Object_mainLinkes_NavBar_container"

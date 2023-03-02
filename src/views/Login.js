@@ -22,16 +22,24 @@ class Login extends Component{
    this.checkInputFormat = false;  
    this.secureText_input = true;
    this.change_secure_InputFormat = true; 
+   this.Setuser_Auth = this.Setuser_Auth.bind(this);
   
    this.state ={
     email:'', 
     Password:'',
     Name:'',
     redirectToProfile:false,
+    User_Auth:null
    }
   }
   
   static main_context = useContext;
+
+  Setuser_Auth(){
+    this.setState({
+      User_Auth:localStorage.getItem('UserId')
+    })
+  }
 
   onChangeName(e){
     this.setState({
@@ -112,10 +120,17 @@ class Login extends Component{
          
         }
 
-    }) 
+    })
   }
+
+  
  
     render(){
+      let access_denied = []; 
+    access_denied['home_page_acc'] = 'You can not access this page when logged in';
+      if(this.User_Auth != null){
+        window.location.replace('/Profile?error='+access_denied['home_page_acc']); 
+      }
       const {state, dispatch} = this.context;  
       let Display_infos = this.Display_infos;
           Display_infos=[
@@ -133,6 +148,7 @@ class Login extends Component{
       return(
       <>
       <h1 className='heading_subtitle'>login page</h1>
+      <p>{console.log(this.User_Auth)}</p>
       {/* error handling */}
       <div className='error_handling' id='error_login_handle'>
        <p id="empty_input_error" className='error_alix hide'>

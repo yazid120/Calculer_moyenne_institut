@@ -1,7 +1,21 @@
 import React from "react";
 import { FcAdvance ,FcRight} from "react-icons/fc";
+import { useEffect, useState } from "react";
+import { axios } from "axios"; 
 
 let Create_section = function(){
+
+  const initial_Section = {
+    nom_sec :'', 
+    nom_max_stag:'',
+    spec_sec:''
+}
+const [ Section , Set_Section ] = useState(initial_Section); 
+
+useEffect(()=>{
+    Set_Section( Section ? Section : Set_Section);
+}, [Section]); 
+ 
    let Create_Section_Object=[
     {lab_01:'nom Section'},
     {lab_02:'identifient Section'},
@@ -11,7 +25,7 @@ let Create_section = function(){
    ];
   return( 
   <>
-    <h1>Creat une nouvelle section</h1>
+    <h1>Créer une nouvelle section</h1>
     <div className="formule_management_sections_wrapp">
       <form className="form_manage_clipse">
         <label htmlFor="">
@@ -20,11 +34,11 @@ let Create_section = function(){
         <input type='text' className="manage_section_cr" 
         name='name_section' />
 
-        <label htmlFor="">
+        {/* <label htmlFor="">
           {Create_Section_Object[1].lab_02}
         </label>
         <input type='text'  className="manage_section_cr" maxLength={4}
-        name='id_section'/>
+        name='id_section'/> */}
         
         <label htmlFor="">
           {Create_Section_Object[2].lab_03}

@@ -4,10 +4,12 @@ import { MdOutlineChangeCircle, MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom"; 
 
 
+
 let Prof_interface = function(){
+
     let Cofiguration_Section_Object=[
         {Config_contain_class:'Config_Section_wrappList'},
-        {name:'Creat une nouvelle Section'},
+        {name:'Créer une nouvelle Section'},
         {name:'Modify ma Section'},
         {name:'Supprimer ma Section'}
     ]
