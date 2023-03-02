@@ -1,4 +1,8 @@
 
+@import url('https://fonts.googleapis.com/css?family=Inconsolata&text=Hello%20World');
+@import url("https://fonts.googleapis.com/css?family=Courgette:400,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
 :root{
 --white-bg-color: #fff; 
 --dark-bg-color: #000;
@@ -15,6 +19,7 @@
   --PROFILEglobafont_min_line_fira: fira sans, sans-serif; 
 --Footer-Background-colorBg: rgba(114, 199, 218, 0.9); 
 --Main_HomeBoxBar_banner-bg_color: rgb(173, 223, 195); 
+--navs-links-bg-color: #faf1f1; 
 /* profile Styling */
 --Section_Main_Profile_boxBg_color: rgb(157, 203, 237); 
 --Section_Main_Profile_fontBg_color: rgb(40, 40, 40); 
@@ -35,14 +40,23 @@ body {
   height: 100%;
 }
 /* logo app */
+.logo_edit_wrpp{
+  background-color: #000;
+  border-radius: 50%;
+  padding: 20px 5px;
+  box-shadow: 6px 0px 0px 0px aliceblue; 
+}
+.logo_self{
+  width: 3.3rem;
+}
 .logo_base{
-  width: 5.9rem; 
+  width: 10%; 
   height: 100%; 
   margin: 0rem; 
   box-sizing: border-box;
   display:flex; 
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 .container{
   min-height: 100%;
@@ -59,9 +73,9 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  height: 5rem;
+  height: 5.4rem;
   width: 100%; 
-  background-color: rgb(73, 172, 189);
+  background-color: rgba(68, 129, 183, 0.86);
 }
 .Object_mainLinkes_NavBar_container{
   -webkit-box-sizing: border-box;
@@ -84,15 +98,21 @@ body {
  width: 90%; 
  justify-content: space-around;
 }
+
 .justice_navigation_Opt a{
-  font-size: 19.65598px; 
+  font-size: 21.65598px; 
   font-family: var(--HTDglobalefont); 
-  color: var(--white-bg-color); 
+  color: var(--navs-links-bg-color); 
   text-decoration: none;
   margin: 0rem; 
   padding: 0rem; 
   margin-left: 3rem; 
 }
+
+.justice_navigation_Opt a:hover{
+   color: rgb(255, 255, 255);
+}
+
 .registration_baseMain_selectionBtns{
   box-sizing: border-box;
   display:flex; 
@@ -280,7 +300,7 @@ border: 1px solid;
 .container_wrapp_dier0323556{
   box-sizing: border-box;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   gap: 4.5rem; 
   margin: 0rem; 
@@ -291,7 +311,7 @@ border: 1px solid;
   -webkit-transition: 0.3s ease-in;
   box-sizing: border-box;
   transition: 0.3 all ease-in;
-  width: 25%; 
+  width: 28%; 
   height: auto;
   padding: 0.5rem;
   padding-bottom: 2.3rem;  

@@ -35,39 +35,42 @@ let Main_Home = function(){
              </div>
 
             </section>
-            <section className='propos_bannerWrapp_check'>
-                <div className='classe_baseListed_box'>
-                  <div className='sider_blinktext'>
-                    <h2>ce que tourne au tour mix insfp</h2>
-                    <p>
-                    <strong>mix</strong> et une plateforme qui propose un systeme stagiaire - professeur flexible<br></br> pour acceder au infos et
-                          modifier les <b>module</b>, <b>note</b> , <b>status</b> d'un stagier<FcOk className='c'/>
-                    </p>
+        <section className='propos_bannerWrapp_check'>
+            <div className='classe_baseListed_box'>
+                <div className='sider_blinktext'>
+                <h2>ce que tourne au tour mix insfp</h2>
+                <p>
+                <strong>mix</strong> et une plateforme qui propose un systeme
+                stagiaire - professeur flexible<br></br> pour acceder au 
+                infos et modifier les <b>module</b>, <b>note</b> , <b>status</b>
+                 d'un stagier<FcOk className='c'/>
+                </p>
                     
                   </div>
 
-                <div className='container_wrapp_dier0323556'>
-                    {/* Nouveau Stagier */}
-                    <div className='contentPart_selection_side'>
-                        <h2>Nouveau Stagier<FcApprove className='icon_rect'/></h2>
-                        <p>
-                            institut insfp fournit plusieurs type de formation audio visuel au niveau etatique <br></br>
-                            non payent, si la formation professionel est votre choix commencer
-                              vos inscription ..
-                        </p>
+    <div className='container_wrapp_dier0323556'>
+            {/* Nouveau Stagier */}
+        <div className='contentPart_selection_side'>
+            <h2>Nouveau Stagier<FcApprove className='icon_rect'/></h2>
+            <p>
+            institut insfp fournit plusieurs type de formation audio visuel au niveau
+            etatique <br></br>
+            non payent fournit par le Ministère de la Formation et de l'Enseignement 
+            Professionnels, la formation professionel est la l'avenir
+            </p>
 
-                    <Link to="" className='redige_siteframe'>
-                       <button className='rcp_btn'>
-                           continue
-                        </button>
-                    </Link>
+                <Link to="" className='redige_siteframe'>
+                    <button className='rcp_btn'>
+                        continue
+                    </button>
+                </Link>
                     </div>
                     {/* Consultater un enseignant */}
                     <div className='contentPart_selection_side'>
                         <h2>Consultater un enseignant<FcManager className='icon_rect'/></h2>
                         <p>
-                        vous etes stagiaire et vous souhaitez consulter vos enseignent la partie consulation <br></br>
-                        et ouvret a tous stagier - prof <span>tout en respectent queleque condition provisoire</span>
+                        vous etes stagiaire et vous souhaitez consulter vos enseignent la partie mix consulation <br></br>
+                        et ouvret a tous stagier - enseignant <span>tout en respectent queleque condition provisoire <br></br>fixée</span>
                         </p>
                     <Link to="" className='redige_siteframe'>
                        <button className='rcp_btn'>
@@ -81,7 +84,7 @@ let Main_Home = function(){
                         <p>
                         le partager des resultats et des moyennes sera etablie dans des dates 
                          fixes par l'administration<br></br> et les reprensentant de cette institut pour ne 
-                         pas ratez quelque soit rester a jour avec la platform
+                         pas ratez quelque soit rester a jour avec la <br></br>platform
                         </p>
                     <Link to="" className='redige_siteframe'>
                        <button className='rcp_btn'>
