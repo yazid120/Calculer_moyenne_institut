@@ -95,7 +95,6 @@ export default function NavBar(){
               :
               <Link to="/Profile" className="logo_edit_wrpp" >
                 <img src={Logo} className="logo_self"/>
-                Profile
                </Link>
             }
             </div>

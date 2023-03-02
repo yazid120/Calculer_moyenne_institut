@@ -84,6 +84,7 @@ class Login extends Component{
    let invalid_usr_info = document.getElementById('invalid_user_infos'); 
    let Unmatched_user_name = document.getElementById('user_name_error'); 
    let unexistent_email_address = document.getElementById('unxist_mail_add'); 
+   let Wrong_pwd = document.getElementById('Wrong_pwd'); 
   axios.post('http://localhost/Calculer_moyenne_institut/Action/login_Auth.php',login_Object)
   .then(
       response=>{
@@ -111,6 +112,14 @@ class Login extends Component{
           unexistent_email_address.classList.replace('hide','show');
         }else{
           unexistent_email_address.classList.replace('show','hide'); 
+        }
+
+        // Wrong password
+        if(response.data == 'wrong pwd'){
+          Wrong_pwd.classList.replace('hide','show');
+        }
+        else{
+          Wrong_pwd.classList.replace('show','hide');
         }
         
         if(response.data[0].id){
@@ -143,12 +152,12 @@ class Login extends Component{
             {empty_input:'input fields are empty'}, 
             {invalid_usr_inf:'invalid user infos'},
             {user_name_error:'User name does not match'},
-            {wrng_pwd:'unexistent email address'}
+            {unexistent_email_add:'unexistent email address'},
+            {Wrong_pwd:'Wrong password'}
           ];
       return(
       <>
       <h1 className='heading_subtitle'>login page</h1>
-      <p>{console.log(this.User_Auth)}</p>
       {/* error handling */}
       <div className='error_handling' id='error_login_handle'>
        <p id="empty_input_error" className='error_alix hide'>
@@ -161,7 +170,10 @@ class Login extends Component{
          {Error_infos[2].user_name_error}
        </p>
        <p id="unxist_mail_add" className='error_alix hide'>
-        {Error_infos[3].wrng_pwd}
+        {Error_infos[3].unexistent_email_add}
+       </p>
+       <p id="Wrong_pwd" className='error_alix hide'>
+        {Error_infos[4].Wrong_pwd}
        </p>
       </div>
 
