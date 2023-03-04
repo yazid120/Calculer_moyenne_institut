@@ -1,18 +1,12 @@
 import React, { createContext, useReducer, Suspense  } from "react";
 import { wait } from "@testing-library/user-event/dist/utils";
 // importing components from react-router-dom package
-import{ Routes, Route, }from 'react-router-dom'; 
+import{ Routes, Route, Navigate }from 'react-router-dom'; 
 import NavigationBar from './NavBar'; 
 import Footer from "./footer";
 
-// Header links With React 
-// import Home from "./views/component/Home";
-// import About from "./views/component/about";
-// import Contact from "./views/component/Contact_us";
-
-// login links 
-// import Login from "./views/Login"; 
-// import Register from "./views/Register"; 
+import PrivateRoute from "./Auth_user/PrivateRoute";
+import PublicRoute from "./Auth_user/PublicRoute";
 
 // Logout import
 import Logout from "./views/Logout";
@@ -48,6 +42,7 @@ const Register = React.lazy(()=>wait(100).then( ()=>import("./views/Register")))
 export const UserContext =createContext();
 
 const Routing = () =>{
+  let logged_Auth = localStorage.getItem('UserId'); 
   return(
   <Suspense>
     <Routes>
@@ -59,9 +54,11 @@ const Routing = () =>{
       <Route exact path="/Contact_us" element={<Contact/>}/>
 
         {/* login path routing */}
-      <Route exact path="/Login" element={<Login/>}/>
+      <Route exact path="/Login" element=
+      {!logged_Auth ? <Login/> : <Navigate to={{pathname : "/Profile"}}/>}/>
         {/* Register path routing */}
-      <Route exact path="/Register" element={<Register/>}/>
+      <Route exact path="/Register" element=
+      {!logged_Auth ? <Register/> : <Navigate to={{pathname : "/Profile"}}/>}/>
         {/* Logout path routing */}
       <Route exact path='/Logout' element={<Logout/>} />
 
@@ -72,10 +69,10 @@ const Routing = () =>{
         {/* Teacher path routing */}
       <Route exact path='/Status/Prof_stat' element={<Prof_Status />} />
 
-        {/* Profile page routing */}
-      <Route exact path="/Profile" 
-      element={
-      <Profile/>}/>
+      {/* Profile page routing (Private route access)*/}
+      <Route exact path="/Profile" element=
+      {logged_Auth ? <Profile/> : <Navigate to={{pathname : "/login"}} replace={true}/>}/>
+
       {/* Profile/Admin page routing */}
       <Route exact path="/Profile/admin" element={<Admin />} />
 

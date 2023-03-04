@@ -82,14 +82,20 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 DROP TABLE IF EXISTS `Admin`;
 CREATE TABLE Admin(
-  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
+  `Admin_name` Varchar(45) NOT NULL,
   `Admin_mail` varchar(128) NOT NULL, 
   `Admin_password` varchar(128) NOT NULL
 ); 
+ALTER TABLE `Admin` 
+ADD PRIMARY KEY (`id`); 
+
+ALTER TABLE `Admin`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 -- Optional: Creation of Admin user by sql insertion 
-INSERT INTO `Admin` (id , Admin_mail, Admin_password) VALUES 
-  (null,'Admin@gmail.com',md5('admin123')); 
+INSERT INTO `Admin` (id , Admin_name ,Admin_mail, Admin_password) VALUES 
+  (null,'Admin','Admin@gmail.com',md5('admin123')); 
 
 
 

@@ -29,12 +29,6 @@ function Profile(){
     let status_error = []; 
     status_error['stat_err'] = 'you must be logged in to access this page'; 
     
-    // user dont have the Authentication to access /profile page ? redirect to login page
-    if(User_Auth == null){
-      Navigate('/login?error='+status_error['stat_err']); 
-    }
-    // Authenction is correct ? user is alowed to access /profile
-    else{
     return(
         <>
         <User_ig />
@@ -42,5 +36,5 @@ function Profile(){
         </>
     );
 }
-}
+// }
 export default Profile; 
