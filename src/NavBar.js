@@ -44,7 +44,8 @@ export default function NavBar(){
     let Logout = () =>{
         localStorage.clear('UserId'); 
         sessionStorage.clear('UserId'); 
-        Navigate('/'); 
+        window.location.reload('/');
+        // Navigate('/'); 
     }
 
     let component_Object=[

@@ -43,6 +43,7 @@ export const UserContext =createContext();
 
 const Routing = () =>{
   let logged_Auth = localStorage.getItem('UserId'); 
+
   return(
   <Suspense>
     <Routes>
@@ -55,10 +56,10 @@ const Routing = () =>{
 
         {/* login path routing */}
       <Route exact path="/Login" element=
-      {!logged_Auth ? <Login/> : <Navigate to={{pathname : "/Profile"}}/>}/>
+      {logged_Auth ? <Navigate to={{pathname : "/Profile"}}/> : <Login/>}/>
         {/* Register path routing */}
       <Route exact path="/Register" element=
-      {!logged_Auth ? <Register/> : <Navigate to={{pathname : "/Profile"}}/>}/>
+      {logged_Auth ? <Navigate to={{pathname : "/Profile"}}/> : <Register/>}/>
         {/* Logout path routing */}
       <Route exact path='/Logout' element={<Logout/>} />
 

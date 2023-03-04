@@ -18,9 +18,12 @@ function Main_Profile(){
    axios.post('http://localhost/Calculer_moyenne_institut/Action/Session/Session.php',
    user_infos).then(function(response){
     SetuserProfile(response.data); 
+    // console.log(response.data.role_name); 
+    localStorage.setItem('UserRole',response.data.role_name);
    });
   },[]); 
-
+  
+     let User_Role = localStorage.getItem('UserRole'); 
     return(
         <>
         <div className="dx_box-format">
@@ -40,9 +43,16 @@ function Main_Profile(){
          </div>
         </section>
         </div>
-        <Prof_interface/>
-       <Etudiant_interface/>
-        </>
+      
+
+     {
+      User_Role == 'Professeur' ?
+      <Prof_interface/>
+       :
+      <Etudiant_interface/>
+    }
+      
+      </>
     );
 }
 export default Main_Profile;

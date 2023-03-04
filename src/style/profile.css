@@ -283,7 +283,21 @@ td{
     background-color: var(--Authentcation_error_Bg_Color); 
     align-items: center;
     justify-content: center;
-    width: 45%; 
+    /* width: 45%;  */
+    height: 3rem; 
+    border: 1px solid #000 !important; 
+    border-radius: 5px;
+}
+.success_alix{
+    -webkit-box-sizing: border-box;
+    -webkit-box-flex: 0;
+    box-sizing: border-box; 
+    font-size: 20px; 
+    color: rgb(85, 148, 129);
+    background-color: #a5ddc1; 
+    align-items: center;
+    justify-content: center;
+    /* width: 45%;  */
     height: 3rem; 
     border: 1px solid #000 !important; 
     border-radius: 5px;
