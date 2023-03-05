@@ -132,8 +132,8 @@ let Creat_Section = (e)=>{
 
       </form>
     </div>
-                {/* Spinner main */}
-                <div className="spinner-container hide" id="spinner_wrapp">
+       {/* Spinner main */}
+      <div className="spinner-container hide" id="spinner_wrapp">
       <div className="loading-spinner">
       </div>
     </div>

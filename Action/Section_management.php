@@ -13,6 +13,7 @@ $Request_Method = REQUEST_METHOD;
 
 
 switch($Request_Method){
+  /* Create new Section */
   case'POST':
     if(isset($Post_data)){
       $error = array();
@@ -53,9 +54,46 @@ $sql = "INSERT INTO section (id,sec_id, sec_name ,num_max_stag ,sec_speciality)
       echo $e->getMessage();  
     }
     $connection = null;
-      
     }
-    
+
+  /* Delete section */
+    case'DELETE':
+      if(isset($Post_data)){
+      $error = array();
+
+      $section_name = $request -> nom_sec;
+      $section_specialty = $request -> spec_sec;
+
+      if(empty_loginInputs($section_name,$section_specialty) !== false){
+        array_push($error,'empty infos'); 
+        echo json_encode($error); 
+        exit(); 
+      }
+
+
+      $user_id = $request -> id; 
+      try{
+
+      $sql = "DELETE FROM `section` WHERE section.sec_name = '$section_name' 
+      AND section.sec_id = '$user_id'";
+      $stmt = $connection -> prepare($sql); 
+      $connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
+      $result = $connection -> exec($sql); 
+
+      if($result){
+        echo json_encode(['Section Deleted Successfuly']);
+      }else{
+        echo json_encode(['Unfound Section']);
+      }
+      
+    }catch(Exception $e){
+      echo $e -> getMessage(); 
+    }
+
+
+    }
+
+
     case'UPDATE':
         $sql = "UPDATE `section` SET name_sec,num_max_st,spe_sec WHERE
          users.id = section_id ";
