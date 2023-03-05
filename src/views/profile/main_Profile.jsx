@@ -31,12 +31,14 @@ function Main_Profile(){
           <User_ig/>
         <section className="Profile_mainContainer01355">
          <div className="profile_conatainer_BxElement">
-           <h2>Your profile information</h2>
+           <h2>Profile information</h2>
          </div>
          <div className="Profile_userInfos01355">
           {Object.keys(user_profile).map((index,key) =>
           <div key={key}>
-              <p>{index} : <span><b>{user_profile[index]}</b></span></p>
+              <p className="user_tit_identifiens">{index} : 
+              <span><b>{' '+user_profile[index]}</b></span>
+              </p>
               {/* <p>Email: <span></span></p>
               <p>Date d'inscription:<span></span></p>  */}
           </div>
