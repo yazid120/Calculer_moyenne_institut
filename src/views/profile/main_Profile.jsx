@@ -1,5 +1,6 @@
 import React, { useState ,useEffect } from "react";
 import { Component } from "react";
+import User_ig from "./Profile_ig";
 import axios from "axios";
 import Prof_interface from "./component_profile/Prof_profile_component/interface_prof";
 import Etudiant_interface from "./component_profile/etud_profile_component/interface_ etud";
@@ -27,6 +28,7 @@ function Main_Profile(){
     return(
         <>
         <div className="dx_box-format">
+          <User_ig/>
         <section className="Profile_mainContainer01355">
          <div className="profile_conatainer_BxElement">
            <h2>Your profile information</h2>

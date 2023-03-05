@@ -147,13 +147,15 @@ INSERT INTO `Specialites`(`spe_id`,`nom_spe`) VALUES(
 DROP TABLE IF EXISTS  `section`;
 CREATE TABLE section(
  id int(12) NOT NULL,
+ sec_id int(12) NOT NULL,
  sec_name varchar(120) NOT NULL, 
  num_max_stag int(2) NOT NULL,
  sec_speciality varchar(120) NOT NULL
 );
 
 ALTER TABLE `section`
-ADD PRIMARY KEY (`id`); 
+ADD PRIMARY KEY (`id`), 
+ADD KEY `sec_id` (`sec_id`);
 
 ALTER TABLE `section`
 MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;

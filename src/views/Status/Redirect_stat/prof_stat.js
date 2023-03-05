@@ -64,7 +64,12 @@ class Prof_Status extends Component{
             if(response.data = 'successful Teacher submition'){
               localStorage.removeItem('local_status'); 
               localStorage.removeItem('User_status');
+
+              setTimeout(()=>{
+              document.getElementById('spinner_wrapp').classList.replace('hide','show'); 
               window.location.replace('/profile');
+              },10000); 
+              
             }
              
             })
@@ -112,7 +117,7 @@ class Prof_Status extends Component{
                 </button>
 
                 {/* Spinner main */}
-    <div className="spinner-container" id="spinner_wrapp">
+    <div className="spinner-container hide" id="spinner_wrapp">
       <div className="loading-spinner">
       </div>
     </div>

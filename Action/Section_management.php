@@ -25,6 +25,7 @@ switch($Request_Method){
     }
 
     $id= null; 
+    $Sec_id = $request -> id; 
     $name_sec_test = $request -> nom_sec;  
     $num_max_st = $request -> nom_max_stag; 
     $spe_sec_test = $request -> spec_sec;
@@ -40,8 +41,8 @@ switch($Request_Method){
     }
 
     try{
-    $sql = "INSERT INTO section (id, sec_name ,num_max_stag ,sec_speciality)
-     VALUES('$id','$name_sec','$num_max_st','$spe_sec')";
+$sql = "INSERT INTO section (id,sec_id, sec_name ,num_max_stag ,sec_speciality)
+     VALUES('$id','$Sec_id','$name_sec','$num_max_st','$spe_sec')";
 
       $stmt = $connection -> prepare($sql); 
       $connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
@@ -56,7 +57,8 @@ switch($Request_Method){
     }
     
     case'UPDATE':
-        $sql = "UPDATE `section` SET name_sec,num_max_st,spe_sec";
+        $sql = "UPDATE `section` SET name_sec,num_max_st,spe_sec WHERE
+         users.id = section_id ";
 }
 
 

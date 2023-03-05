@@ -10,7 +10,8 @@ let Create_section = function(){
 const [ Data_Section , Set_Section ] = useState({
     nom_sec :'', 
     nom_max_stag:'',
-    spec_sec:''
+    spec_sec:'',
+    id:localStorage.getItem('UserId')
 });
    const navigate = useNavigate();
  
@@ -28,7 +29,9 @@ let Creat_Section = (e)=>{
 
     // Error message creation
    let empty_identifier = document.getElementById('empty_identifier');
-   console.log(empty_identifier); 
+   let Loader_spinner = document.getElementById('spinner_wrapp'); 
+
+   console.log(Loader_spinner); 
    // Success message creation
    let success_creation = document.getElementById('success_section_creation');
    axios.post('http://localhost/Calculer_moyenne_institut/Action/Section_management.php'
@@ -36,16 +39,24 @@ let Creat_Section = (e)=>{
    .then(response =>{
     console.log(response.data);
     if(response.data == 'Empty Section identifiers'){
-      empty_identifier.classList.replace('hide','show'); 
-       
+      Loader_spinner.classList.replace('hide','show');
+
+      setTimeout(()=>{
+        Loader_spinner.classList.replace('show','hide');
+       empty_identifier.classList.replace('hide','show'); 
+      },1200);
     }else{
       empty_identifier.classList.replace('show','hide');
     }
+
     if(response.data == 'Section created Successfuly'){
       success_creation.classList.replace('hide','show'); 
+      Loader_spinner.classList.replace('hide','show');
       setTimeout(()=>{
+        Loader_spinner.classList.replace('show','hide');
       navigate('/profile');
-      },1000);
+      },1400);
+      
     }else{
       success_creation.classList.replace('show','hide'); 
     }
@@ -120,6 +131,11 @@ let Creat_Section = (e)=>{
       </div>
 
       </form>
+    </div>
+                {/* Spinner main */}
+                <div className="spinner-container hide" id="spinner_wrapp">
+      <div className="loading-spinner">
+      </div>
     </div>
   </>
   )
