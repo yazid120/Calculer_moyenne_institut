@@ -31,7 +31,6 @@ let Creat_Section = (e)=>{
    let empty_identifier = document.getElementById('empty_identifier');
    let Loader_spinner = document.getElementById('spinner_wrapp'); 
 
-   console.log(Loader_spinner); 
    // Success message creation
    let success_creation = document.getElementById('success_section_creation');
    axios.post('http://localhost/Calculer_moyenne_institut/Action/Section_management.php'

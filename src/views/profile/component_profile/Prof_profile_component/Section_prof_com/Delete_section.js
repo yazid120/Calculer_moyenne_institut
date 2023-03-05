@@ -24,6 +24,8 @@ let Delete_section = function(){
   // Error message creation
   let empty_identifier = document.getElementById('empty_identifier');
   let Loader_spinner = document.getElementById('spinner_wrapp'); 
+
+  let success_delete = document.getElementById('success_section_creation');
   axios.delete('http://localhost/Calculer_moyenne_institut/Action/Section_management.php'
   ,{data:Data_section}).then(response=>{
     console.log(response.data); 
@@ -36,6 +38,18 @@ let Delete_section = function(){
       },1200);
     }else{
       empty_identifier.classList.replace('show','hide');
+    }
+
+    if(response.data == 'Section Deleted Successfuly'){
+      success_delete.classList.replace('hide','show');
+
+      setTimeout(()=>{
+        Loader_spinner.classList.replace('show','hide');
+        success_delete.classList.replace('show','hide'); 
+      navigate('/profile');
+      },1400);
+    }else{
+      success_delete.classList.replace('show','hide');
     }
   }); 
   
@@ -51,7 +65,7 @@ let Delete_section = function(){
     {empty_identifiers:'Empty Section identifient'},
    ]; 
    let Success_handling_sectionCreation = [ 
-    {Section_succ_creation:'Section Created Successfuly'}
+    {Section_succ_creation:'Section Deleted Successfuly'}
    ]
   return( 
   <>

@@ -15,11 +15,10 @@ let Prof_interface = function(){
     ]
     return( 
     <>
-    <h1>interface prof</h1>
         <div className="Option_nd_FeaturesProfile_prof">
             <div className="Selection_creation_baseAll_global_Section">
                 <div className="">
-                    <h2>Cofiguration</h2>
+                    <h2>gérer mes rubriques</h2>
                 </div>
             <div>
                 <ul className={Cofiguration_Section_Object[0].Config_contain_class}>
@@ -52,7 +51,7 @@ let Prof_interface = function(){
             </div>
             <div className="Selection_creation_baseAll_global_Section">
                 <div>
-                    <h2>Mes Section</h2>
+                    <h2>Mes Sections</h2>
                 </div>
                 <div className={Cofiguration_Section_Object[0].Config_contain_class}>
                 <ul>

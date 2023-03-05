@@ -34,7 +34,6 @@ switch($Request_Method){
     $name_sec = Validate_data($name_sec_test); 
     $spe_sec = Validate_data($spe_sec_test); 
 
-    
     if(_empty_stat_input($name_sec,$num_max_st,$spe_sec) !== false){
        array_push($error,'Empty Section identifiers'); 
        echo json_encode($error); 
@@ -54,7 +53,9 @@ $sql = "INSERT INTO section (id,sec_id, sec_name ,num_max_stag ,sec_speciality)
       echo $e->getMessage();  
     }
     $connection = null;
+    exit();
     }
+
 
   /* Delete section */
     case'DELETE':
@@ -74,11 +75,11 @@ $sql = "INSERT INTO section (id,sec_id, sec_name ,num_max_stag ,sec_speciality)
       $user_id = $request -> id; 
       try{
 
-      $sql = "DELETE FROM `section` WHERE section.sec_name = '$section_name' 
+      $sql_delete = "DELETE FROM `section` WHERE section.sec_name = '$section_name' 
       AND section.sec_id = '$user_id'";
-      $stmt = $connection -> prepare($sql); 
+      $stmt = $connection -> prepare($sql_delete); 
       $connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
-      $result = $connection -> exec($sql); 
+      $result = $connection -> exec($sql_delete); 
 
       if($result){
         echo json_encode(['Section Deleted Successfuly']);
@@ -89,11 +90,13 @@ $sql = "INSERT INTO section (id,sec_id, sec_name ,num_max_stag ,sec_speciality)
     }catch(Exception $e){
       echo $e -> getMessage(); 
     }
-
+    $connection = null; 
+    exit();
 
     }
 
 
+    /* Update Section */
     case'UPDATE':
         $sql = "UPDATE `section` SET name_sec,num_max_st,spe_sec WHERE
          users.id = section_id ";
