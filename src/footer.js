@@ -9,7 +9,7 @@ class Footer extends Component{
             </div>
             <div className="Footer_txsCopyright">
               <p className="Copyrights_ftt"> 
-                Copyright © Insfp.com 2023. All Right Reserved .
+                Copyright © Mix_<span>insfp</span>.com 2023. All Right Reserved .
               </p>
             </div>
            </footer>

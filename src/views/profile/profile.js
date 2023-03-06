@@ -1,6 +1,5 @@
 import { render } from "@testing-library/react";
 import React from "react"; 
-import User_ig from "./head";
 import Main_Profile from "./main_Profile";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'; 
@@ -31,7 +30,6 @@ function Profile(){
     
     return(
         <>
-        <User_ig />
         <Main_Profile />
         </>
     );

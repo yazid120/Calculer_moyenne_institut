@@ -5,8 +5,9 @@
     justify-content: center;
     margin: 0rem; 
     padding: 0rem;
-    margin-top: 1.5rem; 
+    margin-top: 0rem; 
     overflow: hidden;
+    background-color: #f6f8fa; 
 }
 .Profile_mainContainer01355{
     -webkit-box-sizing: border-box;
@@ -15,13 +16,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 70%;
+    width: 100%;
     height: auto; 
-    background-color: var(--Section_Main_Profile_boxBg_color); 
-    border: 1px solid var(--dark-bg-color); 
+    border: none; 
     text-decoration: none;
     border-radius: 3px;
-    padding: 15px 12px 15px;
+    padding: 22px 12px 22px;
 }
 a{
     text-decoration: none;
@@ -29,16 +29,30 @@ a{
 
 .profile_conatainer_BxElement h2{
     font-size: 28px;
-    background: aliceblue;
+    background: #96ceff;
     padding: 3px;
 }
 
+/* Profile image user */
+.Profile_image_user_setts{
+    position: relative; 
+    left: 3rem; 
+    display: flex;
+    flex-direction: column;
+}
+.edit_btn_profile_picture{
+    width: 100%; 
+    cursor: pointer;
+}
 
 /*********  Status profile Styling ********/
 .Status_sub_title{
     font-size: 22px; 
     color: var(--Section_Main_Profile_fontBg_color);
     text-align: center;
+}
+.user_tit_identifiens{
+    font-size: 18px;
 }
 .Container_option_userStatus{
     -webkit-box-flex: 0;
@@ -67,6 +81,8 @@ a{
   margin: 0rem; 
   padding: 15px 8px;
 }
+
+
 .usr_option{
     -webkit-box-sizing: border-box;
     -webkit-box-direction: normal;
