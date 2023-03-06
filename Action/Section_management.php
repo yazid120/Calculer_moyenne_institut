@@ -97,9 +97,22 @@ $sql = "INSERT INTO section (id,sec_id, sec_name ,num_max_stag ,sec_speciality)
 
 
     /* Update Section */
-    case'UPDATE':
-        $sql = "UPDATE `section` SET name_sec,num_max_st,spe_sec WHERE
-         users.id = section_id ";
+    case'PUT':
+      if(isset($Post_data)){
+        $id = $request -> data -> id; 
+        $nom_sec = $request -> data -> nom_sec; 
+        
+        try{
+          $sql_upadte = "UPDATE `section` SET name_sec,num_max_st,spe_sec WHERE
+           users.id = section_id ";
+           $stmt = $connection -> prepare($sql_upadte); 
+           $connection -> setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
+        }catch(Exception $e){
+          echo $e -> getMessage();
+        }
+
+      }
+         
 }
 
 

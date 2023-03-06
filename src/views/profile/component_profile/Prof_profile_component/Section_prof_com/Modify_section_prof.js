@@ -7,7 +7,8 @@ import axios from 'axios';
 let Modify_section = function(){
   const [ Data_section, Set_section] = useState({
     nom_sec:'',
-    spec_sec:''
+    spec_sec:'',
+    id: localStorage.getItem('UserId')
   }); 
   const navigate = useNavigate(); 
 
@@ -19,7 +20,10 @@ let Modify_section = function(){
 
   let Update_section = (e)=>{
     e.preventDefault();
-    console.log(Data_section);
+    axios.put('http://localhost/Calculer_moyenne_institut/Action/Section_management.php',
+    {data:Data_section}).then( response =>{
+      console.log(response.data);
+    });
   
 
   }
