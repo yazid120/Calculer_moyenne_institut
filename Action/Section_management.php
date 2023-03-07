@@ -99,17 +99,34 @@ $sql = "INSERT INTO section (id,sec_id, sec_name ,num_max_stag ,sec_speciality)
     /* Update Section */
     case'PUT':
       if(isset($Post_data)){
+        $error = array();
+
         $id = $request -> data -> id; 
         $nom_sec = $request -> data -> nom_sec; 
+        $spe_sec = $request -> data -> spec_sec; 
+
+        if(empty_loginInputs($nom_sec,$spe_sec) !== false){
+          array_push($error,'empty infos'); 
+          echo json_encode($error); 
+          exit(); 
+        }
+        
+        if(Section_not_found($id,$nom_sec,$connection) !== false){
+          array_push($error,'Section non exitent'); 
+          echo json_encode($error); 
+          exit(); 
+        }
         
         try{
-          $sql_upadte = "UPDATE `section` SET name_sec,num_max_st,spe_sec WHERE
+          $sql_upadte = "UPDATE `section` SET name_sec WHERE
            users.id = section_id ";
            $stmt = $connection -> prepare($sql_upadte); 
            $connection -> setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
         }catch(Exception $e){
           echo $e -> getMessage();
         }
+        $connection = null; 
+        exit(); 
 
       }
          

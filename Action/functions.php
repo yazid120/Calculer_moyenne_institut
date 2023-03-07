@@ -268,7 +268,7 @@ function get_role_user($connection,$user_Email){
 $sql ="SELECT role_id from users WHERE users.usersemail = :email"; 
     $stmt = $connection -> prepare($sql); 
     $stmt -> bindParam(':email',$user_Email, PDO::PARAM_STR); 
-    $stmt ->exec();
+    $stmt -> exec();
     $return = $stmt -> fetch(PDO::FETCH_ASSOC); 
 return $return; 
 }
@@ -280,6 +280,36 @@ function check_role_user($connection,$user_Email){
   }else{
     return $user_role_id; 
   }
+}
+
+
+
+// Section management /prof status access
+function get_sections($id_user, $nom_section, $specialty_section, $connection){
+    $sql = "SELECT * FROM `section` WHERE section.sec_id = ':id_user'";
+    $stmt = $connection -> prepare($sql); 
+    $stmt -> bindValue(':id_user',$id_user); 
+}
+function Section_not_found($id_user, $nom_section,$connection){
+  $return_result = false; 
+  $sql = "SELECT * FROM `section` WHERE section.sec_name = :nom_sec AND
+  section.sec_id = :id_user";
+
+  $stmt = $connection -> prepare($sql); 
+  $stmt -> bindValue(':nom_sec', $nom_section);
+  $stmt -> bindValue(':id_user',$id_user); 
+  $stmt -> execute(); 
+  
+  $section = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+  $section_nb = count($section); 
+
+  if($section_nb <= 0)
+  $return_result = true;  
+
+  else
+   $return_result = false; 
+
+  return $return_result; 
 }
     
 
