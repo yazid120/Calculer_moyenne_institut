@@ -1,6 +1,7 @@
 <?PHP 
 include '../db_Class_conn.php'; 
 require_once '../Config/config.php'; 
+require_once '../functions.php';
 
 $objDb = new DbConnect;
 $conn = $objDb->connect();
@@ -29,10 +30,9 @@ switch($method){
     }else{
         $data = ['Status' => 0,'record'=>'Failed execution']; 
     }
-    $conn = null; 
+     $conn = null; 
 
     echo json_encode($users);
-
     
     
     

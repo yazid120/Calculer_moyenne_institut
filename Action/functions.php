@@ -264,13 +264,15 @@ function CreateUser_Prof($Nom,$Prenom,$r_id,$connection){
 
 // role getting/verification functions
 
-function get_role_user($connection,$user_Email){
-$sql ="SELECT role_id from users WHERE users.usersemail = :email"; 
+function get_role_user($connection,$id_user){
+$sql ="SELECT role_id from users WHERE users.id = :id_user"; 
     $stmt = $connection -> prepare($sql); 
-    $stmt -> bindParam(':email',$user_Email, PDO::PARAM_STR); 
-    $stmt -> exec();
-    $return = $stmt -> fetch(PDO::FETCH_ASSOC); 
-return $return; 
+    $stmt -> bindParam(':id_user',$id_user, PDO::PARAM_STR); 
+    if($stmt -> execute()){
+      $role = $stmt -> fetch(PDO::FETCH_ASSOC); 
+    }
+    
+return $role; 
 }
 
 function check_role_user($connection,$user_Email){

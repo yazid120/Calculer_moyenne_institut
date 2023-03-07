@@ -1,4 +1,7 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
 import {AiOutlineAppstoreAdd} from "react-icons/ai";
 import { MdOutlineChangeCircle, MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom"; 
@@ -6,6 +9,18 @@ import { Link } from "react-router-dom";
 
 
 let Prof_interface = function(){
+    let [section, Set_section] =useState([]);
+    let User_id = localStorage.getItem('User_Id');
+
+
+useEffect(()=>{
+    axios.post('http://localhost/Calculer_moyenne_institut/Action/Session/session_section.php',
+    User_id).then(function(response){
+        console.log(response); 
+
+    })
+})
+
 
     let Cofiguration_Section_Object=[
         {Config_contain_class:'Config_Section_wrappList'},
