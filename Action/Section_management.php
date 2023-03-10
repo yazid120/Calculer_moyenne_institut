@@ -129,6 +129,23 @@ $sql = "INSERT INTO section (id,sec_id, sec_name ,num_max_stag ,sec_speciality)
         exit(); 
 
       }
+
+      case'GET':
+        $error = array();
+        $sql_get ="SELECT * FROM `etudiant`";
+      
+      $stmt = $connection -> prepare($sql_get); 
+      $result = $stmt -> execute();
+      if($result){
+        $stagier = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($stagier); 
+      }else{
+        array_push($error,'Error: rechercher de stagier echouer'); 
+        echo json_encode($error); 
+      }
+      $connection = null; 
+      exit();   
+
          
 }
 

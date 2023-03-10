@@ -27,6 +27,8 @@ import { initialState, reducer } from "./reducer/UseReducer";
 import Create_section from "./views/profile/component_profile/Prof_profile_component/Section_prof_com/Creat_section_prof";
 import Modify_section from "./views/profile/component_profile/Prof_profile_component/Section_prof_com/Modify_section_prof";
 import Delete_section from "./views/profile/component_profile/Prof_profile_component/Section_prof_com/Delete_section";
+// Ajouter nouveau stagier route (Prof role only)
+import Ajouter_Stagier from "./views/profile/component_profile/Prof_profile_component/Ajoute_stagier/Ajouter_stagier";
 
 // Header links With React lazy method
 const Home = React.lazy(()=>wait(100).then( ()=> import("./views/component/Home")));
@@ -90,6 +92,8 @@ const Routing = () =>{
   <Route exact path='/Profile/Section/Modify_sec' element={<Modify_section/>}/>
   {/* Delete Section */}
   <Route exact path='/Profile/Section/Delete_sec' element={<Delete_section/>}/>
+
+  <Route exact path='/Profile/Section/ajouter_stagier' element={<Ajouter_Stagier/>}/>
 
 
     </Routes> 

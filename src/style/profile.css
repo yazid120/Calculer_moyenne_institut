@@ -420,6 +420,15 @@ z-index: 1002;
 .show{
     display: flex;
 }
+.section_infos_major{
+    list-style: none;
+    padding: 0.2rem; 
+    margin: 0rem; 
+}
+.section_infos_major li{
+    font-size: 20px; 
+    font-weight: 600; 
+}
 
 /**** partie section management forms  *****/
 .formule_management_sections_wrapp{
@@ -475,4 +484,46 @@ z-index: 1002;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Profile search intern bar */
+.teach_reaserch_intern_db{ 
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Search_bar_remover_div{
+    width: 40%; 
+    height: 2.2rem; 
+    background-color: #000000;
+    border-radius: 4px;
+    padding: 2px 10px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 5px #e1f1e9;
+}
+.Search_bar_remover_div input{
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    width: 100%;
+    font-size: 0.98rem; 
+    outline: none;
+    color: #fff;
+    font-family: var(--HTDglobalefont);
+    font-weight: 600;
+}
+#search_icon{
+    color: #ffffff;
+}
+/* result search  */
+.search-result-list{
+ display:flex; 
+ align-items: center;
+ justify-content: center;
+ flex-direction: column;
 }

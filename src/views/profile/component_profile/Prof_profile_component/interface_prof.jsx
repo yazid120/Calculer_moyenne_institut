@@ -28,6 +28,7 @@ useEffect(()=>{
     get_section();
 },[]); 
 
+
 function section_infos_display(){
     let section_infos_wrapp = document.getElementById('wrapp_section_infos');
     section_infos_wrapp.classList.replace('hide','show'); 
@@ -37,8 +38,12 @@ let Close_infos_section =()=>{
     section_infos_wrapp.classList.replace('show','hide'); 
 }
 
-let section_value = document.getElementsByClassName('classic_list_formal');
-console.log(section_value)
+let sectionCollection = document.querySelectorAll('.classic_list_formal');
+let values= [];
+for(const value of sectionCollection.values()){
+    values.push(value.id);
+}
+// console.log(values); 
 
     let Cofiguration_Section_Object=[
         {Config_contain_class:'Config_Section_wrappList'},
@@ -89,28 +94,6 @@ console.log(section_value)
                 </ul>
             </div>
             </div>
-            {/* section infos */}
-            <div className="Section_infos_wrapp_selec hide" id="wrapp_section_infos">
-                <div className="section_box_infos_lite"><CgCloseO className="icon_close" onClick={Close_infos_section}/>
-                <h2>{section_infos_Object[0].section_infos_siec}</h2>
-                
-               {
-                section.map((index,key)=>
-                {
-                {index.sec_name ?
-                <ul key={key}><p>titre: </p>
-                 <li>{index.sec_name}</li>
-                 <li>{index.num_max_stag}</li>
-                 <li>{index.sec_speciality}</li>
-                </ul>
-                : <li>null</li>}
-                
-            }
-                )
-               }
-               </div>
-            </div>
-
 
             <div className="Selection_creation_baseAll_global_Section">
                 <div>
@@ -119,18 +102,46 @@ console.log(section_value)
     
             <div className={Cofiguration_Section_Object[0].Config_contain_class}>
         {
-        section.map((index,key)=>
+        section.map((titre,key)=>
         <ul key={key} className="formul_ul_wrapped_sections_infos">
                 <li className="classic_list_formal" onClick={() =>{
-                section_infos_display(); }} 
+                section_infos_display(); }} id={titre.sec_name}
                  onChange={(e)=>e.target.value}>
-                    {index.sec_name}</li>
+                    {titre.sec_name}</li>
         </ul>
-                )
+        )
         }
+            </div>
+            </div>
+            
+            {/* section infos */}
+            <div className="Section_infos_wrapp_selec hide" id="wrapp_section_infos">
+                <div className="section_box_infos_lite"><CgCloseO className="icon_close" onClick={Close_infos_section}/>
+                <h2>{section_infos_Object[0].section_infos_siec}</h2>
+                <div className="add_stagier_by_sec">
+                    <Link to='/Profile/Section/ajouter_stagier'>
+                    <button className="add_new_intern_btn">
+                        Ajouter nouveau stagier
+                    </button>
+                    </Link>
+                </div>
+              
+            {
+        section.filter(index=>index.sec_name.includes('section 02')).map((index,key)=>
+                <ul key={key} className="section_infos_major"><p>{key.sec_name} </p>
+                 <li>{index.sec_name}</li>
+                 <li>{index.num_max_stag}</li>
+                 <li>{index.sec_speciality}</li>
+                </ul>
+                // console.log(key[index])
+                )
+            }
+                
+               
+               </div>
+            </div>
+    
 
-            </div>
-            </div>
             
         </div>
    </>
