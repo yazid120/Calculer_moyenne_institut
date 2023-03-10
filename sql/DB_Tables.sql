@@ -137,7 +137,7 @@ INSERT INTO `Specialites`(`spe_id`,`nom_spe`) VALUES(
 (1,'Développement WEB'),
 (2,'SON'),
 (3,'IMAGE'),
-(4,'REASEAU SISCO')
+(4,'REASEAU CISCO')
 );
 
 
