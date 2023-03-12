@@ -345,7 +345,7 @@ td{
 .Config_Section_wrappList{
     display: flex;
     flex-direction:column;
-    gap: 1px; 
+    gap: 15px; 
     list-style: none;
     padding: 0.2rem; 
 }

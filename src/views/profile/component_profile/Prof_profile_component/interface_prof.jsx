@@ -17,7 +17,7 @@ let Prof_interface = function(){
 let post_infos ={
     user_id : User_id
 }
-function get_section(){
+const get_section = (value)=>{
     axios.post('http://localhost/Calculer_moyenne_institut/Action/Session/session_section.php',
     post_infos).then(function(response){
         // console.log(response.data); 
@@ -27,6 +27,7 @@ function get_section(){
 useEffect(()=>{
     get_section();
 },[]); 
+console.log(section)
 
 
 function section_infos_display(){
@@ -38,12 +39,6 @@ let Close_infos_section =()=>{
     section_infos_wrapp.classList.replace('show','hide'); 
 }
 
-let sectionCollection = document.querySelectorAll('.classic_list_formal');
-let values= [];
-for(const value of sectionCollection.values()){
-    values.push(value.id);
-}
-// console.log(values); 
 
     let Cofiguration_Section_Object=[
         {Config_contain_class:'Config_Section_wrappList'},
@@ -105,7 +100,7 @@ for(const value of sectionCollection.values()){
         section.map((titre,key)=>
         <ul key={key} className="formul_ul_wrapped_sections_infos">
                 <li className="classic_list_formal" onClick={() =>{
-                section_infos_display(); }} id={titre.sec_name}
+                section_infos_display(); }} value={titre.sec_name}
                  onChange={(e)=>e.target.value}>
                     {titre.sec_name}</li>
         </ul>
@@ -126,16 +121,16 @@ for(const value of sectionCollection.values()){
                     </Link>
                 </div>
               
-            {
-        section.filter(index=>index.sec_name.includes('section 02')).map((index,key)=>
+           
+        {/* section.filter(index=>index.sec_name.includes('section 02')).map((index,key)=>
                 <ul key={key} className="section_infos_major"><p>{key.sec_name} </p>
                  <li>{index.sec_name}</li>
                  <li>{index.num_max_stag}</li>
                  <li>{index.sec_speciality}</li>
                 </ul>
                 // console.log(key[index])
-                )
-            }
+                ) */}
+            
                 
                
                </div>
