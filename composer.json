@@ -1,0 +1,5 @@
+{
+    "require": {
+        "larapack/dd": "^1.1"
+    }
+}
