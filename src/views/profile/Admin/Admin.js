@@ -16,16 +16,13 @@ let Admin = function(){
       email : admin_Auth
     }
   
-    axios.post('https://localhost/Calculer_moyenne_institut/Action/admin_Auth.php',
+    axios.post('http://localhost/Calculer_moyenne_institut/Action/admin_Auth.php',
     user_infos).then( response =>{
       console.log(response.data); 
     }); 
   
-
-  
-  
   function getUsers(){
-    axios.get('https://localhost/Calculer_moyenne_institut/Action/profile.php'
+    axios.get('http://localhost/Calculer_moyenne_institut/Action/profile.php'
     ).then(function(response){
       let arr = []; 
       // console.log(response.data); 

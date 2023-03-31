@@ -5,6 +5,16 @@ if(session_status() == 1){
 require_once '../functions.php';
 require_once '../db_Class_conn.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    header('Access-Control-Allow-Origin: http://localhost:3000');
+    header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT, PATCH, OPTIONS');
+    header('Access-Control-Allow-Headers: token, Content-Type');
+ 
+    die();
+} 
+ header('Access-Control-Allow-Origin: *');
+ header('Content-Type: application/json');
+
 $Obj_Db = new DbConnect; 
 $conn = $Obj_Db->connect(); 
 

@@ -1,7 +1,16 @@
 <?php 
 require_once './db_connection.php'; 
 
-$Post_data = file_get_contents('php://input'); 
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+  header('Access-Control-Allow-Origin: http://localhost:3000');
+  header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT, PATCH, OPTIONS');
+  header('Access-Control-Allow-Headers: token, Content-Type');
+
+  die();
+} 
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
+
 $request = json_decode($Post_data); 
 if(isset($Post_data)){
     $current_user_Auth = $request -> email; 
