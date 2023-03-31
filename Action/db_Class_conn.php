@@ -5,8 +5,8 @@
 	class DbConnect {
 		private $server = 'localhost';
 		private $dbname = 'Calc_moy_insfp';
-		private $user = 'root';
-		private $pass = '123';
+		private $user = 'admin';
+		private $pass = '1234';
 
 		public function connect() {
 			try {

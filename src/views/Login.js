@@ -131,8 +131,6 @@ class Login extends Component{
 
     })
   }
-
-  
  
     render(){
       let access_denied = []; 

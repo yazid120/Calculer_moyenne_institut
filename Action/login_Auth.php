@@ -1,8 +1,6 @@
 <?php
  require_once './db_connection.php'; 
  require_once './functions.php'; 
-/*dd($_SERVER['HTTP_ORIGIN']);
-exit;
 
  if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     header('Access-Control-Allow-Origin: http://localhost:3000');
@@ -43,9 +41,7 @@ if(isset($postData)){
         echo json_encode($error); 
         exit();
     }
-    
 
-    
     if(Login_user($connection,$User_email,$User_Password) == false){
       array_push($error,'wrong pwd'); 
        echo json_encode($error); 
@@ -59,6 +55,6 @@ if(isset($postData)){
      
 }else{
     //respose error
-}*/
+}
 echo 'error';
 ?>

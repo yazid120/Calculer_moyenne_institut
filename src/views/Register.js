@@ -147,6 +147,7 @@ onsubmitRegister(e){
    if(this.state.user_role == 'Professeur'){
       window.location.replace('/Status/Prof_stat');
    }
+   console.log('submition  successful',response.data[0].id); 
 }
  
  }); 

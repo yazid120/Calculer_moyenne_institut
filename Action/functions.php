@@ -62,8 +62,7 @@ function inputInfos_exist($connection,$userEmail,$userName){
     mysqli_stmt_close($connection); 
 }
 
-function Create_user($connection,$User_Name,$User_email,$userPassword,$date_inscr,$User_role){
-    
+function Create_user($connection,$User_Name,$User_email,$userPassword,$User_role){
     if($User_role == 'Stagier'){
       $role_id = 2;
     }
@@ -71,17 +70,17 @@ function Create_user($connection,$User_Name,$User_email,$userPassword,$date_insc
         $role_id = 3; 
     }
     $hashed_pwd = password_hash($userPassword, PASSWORD_DEFAULT); 
-$sql = "INSERT INTO `users` (usersName,usersemail,userspassword,Date_user,role_id) 
-    VALUES('$User_Name','$User_email','$hashed_pwd','$date_inscr','$role_id')";
+    $sql = "INSERT INTO `users`(usersName,usersemail,userspassword,role_id) 
+    VALUES('$User_Name','$User_email','$hashed_pwd','$role_id')";
     $response = $connection->query($sql); 
-
+    
     if($response){
         $last_id = mysqli_insert_id($connection); 
         return json_encode([['id'=>$last_id]]);
     }else{
         $error = "failed"; 
-        echo $error;
-      }
+        return $error;
+    }
 
 }
 

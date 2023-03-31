@@ -28,7 +28,7 @@ CREATE TABLE users(
  `usersName` varchar(128) NOT NULL,
   `usersemail` varchar(128) NOT NULL,
   `userspassword` varchar(128) NOT NULL,
-  `Date_user` timestamp,
+  `Date_user` timestamp DEFAULT CURRENT_TIMESTAMP,
   `role_id` bigint(20) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -38,6 +38,10 @@ ADD KEY `role_id` (`role_id`);
 
 ALTER TABLE `users`
 MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+
+ALTER TABLE `users`
+ADD DEFAULT GETDATE() `Date_user` (`Date_user`);
 
 --
 -- CREATE `etudiant` TABLE inside `Calc_moy_insfp` database
