@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
+$Post_data = file_get_contents('php://input'); 
 $request = json_decode($Post_data); 
 if(isset($Post_data)){
     $current_user_Auth = $request -> email; 

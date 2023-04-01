@@ -9,7 +9,6 @@ let Admin = function(){
   const [users, SetUsers] = useState([]); 
   const Navigate = useNavigate(); 
 
-
     let admin_Auth = localStorage.getItem('UserId'); 
     
     let user_infos ={
@@ -22,7 +21,7 @@ let Admin = function(){
     }); 
   
   function getUsers(){
-    axios.get('http://localhost/Calculer_moyenne_institut/Action/profile.php'
+    axios.get('http://localhost/Calculer_moyenne_institut/Action/Profile.php'
     ).then(function(response){
       let arr = []; 
       // console.log(response.data); 
@@ -37,7 +36,6 @@ let Admin = function(){
   
   function DeleteUser(){
     console.log('delete user id'); 
-
   }
 
   function EditUser_page(){
