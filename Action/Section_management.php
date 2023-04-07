@@ -51,8 +51,8 @@ switch($Request_Method){
     }
 
     try{
-$sql = "INSERT INTO section (id,sec_id, sec_name ,num_max_stag ,sec_speciality)
-     VALUES('$id','$Sec_id','$name_sec','$num_max_st','$spe_sec')";
+$sql = "INSERT INTO section (sec_id, sec_name ,num_max_stag ,sec_speciality)
+     VALUES('$Sec_id','$name_sec','$num_max_st','$spe_sec')";
 
       $stmt = $connection -> prepare($sql); 
       $connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);

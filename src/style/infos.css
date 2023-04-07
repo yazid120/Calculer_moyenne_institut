@@ -1,0 +1,23 @@
+
+
+.technogies_used_Forproject{
+    display: flex; 
+    flex-direction: column;
+    padding: 2.2rem;
+}
+.technogies_used_Forproject h2{
+    font-size: 3.5rem; 
+}
+.classic_techDescript{
+    font-size: 26px;
+}
+.icons{
+    width: 24rem; 
+}
+.partie_el{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
