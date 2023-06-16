@@ -2,7 +2,7 @@
 
 //database credentials, runing in an SQL-db
  $server_Name = "localhost";
- $db_UserName = "admin";
+ $db_UserName = "root";
  $db_Password = "1234"; 
  $db_Name = "Calc_moy_insfp"; 
 
