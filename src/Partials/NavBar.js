@@ -6,7 +6,8 @@ import  { Link, useMatch,
 } from 'react-router-dom'; 
 import { useState, useEffect } from "react";
 import { GiHamburgerMenu } from 'react-icons/gi'; 
-import Logo from "./images/334268467_729282445267367_3077026602069119056_n.png"; 
+import Logo from "../images/334268467_729282445267367_3077026602069119056_n.png"; 
+
 
 export default function NavBar(){
     const Navigate  = useNavigate(); 

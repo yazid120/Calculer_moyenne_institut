@@ -27,7 +27,7 @@ const get_section = (value)=>{
 useEffect(()=>{
     get_section();
 },[]); 
-console.log(section)
+//console.log(section)
 
 
 function section_infos_display(){

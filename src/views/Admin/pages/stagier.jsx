@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'; 
 
 
-let Admin = function(){
+let Stagier_Table = function(){
   const [users, SetUsers] = useState([]); 
   const Navigate = useNavigate(); 
 
@@ -104,4 +104,4 @@ let Admin = function(){
       </>
     ); 
 }
-export default Admin;
+export default Stagier_Table;

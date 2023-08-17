@@ -2,8 +2,8 @@ import React, { createContext, useReducer, Suspense  } from "react";
 import { wait } from "@testing-library/user-event/dist/utils";
 // importing components from react-router-dom package
 import{ Routes, Route, Navigate }from 'react-router-dom'; 
-import NavigationBar from './NavBar'; 
-import Footer from "./footer";
+import NavigationBar from './Partials/NavBar'; 
+import Footer from "./Partials/footer";
 
 import PrivateRoute from "./Auth_user/PrivateRoute";
 import PublicRoute from "./Auth_user/PublicRoute";
@@ -12,7 +12,7 @@ import PublicRoute from "./Auth_user/PublicRoute";
 import Logout from "./views/Logout";
 //Profile link
 import Profile from "./views/profile/profile";
-import Admin from "./views/profile/Admin/Admin";
+import Admin from "./views/Admin/Index";
 import Dashboard from "./views/profile/component_profile/Dashboard";
 import SideBar from "./views/profile/component_profile/SideBar";
 import Infos from "./views/profile/component_profile/infos";
@@ -100,7 +100,6 @@ const Routing = () =>{
   </Suspense>
       
 
-
   );
 }
 
@@ -113,6 +112,7 @@ function App(){
    <>
    <UserContext.Provider value={{state, dispatch}}>
    <NavigationBar/>
+
    <div className="container">
      <Routing />
    </div>
