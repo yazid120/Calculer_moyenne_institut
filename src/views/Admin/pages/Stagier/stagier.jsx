@@ -3,7 +3,7 @@ import React from "react";
 import { useState,useEffect, } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'; 
-
+import Delete_stagier from "./Delete_stagier"
 
 let Stagier_Table = function(){
   const [users, SetUsers] = useState([]); 
@@ -51,14 +51,10 @@ let Stagier_Table = function(){
     {edit_user:'Edit'}, 
     {Delete_user:'Delete'}, 
   ]
-
     return(
       <>
-      <div>
-        <h1>Admin user</h1>
-      </div>
-  
-  <div className="Users_list_container">
+  <div className="Users_list_container">  
+  <Delete_stagier/>
     <div className="usd_side_alignCentred_C">
         <p>List of All users</p>
         <table border={1}>
@@ -91,13 +87,14 @@ let Stagier_Table = function(){
                         </button>
                         <button className="Edition_modif_user Delete" onClick={DeleteUser}>{
                         ListUsers_Object[6].Delete_user}</button>
-                        
                       </td>
                     </tr>
                 )
               }    
           </tbody>
         </table>
+
+
 
     </div>
   </div>

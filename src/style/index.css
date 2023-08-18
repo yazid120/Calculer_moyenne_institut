@@ -1,4 +1,6 @@
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url('https://fonts.googleapis.com/css?family=Inconsolata&text=Hello%20World');
 @import url("https://fonts.googleapis.com/css?family=Courgette:400,700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
@@ -60,8 +62,7 @@ body {
 .container{
   min-height: 100%;
   margin-bottom: 3.5rem; 
-  width: 100%; 
-  
+  min-width: 100%;
 }
 
 /* Navigation Bar Styling */
