@@ -9,7 +9,6 @@ import PublicRoute from "../Auth_user/PublicRoute";
 import Logout from "../views/Logout";
 //Profile link
 import Profile from "../views/profile/profile";
-import Admin from "../views/Admin/Index";
 import Dashboard from "../views/profile/component_profile/Dashboard";
 import SideBar from "../views/profile/component_profile/SideBar";
 import Infos from "../views/profile/component_profile/infos";
@@ -17,6 +16,11 @@ import Infos from "../views/profile/component_profile/infos";
 // import Status from "../views/Status/Status";
 import Prof_Status from "../views/Status/Redirect_stat/prof_stat";
 import Etudiant_stat from "../views/Status/Redirect_stat/etudiant_stat";
+// Admin components 
+import Admin from "../views/Admin/Index";
+import LoginAdmin from "../views/Admin/login_admin";
+import SignUpAdmin from "../views/Admin/signUp_admin";
+import DashboardAdmin from "../views/Admin/Dashboard";
 
 import { initialState, reducer } from "../reducer/UseReducer";
 
@@ -69,8 +73,15 @@ const Routing = () =>{
         <Route exact path="/Profile" element=
         {logged_Auth ? <Profile/> : <Navigate to={{pathname : "/login"}} replace={true}/>}/>
   
-        {/* Profile/Admin page routing */}
+        {/* Admin/index page routing */}
         <Route exact path="/admin/index" element={<Admin />} />
+        {/* admin/login page routing */}
+        <Route exact path="/admin/login" element={<LoginAdmin/>} />
+        {/* admin/signup page routing */}
+        <Route exact path="/admin/signup" element={<SignUpAdmin/>}/>
+        {/* admin/Dashboard page routing */}
+        <Route exact path="/admin/dashboard" element={<DashboardAdmin/>}/>
+
   
         {/* Profile/Dashboard page routing */}
         <Route exact path="/Profile/Dashboard" element={<Dashboard/>} />

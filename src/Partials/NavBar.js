@@ -151,7 +151,7 @@ export default function NavBar(){
                 <>
                 <div className="">
                   {/* login btn */}
-                 <button className="base_registerOption _sign"
+                 <button className="base_registerOption _sign bg-blue" style={{backgroundColor: 'rgb(88, 177, 255)'}}
                   id="login_part" onClick={Navigate_login}>{component_Object[0].name}
                  </button>
                 </div>
@@ -159,12 +159,11 @@ export default function NavBar(){
                 <div className="">
                     {/* register btn */}
                 <button className="base_registerOption _sign" 
-                id="register_part" 
+                id="register_part" style={{backgroundColor: 'rgb(217, 239, 248)'}}
                 onClick={Navigate_register}>{component_Object[1].name}
                 </button>
                 </div>
                 </>
-
                 }
 
             </div>
