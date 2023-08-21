@@ -9,6 +9,7 @@ import PublicRoute from "../Auth_user/PublicRoute";
 import Logout from "../views/Logout";
 //Profile link
 import Profile from "../views/profile/profile";
+import RessetPwd from "../views/profile/resetPassword"
 import Dashboard from "../views/profile/component_profile/Dashboard";
 import SideBar from "../views/profile/component_profile/SideBar";
 import Infos from "../views/profile/component_profile/infos";
@@ -39,10 +40,14 @@ const Contact = React.lazy(()=> wait(100).then( ()=> import("../views/component/
 // login links With React lazy method
 const Login = React.lazy(()=>wait(100).then( ()=> import("../views/Login")));
 const Register = React.lazy(()=>wait(100).then( ()=>import("../views/Register"))); 
+const ForgotPassword = React.lazy(()=>wait(100).then(()=>import("../views/ForgotPassword")));
+
+const Page_404 = React.lazy(()=>wait(100).then(()=>import("../404_page")));
 
 const Routing = () =>{
     let logged_Auth = localStorage.getItem('UserId'); 
-  
+    const logged_admin_Auth = localStorage.getItem('Admin_auth');
+
     return(
     <Suspense>
       <Routes>
@@ -52,6 +57,11 @@ const Routing = () =>{
         <Route exact path="/About" element={<About/>}/>
           {/* contact page rounting */}
         <Route exact path="/Contact_us" element={<Contact/>}/>
+        {/* contact page rounting */}
+        <Route exact path="/404" element={<Page_404/>}/>
+        
+        <Route path="*" element={<Navigate to="/404"/>}/>
+
   
           {/* login path routing */}
         <Route exact path="/Login" element=
@@ -61,6 +71,9 @@ const Routing = () =>{
         {logged_Auth ? <Navigate to={{pathname : "/Profile"}}/> : <Register/>}/>
           {/* Logout path routing */}
         <Route exact path='/Logout' element={<Logout/>} />
+        {/* Forgot password path routing */}
+        <Route exact path='/forgotPassword' element={<ForgotPassword/>} />
+  
   
           {/* Status path routing */}
         {/* <Route exact path='/Status' element={<Status />} /> */}
@@ -74,13 +87,17 @@ const Routing = () =>{
         {logged_Auth ? <Profile/> : <Navigate to={{pathname : "/login"}} replace={true}/>}/>
   
         {/* Admin/index page routing */}
-        <Route exact path="/admin/index" element={<Admin />} />
+        <Route exact path="/admin/index" element=
+        {logged_admin_Auth ? <Admin/> : <Navigate to={{pathname : "/admin/login"}} replace={true}/>} />
         {/* admin/login page routing */}
-        <Route exact path="/admin/login" element={<LoginAdmin/>} />
+        <Route exact path="/admin/login" element=
+        {logged_admin_Auth ? <Navigate to={{pathname : "/admin/index"}} replace={true}/> : <LoginAdmin/>} />
         {/* admin/signup page routing */}
-        <Route exact path="/admin/signup" element={<SignUpAdmin/>}/>
+        <Route exact path="/admin/signup" element=
+        {logged_admin_Auth ? <Navigate to={{pathname : "/admin/index"}} replace={true}/> : <SignUpAdmin/>}/>
         {/* admin/Dashboard page routing */}
-        <Route exact path="/admin/dashboard" element={<DashboardAdmin/>}/>
+        <Route exact path="/admin/dashboard" element=
+        {logged_admin_Auth ? <DashboardAdmin/> : <Navigate to={{pathname : "/admin/login"}} replace={true}/>}/>
 
   
         {/* Profile/Dashboard page routing */}

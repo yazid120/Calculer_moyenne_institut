@@ -209,11 +209,12 @@ class Login extends Component{
             }
           </div>
      </div>
-
+         <a href='/ForgotPassword'> Forgot password !!</a>
        <button type="submit" name="" className="submition_Btn"
         onClick={this.onSubmitionLogin}>
         login
        </button>
+       
       </form>
         {/* <p>{this.state.email}</p>
         <p>{this.state.Password}</p> */}

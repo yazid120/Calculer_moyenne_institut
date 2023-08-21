@@ -16,8 +16,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $name = $request->name; 
     $email = $request->email; 
     $password = $request->password; 
+    $repassword = $request->repassword;
 
-    $admin_signup = $admin->signup($id,$name,$email,$password);
+    $admin_signup = $admin->signup($id,$name,$email,$password,$repassword);
     echo $admin_signup;
 }
 

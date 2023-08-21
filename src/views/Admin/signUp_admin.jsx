@@ -2,11 +2,13 @@ import React from "react";
 import { useState,useEffect } from "react";
 import axios from "axios";
 
+
 const SignUpAdmin = function(){
     const [name,SetName]= useState('');
     const [email,Setemail] = useState(''); 
     const [password,SetPassword] = useState('');
     const [Repassword,SetRepassword] = useState('');
+
 
     const HandleSubSign = async function(e){
         e.preventDefault();
@@ -20,6 +22,9 @@ const SignUpAdmin = function(){
     try{
     await axios.post(api_link,AdminData).then(response=>{
       console.log(response.data);
+      if(response.data === 'admin account created successfuly'){
+        window.location.replace('/Admin/login');
+      }
     })
     }catch(error){
      

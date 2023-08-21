@@ -1,12 +1,12 @@
 import React from "react";
 import { useState,useEffect } from "react";
 import axios from "axios"; 
-import { Navigate,useNavigate } from "react-router-dom";
+
 
 const LoginAdmin = function(){
     const [email,SetEmail]=useState(''); 
     const [password,SetPassword]=useState(''); 
-    const Navigate = useNavigate();
+
 
     const HandleLogin = async function(e){
       e.preventDefault();
@@ -17,9 +17,10 @@ const LoginAdmin = function(){
       }
     try{
      await axios.post(Api_link, input_Data).then(response=>{
-      console.log(response.data);
-      if(response.data = 'login user successful'){
-        Navigate('/admin/index')
+      console.log(response.data.id);
+      if(response.data.id !== undefined && response.data.id > 0){
+        localStorage.setItem('Admin_auth',response.data.id); 
+        window.location.replace('/admin/index');
       }
      });
     }catch($e){
