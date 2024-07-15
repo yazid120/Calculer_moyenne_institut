@@ -11,6 +11,7 @@ $inputs_data= file_get_contents('php://input');
 $request = json_decode($inputs_data);
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    
 $email= $request->email; 
 $password = $request->password; 
 
